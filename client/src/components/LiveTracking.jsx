@@ -136,6 +136,17 @@ function LiveTracking() {
   };
   const isArrived = getDistance(activePos, destination) < 50;
 
+  const totalDist = getDistance(origin, destination);
+  const currentDist = getDistance(origin, activePos);
+  
+  let progressPct = 5;
+  if (isArrived) {
+    progressPct = 100;
+  } else if (totalDist > 0 && currentPosition) {
+    // Cap at 95% until actually arrived
+    progressPct = Math.min(95, Math.max(5, (currentDist / totalDist) * 100));
+  }
+
   return (
     <div className="min-h-screen flex flex-col h-screen bg-[#0f1424] text-white">
       <header className="bg-[#1a1f35] border-b border-gray-800 p-4 shadow-md z-10 flex justify-between items-center">
@@ -202,12 +213,12 @@ function LiveTracking() {
             <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
               <div 
                 className="bg-accentPurple h-2 rounded-full transition-all duration-1000" 
-                style={{ width: isArrived ? '100%' : (currentPosition ? '50%' : '5%') }}
+                style={{ width: `${progressPct}%` }}
               ></div>
             </div>
             <div className="text-xs text-gray-400 flex justify-between">
             <span>Started</span>
-            <span>{isArrived ? '100' : (currentPosition ? '50' : '0')}%</span>
+            <span>{Math.round(progressPct)}%</span>
             <span>Arriving</span>
           </div>
         </div>

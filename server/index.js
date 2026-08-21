@@ -120,8 +120,24 @@ app.get('/api/heatmap', async (req, res) => {
       const result = await getDynamicOSMData(parseFloat(minLat), parseFloat(minLng), parseFloat(maxLat), parseFloat(maxLng));
       zones = result.zones || [];
       
-      // Removed hardcoded seed data merge to prevent Delhi points from showing globally
-      // Dynamic fallback is handled in osmService.js if the area lacks OSM data
+      // Load and filter historical NCRB seed data (mostly Delhi area)
+      // We explicitly filter by bounding box so Delhi points don't show globally!
+      try {
+        const seedData = require('./src/data/seedSafetyData.json');
+        const localSeedData = seedData.filter(zone => {
+          const lng = zone.coordinates[0];
+          const lat = zone.coordinates[1];
+          return (
+            lat >= parseFloat(minLat) && 
+            lat <= parseFloat(maxLat) && 
+            lng >= parseFloat(minLng) && 
+            lng <= parseFloat(maxLng)
+          );
+        });
+        zones = [...zones, ...localSeedData];
+      } catch (err) {
+        console.error('Could not load seed safety data:', err.message);
+      }
       
       // Filter out only the risky zones (e.g., unlit roads or high crime)
       const riskyZones = zones.filter(zone => 
