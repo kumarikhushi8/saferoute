@@ -1,7 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: #0f1424;
+  --color-background: #282c34;
+  --color-dribbbleBg: #2b2e38;
+  --color-neonGreen: #2ecc71;
+  --color-neonGreenGlow: rgba(46, 204, 113, 0.5);
   --color-accentPurple: #7c5cff;
   --color-accentYellow: #f4c430;
 }
@@ -19,3 +22,9 @@
   height: 100%;
   z-index: 1;
 }
+
+/* Hide leaflet attribution on landing page for cleaner look */
+.hide-attribution .leaflet-control-attribution {
+  display: none;
+}
+
