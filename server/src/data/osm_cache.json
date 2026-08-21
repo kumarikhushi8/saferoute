@@ -1,1 +1,325 @@
-{}
+{
+  "28.55,77.20,28.63,77.22": {
+    "zones": [
+      {
+        "id": "safe-zone-police-1157203547",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.1810077,
+          28.6345193
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2004001910",
+        "name": "Police Station Malviya Nagar",
+        "coordinates": [
+          77.2045562,
+          28.5306718
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2165822105",
+        "name": "Prasad Nagar Police Station",
+        "coordinates": [
+          77.180705,
+          28.6478735
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2446007658",
+        "name": "Rajendra Nagar Police Station",
+        "coordinates": [
+          77.1826937,
+          28.634698
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2446008279",
+        "name": "Police Residential Complex",
+        "coordinates": [
+          77.1837505,
+          28.6349617
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-4052699977",
+        "name": "police station",
+        "coordinates": [
+          77.195299,
+          28.5820097
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 294
+    }
+  },
+  "28.54,77.33,28.55,77.34": {
+    "zones": [
+      {
+        "id": "safe-zone-police-13835547209",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3237677,
+          28.5669719
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-unlit-421455591",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.3395661,
+          28.5423051
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-661367636",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.338698,
+          28.5422645
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-775320510",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.3357957,
+          28.5414582
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-1068131982",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.3347319,
+          28.5479624
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-1426562286",
+        "name": "Raipur Khadar Main Road",
+        "coordinates": [
+          77.3381678,
+          28.5418582
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 123
+    }
+  },
+  "28.52,77.17,28.54,77.18": {
+    "zones": [
+      {
+        "id": "safe-zone-police-11949219743",
+        "name": "Delhi Police — Mehrauli",
+        "coordinates": [
+          77.1779413,
+          28.5262044
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 299
+    }
+  },
+  "28.54,77.19,28.55,77.20": {
+    "zones": [
+      {
+        "id": "safe-zone-police-2004001910",
+        "name": "Police Station Malviya Nagar",
+        "coordinates": [
+          77.2045562,
+          28.5306718
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 299
+    }
+  },
+  "28.52,77.27,28.54,77.29": {
+    "zones": [
+      {
+        "id": "safe-zone-police-3386751338",
+        "name": "Police Station",
+        "coordinates": [
+          77.2543284,
+          28.5246843
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-6274319087",
+        "name": "Police Station Pul Prahladpur",
+        "coordinates": [
+          77.2907092,
+          28.5019105
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-11220187302",
+        "name": "All Women police assistance booth",
+        "coordinates": [
+          77.2507374,
+          28.549942
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-13059709520",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.2917074,
+          28.5356392
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 296
+    }
+  }
+}

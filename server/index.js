@@ -164,6 +164,95 @@ app.post('/api/sos', async (req, res) => {
   res.json({ success: true, message: 'Emergency contacts notified.' });
 });
 
+app.get('/api/admin/evaluate-point', async (req, res) => {
+  try {
+    const lat = parseFloat(req.query.lat);
+    const lng = parseFloat(req.query.lng);
+
+    if (isNaN(lat) || isNaN(lng)) {
+      return res.status(400).json({ error: 'Valid lat and lng are required' });
+    }
+
+    const { getDynamicOSMData } = require('./src/services/osmService');
+    const { getNasaMacroLightingScore } = require('./src/services/nasaService');
+    const { getBaselineCrimeScore } = require('./src/services/crimeDataService');
+
+    // 1. Get Baseline Crime
+    const baselineCrime = getBaselineCrimeScore(lng, lat);
+
+    // 2. Get NASA Lighting
+    const nasaLightingScore = await getNasaMacroLightingScore(lat, lng);
+
+    // 3. Get OSM Data (we pad a tiny bounding box around the point)
+    const padding = 0.005; 
+    const minLat = lat - padding;
+    const maxLat = lat + padding;
+    const minLng = lng - padding;
+    const maxLng = lng + padding;
+    
+    const { zones: osmZones, metadata: osmMetadata } = await getDynamicOSMData(minLat, minLng, maxLat, maxLng);
+
+    // Calculate crowd density heuristic based on POIs
+    const hour = new Date().getHours();
+    let crowdScore = 50;
+    if (osmMetadata && osmMetadata.poiCount) {
+      const poiDensity = Math.min(osmMetadata.poiCount, 100);
+      if (hour >= 6 && hour <= 19) {
+        crowdScore = 50 + (poiDensity * 0.5); // Day
+      } else {
+        crowdScore = 50 - (poiDensity * 0.3); // Night
+      }
+    }
+
+    // Default metrics before applying specific zones
+    let rawMetrics = {
+      lighting_score: nasaLightingScore,
+      crowd_density_score: Math.max(0, Math.min(100, crowdScore)),
+      crime_incidence_score: baselineCrime,
+      cctv_police_proximity_score: 50,
+      poiCount: osmMetadata ? osmMetadata.poiCount : 0
+    };
+
+    // If point is inside a highly specific zone (police or unlit road), blend it
+    // For simplicity of the admin dashboard, we just return the raw unweighted base data + OSM counts
+    let nearestZone = null;
+    let minDistance = Infinity;
+
+    // Haversine distance function inline for admin view
+    function deg2rad(deg) { return deg * (Math.PI/180); }
+    function getDist(coord1, coord2) {
+      const R = 6371;
+      const dLat = deg2rad(coord2[1] - coord1[1]);
+      const dLon = deg2rad(coord2[0] - coord1[0]); 
+      const a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(deg2rad(coord1[1])) * Math.cos(deg2rad(coord2[1])) * Math.sin(dLon/2) * Math.sin(dLon/2); 
+      return R * (2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)));
+    }
+
+    if (osmZones && osmZones.length > 0) {
+      for (const zone of osmZones) {
+         const dist = getDist([lng, lat], zone.coordinates);
+         if (dist < minDistance) {
+           minDistance = dist;
+           nearestZone = zone;
+         }
+      }
+      
+      if (nearestZone && minDistance <= nearestZone.radiusKm) {
+        rawMetrics.cctv_police_proximity_score = nearestZone.metrics.cctv_police_proximity_score;
+        if (nearestZone.id.includes('risk-zone-unlit')) {
+            rawMetrics.lighting_score = Math.min(rawMetrics.lighting_score, 15);
+        }
+      }
+    }
+
+    res.json(rawMetrics);
+
+  } catch (error) {
+    console.error('Error in admin evaluation:', error.message);
+    res.status(500).json({ error: 'Failed to evaluate point' });
+  }
+});
+
 app.post('/api/route', async (req, res) => {
   let { origin, destination } = req.body;
 

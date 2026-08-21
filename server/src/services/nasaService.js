@@ -1,5 +1,5 @@
 const axios = require('axios');
-const Jimp = require('jimp');
+const { Jimp } = require('jimp');
 
 function getTileCoordinates(lat, lon, zoom) {
   const x = Math.floor(((lon + 180) / 360) * Math.pow(2, zoom));
