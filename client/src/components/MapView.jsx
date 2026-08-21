@@ -177,18 +177,45 @@ const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMo
         )}
 
         {/* Render Night Risk Heatmap */}
-        {showHeatmap && heatmapZones.map((zone, idx) => (
-          <Circle
-            key={`heatmap-${idx}`}
-            center={[zone.coordinates[1], zone.coordinates[0]]}
-            radius={zone.radiusKm * 1000}
-            pathOptions={{
-              color: 'transparent',
-              fillColor: '#ff3300',
-              fillOpacity: 0.35
-            }}
-          />
-        ))}
+        {showHeatmap && heatmapZones.map((zone, idx) => {
+          // Cap the visual radius so they don't look like massive continent-sized blobs
+          const maxRadius = Math.min(zone.radiusKm * 1000, 500); 
+          
+          return (
+            <React.Fragment key={`heatmap-${idx}`}>
+              {/* Outer soft glow */}
+              <Circle
+                center={[zone.coordinates[1], zone.coordinates[0]]}
+                radius={maxRadius}
+                pathOptions={{
+                  color: 'transparent',
+                  fillColor: '#ff2a4b', // Neon pinkish-red
+                  fillOpacity: 0.08
+                }}
+              />
+              {/* Mid layer */}
+              <Circle
+                center={[zone.coordinates[1], zone.coordinates[0]]}
+                radius={maxRadius * 0.6}
+                pathOptions={{
+                  color: 'transparent',
+                  fillColor: '#ff2a4b',
+                  fillOpacity: 0.15
+                }}
+              />
+              {/* Inner core */}
+              <Circle
+                center={[zone.coordinates[1], zone.coordinates[0]]}
+                radius={maxRadius * 0.25}
+                pathOptions={{
+                  color: 'transparent',
+                  fillColor: '#ff2a4b',
+                  fillOpacity: 0.35
+                }}
+              />
+            </React.Fragment>
+          );
+        })}
 
         {/* Render Live Reports */}
         {liveReports.map((report) => (

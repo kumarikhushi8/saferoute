@@ -102,8 +102,8 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
     
   } catch (error) {
     console.error("Overpass API failed:", error.message);
-    // Return empty array so the app doesn't crash on failure
-    return [];
+    // Return empty arrays so the app doesn't crash on failure
+    return { zones: [], metadata: { poiCount: 0 } };
   }
 }
 
