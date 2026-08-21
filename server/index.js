@@ -10,8 +10,25 @@ const { calculateRouteSafetyScore } = require('./src/services/safetyScoreEngine'
 const { classifyReport, generateRouteSummary, draftSOSMessage } = require('./src/services/llmService');
 const Report = require('./src/models/Report');
 const User = require('./src/models/User');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 dotenv.config();
+
+const JWT_SECRET = process.env.JWT_SECRET || 'saferoute-super-secret';
+
+// JWT Middleware
+const authenticateToken = (req, res, next) => {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ error: 'Access denied. No token provided.' });
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ error: 'Invalid token.' });
+    req.user = user;
+    next();
+  });
+};
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -118,10 +135,12 @@ app.post('/api/register', async (req, res) => {
     const existing = await User.findOne({ email });
     if (existing) return res.status(400).json({ error: 'Email already in use' });
 
-    const user = new User({ name, email, password }); // Plaintext for demo MVP
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const user = new User({ name, email, password: hashedPassword });
     await user.save();
     
-    res.status(201).json({ id: user._id, name: user.name, email: user.email, emergencyContacts: user.emergencyContacts });
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
+    res.status(201).json({ token, user: { id: user._id, name: user.name, email: user.email, emergencyContacts: user.emergencyContacts } });
   } catch (err) {
     console.error('Registration error:', err);
     res.status(500).json({ error: 'Registration failed' });
@@ -131,17 +150,21 @@ app.post('/api/register', async (req, res) => {
 app.post('/api/login', async (req, res) => {
   try {
     const { email, password } = req.body;
-    const user = await User.findOne({ email, password });
+    const user = await User.findOne({ email });
     if (!user) return res.status(401).json({ error: 'Invalid email or password' });
 
-    res.json({ id: user._id, name: user.name, email: user.email, emergencyContacts: user.emergencyContacts });
+    const validPassword = await bcrypt.compare(password, user.password);
+    if (!validPassword) return res.status(401).json({ error: 'Invalid email or password' });
+
+    const token = jwt.sign({ id: user._id, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
+    res.json({ token, user: { id: user._id, name: user.name, email: user.email, emergencyContacts: user.emergencyContacts } });
   } catch (err) {
     console.error('Login error:', err);
     res.status(500).json({ error: 'Login failed' });
   }
 });
 
-app.get('/api/user/:id/contacts', async (req, res) => {
+app.get('/api/user/:id/contacts', authenticateToken, async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
     if (!user) return res.status(404).json({ error: 'User not found' });
@@ -151,7 +174,7 @@ app.get('/api/user/:id/contacts', async (req, res) => {
   }
 });
 
-app.post('/api/user/:id/contacts', async (req, res) => {
+app.post('/api/user/:id/contacts', authenticateToken, async (req, res) => {
   try {
     const { name, phone } = req.body;
     const user = await User.findById(req.params.id);

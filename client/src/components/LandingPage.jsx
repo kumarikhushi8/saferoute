@@ -51,8 +51,9 @@ function LandingPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Authentication failed');
       
-      localStorage.setItem('saferoute-user', JSON.stringify(data));
-      setUser(data);
+      localStorage.setItem('saferoute-token', data.token);
+      localStorage.setItem('saferoute-user', JSON.stringify(data.user));
+      setUser(data.user);
       navigate('/app');
     } catch (err) {
       setError(err.message);

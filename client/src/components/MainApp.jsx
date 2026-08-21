@@ -120,10 +120,12 @@ function MainApp() {
       const parsed = JSON.parse(storedUser);
       setUser(parsed);
       setContacts(parsed.emergencyContacts || []);
-      // Refresh contacts from backend
-      axios.get(`/api/user/${parsed.id}/contacts`)
-        .then(res => setContacts(res.data))
-        .catch(err => console.error("Error fetching contacts", err));
+      const token = localStorage.getItem('saferoute-token');
+      axios.get(`/api/user/${parsed.id}/contacts`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then(res => setContacts(res.data))
+      .catch(err => console.error("Error fetching contacts", err));
     }
   }, []);
 
@@ -131,7 +133,11 @@ function MainApp() {
     e.preventDefault();
     if (!user || !newContactName || !newContactPhone) return;
     try {
-      const res = await axios.post(`/api/user/${user.id}/contacts`, { name: newContactName, phone: newContactPhone });
+      const token = localStorage.getItem('saferoute-token');
+      const res = await axios.post(`/api/user/${user.id}/contacts`, 
+        { name: newContactName, phone: newContactPhone },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
       setContacts(res.data);
       const updatedUser = { ...user, emergencyContacts: res.data };
       setUser(updatedUser);
