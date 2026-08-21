@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Polyline, Marker, Popup, useMap } from 'react-
 import L from 'leaflet';
 import { io } from 'socket.io-client';
 
-const socket = io(`http://${window.location.hostname}:5000`);
+const socket = io(import.meta.env.DEV ? `http://${window.location.hostname}:5000` : undefined);
 
 // Fix Leaflet's default icon path issues
 import iconUrl from 'leaflet/dist/images/marker-icon.png';

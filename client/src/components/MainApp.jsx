@@ -3,7 +3,7 @@ import axios from 'axios';
 import MapView from './MapView';
 import { io } from 'socket.io-client';
 
-const socket = io(`http://${window.location.hostname}:5000`);
+const socket = io(import.meta.env.DEV ? `http://${window.location.hostname}:5000` : undefined);
 import RouteSearchBar from './RouteSearchBar';
 
 function MainApp() {
@@ -99,14 +99,15 @@ function MainApp() {
     const trackingId = 'sos-' + Math.random().toString(36).substr(2, 6);
     const trackingUrl = `${window.location.origin}/track/${trackingId}`;
     
+    let activeRouteGeoJSON = { geometry: { coordinates: [] } };
     if (routesData && routesData[activeRouteMode]) {
-      localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify(routesData[activeRouteMode]));
-    } else {
-      // Mock a 1-point route if user clicks SOS before searching
-      localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify({
-        geometry: { coordinates: [] }
-      }));
+      activeRouteGeoJSON = routesData[activeRouteMode];
     }
+    
+    socket.emit('start_tracking', {
+      trackingId,
+      route: activeRouteGeoJSON
+    });
 
     navigator.geolocation.getCurrentPosition(
       async (position) => {
@@ -116,6 +117,34 @@ function MainApp() {
         try {
           await axios.post('/api/sos', { lat, lng, userId: user?.id, trackingUrl });
           alert(`🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!\n\nLink: ${trackingUrl}`);
+          
+          // Send initial location
+          socket.emit('location_update', {
+            trackingId,
+            position: [lat, lng],
+            index: 0
+          });
+          
+          // If simulating movement along a route, we can do it here, or just track real location
+          // For MVP, we will simulate movement along the active route if it exists
+          if (activeRouteGeoJSON.geometry.coordinates.length > 0) {
+            const coords = activeRouteGeoJSON.geometry.coordinates;
+            let currentIndex = 0;
+            if (window.liveTrackingInterval) clearInterval(window.liveTrackingInterval);
+            
+            window.liveTrackingInterval = setInterval(() => {
+              if (currentIndex < coords.length) {
+                socket.emit('location_update', {
+                  trackingId,
+                  position: [coords[currentIndex][1], coords[currentIndex][0]],
+                  index: currentIndex
+                });
+                currentIndex++;
+              } else {
+                clearInterval(window.liveTrackingInterval);
+              }
+            }, 1500);
+          }
         } catch (err) {
           console.error('Failed to trigger SOS:', err);
           alert('Failed to connect to SOS service.');

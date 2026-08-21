@@ -1870,5 +1870,266 @@
     "metadata": {
       "poiCount": 296
     }
+  },
+  "22.29,73.19,22.30,73.36": {
+    "zones": [
+      {
+        "id": "safe-zone-police-1885476293",
+        "name": "Makarpura Road Police Station",
+        "coordinates": [
+          73.2032808,
+          22.2707302
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.3442708357147828",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.30184781147673,
+          22.296658455437072
+        ],
+        "radiusKm": 1.004907179304631,
+        "metrics": {
+          "lighting_score": 29.35283478355211,
+          "crowd_density_score": 14.03531807968599,
+          "crime_incidence_score": 65.93821660420497,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.18997321049842397",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.20091528710778,
+          22.29683602170608
+        ],
+        "radiusKm": 0.6855919163418743,
+        "metrics": {
+          "lighting_score": 22.897608659066623,
+          "crowd_density_score": 12.68434349110278,
+          "crime_incidence_score": 62.439838566756826,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.4730429282486093",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.35492600449543,
+          22.29071121272602
+        ],
+        "radiusKm": 0.9704088456486881,
+        "metrics": {
+          "lighting_score": 28.10859685377291,
+          "crowd_density_score": 25.589782500104864,
+          "crime_incidence_score": 71.22712500091755,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.08029383628613662",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.21383297303076,
+          22.293482135265467
+        ],
+        "radiusKm": 0.6689364770158033,
+        "metrics": {
+          "lighting_score": 24.587345433724025,
+          "crowd_density_score": 20.832550195490057,
+          "crime_incidence_score": 71.26241788207922,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 32
+    }
+  },
+  "22.23,73.15,22.36,73.41": {
+    "zones": [
+      {
+        "id": "safe-zone-police-1885476293",
+        "name": "Makarpura Road Police Station",
+        "coordinates": [
+          73.2032808,
+          22.2707302
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.725295033921958",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.25484946518661,
+          22.281167667884915
+        ],
+        "radiusKm": 0.620525266549288,
+        "metrics": {
+          "lighting_score": 22.98075794883166,
+          "crowd_density_score": 23.537349510441594,
+          "crime_incidence_score": 74.0594680886713,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.09579398499329617",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.28579119914811,
+          22.316963328371894
+        ],
+        "radiusKm": 1.0757427831270787,
+        "metrics": {
+          "lighting_score": 20.18248669677624,
+          "crowd_density_score": 26.85893804723873,
+          "crime_incidence_score": 67.39335907398655,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.34252995305167366",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.31022754586813,
+          22.266720230342127
+        ],
+        "radiusKm": 0.9889919549916493,
+        "metrics": {
+          "lighting_score": 21.949846304254674,
+          "crowd_density_score": 28.46680427563257,
+          "crime_incidence_score": 66.28729714025619,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.6104281366017813",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.19274364945039,
+          22.35051581099357
+        ],
+        "radiusKm": 0.7865828579056198,
+        "metrics": {
+          "lighting_score": 26.172286708608553,
+          "crowd_density_score": 14.774198500419466,
+          "crime_incidence_score": 75.06090734013469,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 83
+    }
+  },
+  "22.22,73.12,22.35,73.39": {
+    "zones": [
+      {
+        "id": "safe-zone-police-1885476293",
+        "name": "Makarpura Road Police Station",
+        "coordinates": [
+          73.2032808,
+          22.2707302
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.6808373646849905",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.35622138343892,
+          22.296833837037475
+        ],
+        "radiusKm": 1.039816276593192,
+        "metrics": {
+          "lighting_score": 27.612512770678585,
+          "crowd_density_score": 21.270064595716313,
+          "crime_incidence_score": 68.90920192619537,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.8169140833677885",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.3790420100268,
+          22.24609233899736
+        ],
+        "radiusKm": 0.6192533213422589,
+        "metrics": {
+          "lighting_score": 28.41006763145843,
+          "crowd_density_score": 12.015413710464411,
+          "crime_incidence_score": 73.19118833491844,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.9691651753794454",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.18521876489169,
+          22.28683707308674
+        ],
+        "radiusKm": 0.9529694345633872,
+        "metrics": {
+          "lighting_score": 21.663338421924518,
+          "crowd_density_score": 14.54597149148874,
+          "crime_incidence_score": 71.85417062716863,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.18332006480402563",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.28642856827241,
+          22.302198496013766
+        ],
+        "radiusKm": 0.7184887620223408,
+        "metrics": {
+          "lighting_score": 22.59789504469202,
+          "crowd_density_score": 25.402263952892636,
+          "crime_incidence_score": 70.68488612202773,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 86
+    }
   }
 }
