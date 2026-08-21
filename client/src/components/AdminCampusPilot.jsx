@@ -13,34 +13,11 @@ let DefaultIcon = L.icon({
 });
 L.Marker.prototype.options.icon = DefaultIcon;
 
-const ZONES = [
-  {
-    name: 'IIT Delhi (Public Campus)',
-    center: [28.545, 77.195],
-    zoom: 15
-  },
-  {
-    name: 'Amity University, Noida (Private College)',
-    center: [28.545, 77.335],
-    zoom: 16
-  },
-  {
-    name: 'Okhla Industrial Area Phase 1 (Industrial)',
-    center: [28.530, 77.280],
-    zoom: 15
-  },
-  {
-    name: 'Sanjay Van (Forested/Isolated)',
-    center: [28.532, 77.172],
-    zoom: 15
-  }
-];
-
 // Component to recenter map when zone changes
 const MapUpdater = ({ center, zoom }) => {
   const map = useMap();
   useEffect(() => {
-    map.setView(center, zoom);
+    map.flyTo(center, zoom, { duration: 1.5 });
   }, [center, zoom, map]);
   return null;
 };
@@ -56,16 +33,53 @@ const MapClickHandler = ({ onMapClick }) => {
 };
 
 const AdminCampusPilot = () => {
-  const [activeZoneIndex, setActiveZoneIndex] = useState(0);
+  // Default to New Delhi
+  const [mapCenter, setMapCenter] = useState([28.6139, 77.2090]);
+  const [mapZoom, setMapZoom] = useState(12);
+  
+  const [searchQuery, setSearchQuery] = useState('');
+  const [isSearching, setIsSearching] = useState(false);
+  const [searchResults, setSearchResults] = useState([]);
+
   const [selectedPoint, setSelectedPoint] = useState(null);
   const [metrics, setMetrics] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loadingMetrics, setLoadingMetrics] = useState(false);
 
-  const activeZone = ZONES[activeZoneIndex];
+  // Handle Geocoding Search
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    if (!searchQuery.trim()) return;
 
+    setIsSearching(true);
+    setSearchResults([]);
+    
+    try {
+      const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(searchQuery)}&limit=5`);
+      const data = await response.json();
+      setSearchResults(data);
+    } catch (error) {
+      console.error('Search failed:', error);
+      alert('Failed to search location.');
+    } finally {
+      setIsSearching(false);
+    }
+  };
+
+  const selectSearchResult = (result) => {
+    const lat = parseFloat(result.lat);
+    const lon = parseFloat(result.lon);
+    setMapCenter([lat, lon]);
+    setMapZoom(15);
+    setSearchResults([]);
+    setSearchQuery(result.display_name);
+    // Auto-evaluate the center point
+    handleMapClick({ lat, lng: lon });
+  };
+
+  // Handle Point Evaluation
   const handleMapClick = async (latlng) => {
     setSelectedPoint(latlng);
-    setLoading(true);
+    setLoadingMetrics(true);
     setMetrics(null);
 
     try {
@@ -76,7 +90,7 @@ const AdminCampusPilot = () => {
       console.error('Failed to fetch metrics:', error);
       alert('Failed to fetch metrics. Is the backend running?');
     } finally {
-      setLoading(false);
+      setLoadingMetrics(false);
     }
   };
 
@@ -84,48 +98,69 @@ const AdminCampusPilot = () => {
     <div className="flex h-screen w-full bg-[#0a0f1d] text-white">
       {/* Sidebar for Controls and Metrics */}
       <div className="w-96 bg-[#151b2b] p-6 shadow-xl z-10 flex flex-col h-full border-r border-[#2a3142]">
-        <h1 className="text-2xl font-bold mb-2 text-blue-400">Phase 2 Pilot</h1>
-        <p className="text-gray-400 text-sm mb-6">Admin interface to validate Safety Score Engine predictions across diverse terrains.</p>
+        <h1 className="text-2xl font-bold mb-2 text-blue-400">Global Safety Pilot</h1>
+        <p className="text-gray-400 text-sm mb-6">Search any real-world location globally and evaluate its safety metrics dynamically.</p>
 
-        <div className="mb-6">
-          <label className="block text-sm font-medium text-gray-300 mb-2">Select Test Zone</label>
-          <select 
-            className="w-full bg-[#1e2536] border border-[#2a3142] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value={activeZoneIndex}
-            onChange={(e) => {
-              setActiveZoneIndex(parseInt(e.target.value));
-              setSelectedPoint(null);
-              setMetrics(null);
-            }}
-          >
-            {ZONES.map((zone, idx) => (
-              <option key={idx} value={idx}>{zone.name}</option>
-            ))}
-          </select>
+        {/* Global Search Bar */}
+        <div className="mb-6 relative">
+          <label className="block text-sm font-medium text-gray-300 mb-2">Search Location</label>
+          <form onSubmit={handleSearch} className="flex gap-2">
+            <input 
+              type="text"
+              placeholder="e.g. LSR College, New Delhi..."
+              className="w-full bg-[#1e2536] border border-[#2a3142] rounded-lg p-3 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button 
+              type="submit"
+              disabled={isSearching}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors disabled:opacity-50"
+            >
+              {isSearching ? '...' : 'Go'}
+            </button>
+          </form>
+
+          {/* Search Results Dropdown */}
+          {searchResults.length > 0 && (
+            <div className="absolute top-full left-0 right-0 mt-1 bg-[#1e2536] border border-[#2a3142] rounded-lg shadow-2xl z-50 max-h-60 overflow-y-auto">
+              {searchResults.map((result, idx) => (
+                <div 
+                  key={idx}
+                  className="p-3 border-b border-[#2a3142] hover:bg-[#2a3142] cursor-pointer text-sm"
+                  onClick={() => selectSearchResult(result)}
+                >
+                  {result.display_name}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="bg-[#1e2536] border border-[#2a3142] rounded-lg p-4 mb-6">
           <p className="text-sm text-gray-300">
-            <strong>Instructions:</strong> Click anywhere on the map to drop a pin. The system will run the exact point through the <code>safetyScoreEngine</code> and return the unweighted raw metrics.
+            <strong>Instructions:</strong> Click anywhere on the map to drop a pin. The system will dynamically fetch live OSM & NASA data for that exact point.
           </p>
         </div>
 
         {/* Metrics Display */}
-        <div className="flex-1 overflow-y-auto">
-          {loading && (
-            <div className="flex items-center justify-center p-8">
-              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+        <div className="flex-1 overflow-y-auto relative">
+          {loadingMetrics && (
+            <div className="absolute inset-0 bg-[#151b2b]/80 flex flex-col items-center justify-center z-10 rounded-lg">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mb-4"></div>
+              <p className="text-blue-400 text-sm font-medium animate-pulse">Fetching Live Data...</p>
+              <p className="text-gray-500 text-xs mt-2 max-w-[200px] text-center">First time queries might take 1-3 seconds for live satellite analysis.</p>
             </div>
           )}
 
-          {!loading && !metrics && !selectedPoint && (
+          {!loadingMetrics && !metrics && !selectedPoint && (
             <div className="text-center text-gray-500 mt-10">
               No point selected. Click the map to begin.
             </div>
           )}
 
-          {!loading && metrics && (
-            <div className="space-y-4">
+          {metrics && (
+            <div className={`space-y-4 ${loadingMetrics ? 'opacity-30 blur-sm' : ''} transition-all duration-300`}>
               <h2 className="text-lg font-semibold text-white mb-4 border-b border-[#2a3142] pb-2">Raw Safety Metrics</h2>
               
               <MetricRow 
@@ -167,8 +202,8 @@ const AdminCampusPilot = () => {
       {/* Map Area */}
       <div className="flex-1 relative">
         <MapContainer 
-          center={activeZone.center} 
-          zoom={activeZone.zoom} 
+          center={mapCenter} 
+          zoom={mapZoom} 
           style={{ height: '100%', width: '100%' }}
           zoomControl={true}
         >
@@ -177,7 +212,7 @@ const AdminCampusPilot = () => {
             url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
           />
           
-          <MapUpdater center={activeZone.center} zoom={activeZone.zoom} />
+          <MapUpdater center={mapCenter} zoom={mapZoom} />
           <MapClickHandler onMapClick={handleMapClick} />
 
           {selectedPoint && (
