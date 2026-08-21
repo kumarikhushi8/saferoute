@@ -47,7 +47,7 @@ async function classifyReport(reason) {
 
 async function generateRouteSummary(durationMins, distanceKm, score, isFastest, routesAreIdentical = false) {
   const prompt = `
-    You are a navigation assistant. Write a single, concise, natural language sentence describing a route.
+    You are a navigation assistant. Write a helpful 2-3 sentence summary explaining the characteristics of this route to a pedestrian.
     Route stats:
     - Duration: ${durationMins} minutes
     - Distance: ${distanceKm} km
@@ -55,17 +55,17 @@ async function generateRouteSummary(durationMins, distanceKm, score, isFastest, 
     - Is this the fastest route?: ${isFastest}
     - Are the fastest and safest routes identical?: ${routesAreIdentical}
     
-    If the fastest and safest routes are identical, mention that this route offers the best of both time and safety.
-    Otherwise, if it's safe but slow, mention the trade-off. If it's fast but less safe, mention the trade-off. Keep it under 20 words. Do NOT use markdown.
+    If the fastest and safest routes are identical, mention that this route offers the perfect balance of time and safety.
+    Otherwise, if it's the safest route, explain that while it might take slightly longer, the higher safety score means better lighting and police proximity. If it's the fastest route, mention it saves time but has a lower safety score. Do NOT use markdown.
   `;
   
   let fallback;
   if (routesAreIdentical) {
-    fallback = `This route is both the fastest and safest option, taking ${durationMins} mins with a score of ${score}/100.`;
+    fallback = `This route offers the perfect balance of time and safety. At ${durationMins} minutes and a safety score of ${score}/100, it is both the fastest and most secure option available. You will pass through well-lit areas without sacrificing speed.`;
   } else {
     fallback = isFastest 
-      ? `This is the fastest route, taking ${durationMins} mins, but it has a lower safety score of ${score}/100.` 
-      : `This route prioritizes safety with a score of ${score}/100, taking a slightly longer ${durationMins} mins.`;
+      ? `This is the fastest route, saving you time with an ETA of ${durationMins} minutes. However, it has a lower safety score of ${score}/100. Be aware that you may pass through darker areas or zones with fewer police stations.` 
+      : `This route prioritizes your safety, achieving a high score of ${score}/100 due to excellent street lighting and proximity to police stations. While it takes slightly longer at ${durationMins} minutes, the added security makes it the recommended choice for walking alone.`;
   }
     
   const textResponse = await callGemini(prompt, fallback);

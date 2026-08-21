@@ -58,8 +58,8 @@ const MapRecenter = ({ routeGeoJSON }) => {
 };
 
 const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMode, onMapClick, showHeatmap = false, heatmapZones = [], origin, destination }) => {
-  // Default center: Somewhere like NYC or just [40.7128, -74.0060]
-  const defaultCenter = [40.7128, -74.0060];
+  // Default center: Delhi, India
+  const defaultCenter = [28.6139, 77.2090];
 
   return (
     <div className="h-full w-full bg-[#0f1424]">

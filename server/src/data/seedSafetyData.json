@@ -1,54 +1,802 @@
 [
   {
-    "id": "zone-1",
-    "name": "Times Square / Broadway (High Safety)",
-    "coordinates": [-73.985, 40.758],
-    "radiusKm": 1.0,
+    "id": "safe-zone-police-0",
+    "name": "Shalimar Bagh Police Station",
+    "coordinates": [
+      77.1571367,
+      28.7170924
+    ],
+    "radiusKm": 1.5,
     "metrics": {
       "lighting_score": 95,
-      "crowd_density_score": 90,
-      "crime_incidence_score": 20,
-      "cctv_police_proximity_score": 90,
-      "live_community_report_score": 85
+      "crowd_density_score": 75,
+      "crime_incidence_score": 11,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 84
     }
   },
   {
-    "id": "zone-2",
-    "name": "Queens Main Ave (High Safety)",
-    "coordinates": [-73.935, 40.730],
-    "radiusKm": 1.0,
+    "id": "safe-zone-police-1",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.1810077,
+      28.6345193
+    ],
+    "radiusKm": 1.5,
     "metrics": {
-      "lighting_score": 85,
+      "lighting_score": 83,
       "crowd_density_score": 75,
-      "crime_incidence_score": 25,
-      "cctv_police_proximity_score": 80,
+      "crime_incidence_score": 16,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 93
+    }
+  },
+  {
+    "id": "safe-zone-police-2",
+    "name": "Ashok Vihar Police Station",
+    "coordinates": [
+      77.1739049,
+      28.6925224
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 89,
+      "crowd_density_score": 78,
+      "crime_incidence_score": 21,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 87
+    }
+  },
+  {
+    "id": "safe-zone-police-3",
+    "name": "Police Station Malviya Nagar",
+    "coordinates": [
+      77.2045562,
+      28.5306718
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 92,
+      "crowd_density_score": 64,
+      "crime_incidence_score": 23,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 86
+    }
+  },
+  {
+    "id": "safe-zone-police-4",
+    "name": "Prasad Nagar Police Station",
+    "coordinates": [
+      77.180705,
+      28.6478735
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 84,
+      "crowd_density_score": 75,
+      "crime_incidence_score": 12,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 83
+    }
+  },
+  {
+    "id": "safe-zone-police-5",
+    "name": "Police Booth",
+    "coordinates": [
+      77.1336893,
+      28.6702484
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 84,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 30,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 80
+    }
+  },
+  {
+    "id": "safe-zone-police-6",
+    "name": "Punjabi Bagh Police Station",
+    "coordinates": [
+      77.1322843,
+      28.6741463
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 95,
+      "crowd_density_score": 70,
+      "crime_incidence_score": 18,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 94
+    }
+  },
+  {
+    "id": "safe-zone-police-7",
+    "name": "Rajendra Nagar Police Station",
+    "coordinates": [
+      77.1826937,
+      28.634698
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 84,
+      "crowd_density_score": 63,
+      "crime_incidence_score": 21,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 91
+    }
+  },
+  {
+    "id": "safe-zone-police-8",
+    "name": "Police Residential Complex",
+    "coordinates": [
+      77.1837505,
+      28.6349617
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 88,
+      "crowd_density_score": 63,
+      "crime_incidence_score": 22,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 91
+    }
+  },
+  {
+    "id": "safe-zone-police-9",
+    "name": "Subroto Park Police Station",
+    "coordinates": [
+      77.1651188,
+      28.5942138
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 83,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 12,
+      "cctv_police_proximity_score": 100,
       "live_community_report_score": 90
     }
   },
   {
-    "id": "zone-3",
-    "name": "Direct Highway / Tunnel (Low Safety)",
-    "coordinates": [-73.965, 40.745],
-    "radiusKm": 2.0,
+    "id": "safe-zone-police-10",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.1219621,
+      28.6499571
+    ],
+    "radiusKm": 1.5,
     "metrics": {
-      "lighting_score": 10,
-      "crowd_density_score": 10,
-      "crime_incidence_score": 95,
-      "cctv_police_proximity_score": 10,
-      "live_community_report_score": 10
+      "lighting_score": 91,
+      "crowd_density_score": 75,
+      "crime_incidence_score": 15,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 84
     }
   },
   {
-    "id": "zone-4",
-    "name": "Northern Safe Corridor (High Safety)",
-    "coordinates": [-73.955, 40.760],
-    "radiusKm": 2.5,
+    "id": "safe-zone-police-11",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.2432349,
+      28.6499319
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 88,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 25,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 80
+    }
+  },
+  {
+    "id": "safe-zone-police-12",
+    "name": "Lahori Gate Police Station",
+    "coordinates": [
+      77.2190161,
+      28.6558358
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 87,
+      "crowd_density_score": 65,
+      "crime_incidence_score": 17,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 85
+    }
+  },
+  {
+    "id": "safe-zone-police-13",
+    "name": "Kotwali Police Station",
+    "coordinates": [
+      77.2310844,
+      28.6585978
+    ],
+    "radiusKm": 1.5,
     "metrics": {
       "lighting_score": 95,
-      "crowd_density_score": 85,
-      "crime_incidence_score": 10,
-      "cctv_police_proximity_score": 90,
+      "crowd_density_score": 62,
+      "crime_incidence_score": 14,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 91
+    }
+  },
+  {
+    "id": "safe-zone-police-14",
+    "name": "Jama Masjid Police Station",
+    "coordinates": [
+      77.2337052,
+      28.6524641
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 94,
+      "crowd_density_score": 76,
+      "crime_incidence_score": 22,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 86
+    }
+  },
+  {
+    "id": "safe-zone-police-15",
+    "name": "Cycle Market Police Post",
+    "coordinates": [
+      77.2347384,
+      28.6559206
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 91,
+      "crowd_density_score": 79,
+      "crime_incidence_score": 29,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 86
+    }
+  },
+  {
+    "id": "safe-zone-police-16",
+    "name": "Police Station",
+    "coordinates": [
+      77.2543284,
+      28.5246843
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 83,
+      "crowd_density_score": 66,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 92
+    }
+  },
+  {
+    "id": "safe-zone-police-17",
+    "name": "police station",
+    "coordinates": [
+      77.195299,
+      28.5820097
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 81,
+      "crowd_density_score": 78,
+      "crime_incidence_score": 18,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 87
+    }
+  },
+  {
+    "id": "safe-zone-police-18",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.2217498,
+      28.6891306
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 80,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 13,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 82
+    }
+  },
+  {
+    "id": "safe-zone-police-19",
+    "name": "Police Station Hazrat Nizamudin Railway station",
+    "coordinates": [
+      77.2536138,
+      28.5879796
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 81,
+      "crowd_density_score": 64,
+      "crime_incidence_score": 28,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 90
+    }
+  },
+  {
+    "id": "safe-zone-police-20",
+    "name": "Police Station Karol Bagh",
+    "coordinates": [
+      77.1930248,
+      28.652398
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 92,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 18,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 85
+    }
+  },
+  {
+    "id": "safe-zone-police-21",
+    "name": "Police Station New Delhi Railway Station",
+    "coordinates": [
+      77.2189266,
+      28.6437003
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 94,
+      "crowd_density_score": 65,
+      "crime_incidence_score": 21,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 93
+    }
+  },
+  {
+    "id": "safe-zone-police-22",
+    "name": "Police Post",
+    "coordinates": [
+      77.2222854,
+      28.635912
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 88,
+      "crowd_density_score": 80,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 89
+    }
+  },
+  {
+    "id": "safe-zone-police-23",
+    "name": "Police Post Majnu ka Tila",
+    "coordinates": [
+      77.2270376,
+      28.6965167
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 90,
+      "crowd_density_score": 77,
+      "crime_incidence_score": 22,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 83
+    }
+  },
+  {
+    "id": "safe-zone-police-24",
+    "name": "Police Station Pul Prahladpur",
+    "coordinates": [
+      77.2907092,
+      28.5019105
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 90,
+      "crowd_density_score": 74,
+      "crime_incidence_score": 18,
+      "cctv_police_proximity_score": 100,
       "live_community_report_score": 95
+    }
+  },
+  {
+    "id": "safe-zone-police-25",
+    "name": "Durga Puri Police Station",
+    "coordinates": [
+      77.2915327,
+      28.6894132
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 85,
+      "crowd_density_score": 67,
+      "crime_incidence_score": 22,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 90
+    }
+  },
+  {
+    "id": "safe-zone-police-26",
+    "name": "Police Post PSRI Hospital",
+    "coordinates": [
+      77.2252646,
+      28.5318943
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 94,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 13,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 90
+    }
+  },
+  {
+    "id": "safe-zone-police-27",
+    "name": "Police Chowki",
+    "coordinates": [
+      77.2920281,
+      28.6862014
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 95,
+      "crowd_density_score": 64,
+      "crime_incidence_score": 26,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 89
+    }
+  },
+  {
+    "id": "safe-zone-police-28",
+    "name": "Police Station Old Delhi Railway Station",
+    "coordinates": [
+      77.2293263,
+      28.6603874
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 94,
+      "crowd_density_score": 78,
+      "crime_incidence_score": 10,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 81
+    }
+  },
+  {
+    "id": "safe-zone-police-29",
+    "name": "Kirti Nagar Police Station",
+    "coordinates": [
+      77.135379,
+      28.6402677
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 80,
+      "crowd_density_score": 80,
+      "crime_incidence_score": 26,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 83
+    }
+  },
+  {
+    "id": "safe-zone-police-30",
+    "name": "Bharat Nagar Police station",
+    "coordinates": [
+      77.178135,
+      28.6807121
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 87,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 24,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 82
+    }
+  },
+  {
+    "id": "safe-zone-police-31",
+    "name": "Women Facilitation Booth",
+    "coordinates": [
+      77.1699161,
+      28.7283053
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 88,
+      "crowd_density_score": 72,
+      "crime_incidence_score": 21,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 89
+    }
+  },
+  {
+    "id": "safe-zone-police-32",
+    "name": "Police Post, Khan Market",
+    "coordinates": [
+      77.2262488,
+      28.6003274
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 88,
+      "crowd_density_score": 74,
+      "crime_incidence_score": 14,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 91
+    }
+  },
+  {
+    "id": "safe-zone-police-33",
+    "name": "No entry for foreigners going towards the government buildings",
+    "coordinates": [
+      77.2093428,
+      28.6153345
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 83,
+      "crowd_density_score": 77,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 95
+    }
+  },
+  {
+    "id": "safe-zone-police-34",
+    "name": "Gate 35, No entry for foreigners",
+    "coordinates": [
+      77.1985707,
+      28.6176525
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 90,
+      "crowd_density_score": 61,
+      "crime_incidence_score": 23,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 88
+    }
+  },
+  {
+    "id": "safe-zone-police-35",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.2020072,
+      28.617356
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 93,
+      "crowd_density_score": 80,
+      "crime_incidence_score": 23,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 90
+    }
+  },
+  {
+    "id": "safe-zone-police-36",
+    "name": "Traffic Police Station, RK Puram, Sector-4",
+    "coordinates": [
+      77.1811399,
+      28.560194
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 85,
+      "crowd_density_score": 61,
+      "crime_incidence_score": 12,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 92
+    }
+  },
+  {
+    "id": "safe-zone-police-37",
+    "name": "Delhi Police Post (Babarpur)",
+    "coordinates": [
+      77.2787079,
+      28.6892958
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 83,
+      "crowd_density_score": 76,
+      "crime_incidence_score": 30,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 92
+    }
+  },
+  {
+    "id": "safe-zone-police-38",
+    "name": "Railway Police Force Station",
+    "coordinates": [
+      77.2188823,
+      28.6452469
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 89,
+      "crowd_density_score": 73,
+      "crime_incidence_score": 26,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 84
+    }
+  },
+  {
+    "id": "safe-zone-police-39",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.2774333,
+      28.6304085
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 93,
+      "crowd_density_score": 65,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 91
+    }
+  },
+  {
+    "id": "safe-zone-police-40",
+    "name": "Police Station Barakhamba Road",
+    "coordinates": [
+      77.2253541,
+      28.6308823
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 80,
+      "crowd_density_score": 61,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 95
+    }
+  },
+  {
+    "id": "safe-zone-police-41",
+    "name": "All Women police assistance booth",
+    "coordinates": [
+      77.2507374,
+      28.549942
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 89,
+      "crowd_density_score": 79,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 95
+    }
+  },
+  {
+    "id": "safe-zone-police-42",
+    "name": "DCP Residence",
+    "coordinates": [
+      77.232869,
+      28.6274655
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 80,
+      "crowd_density_score": 66,
+      "crime_incidence_score": 24,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 80
+    }
+  },
+  {
+    "id": "safe-zone-police-43",
+    "name": "Police check point",
+    "coordinates": [
+      77.2877917,
+      28.5617873
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 91,
+      "crowd_density_score": 64,
+      "crime_incidence_score": 28,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 94
+    }
+  },
+  {
+    "id": "safe-zone-police-44",
+    "name": "Police assistance booth",
+    "coordinates": [
+      77.2273752,
+      28.6012604
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 85,
+      "crowd_density_score": 66,
+      "crime_incidence_score": 24,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 94
+    }
+  },
+  {
+    "id": "safe-zone-police-45",
+    "name": "Gandhi Nagar Police Station",
+    "coordinates": [
+      77.2671907,
+      28.6599766
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 85,
+      "crowd_density_score": 79,
+      "crime_incidence_score": 27,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 93
+    }
+  },
+  {
+    "id": "safe-zone-police-46",
+    "name": "Police Station Zone",
+    "coordinates": [
+      77.1683104,
+      28.5956693
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 80,
+      "crowd_density_score": 80,
+      "crime_incidence_score": 16,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 89
+    }
+  },
+  {
+    "id": "safe-zone-police-47",
+    "name": "Bara Hindu Rao Police Station",
+    "coordinates": [
+      77.2080538,
+      28.6657245
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 87,
+      "crowd_density_score": 78,
+      "crime_incidence_score": 23,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 87
+    }
+  },
+  {
+    "id": "safe-zone-police-48",
+    "name": "Sabzi Mandi Police Station",
+    "coordinates": [
+      77.2073279,
+      28.6689322
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 85,
+      "crowd_density_score": 63,
+      "crime_incidence_score": 29,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 81
+    }
+  },
+  {
+    "id": "safe-zone-police-49",
+    "name": "Crime Against Women Cell",
+    "coordinates": [
+      77.2073751,
+      28.6694195
+    ],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 81,
+      "crowd_density_score": 78,
+      "crime_incidence_score": 13,
+      "cctv_police_proximity_score": 100,
+      "live_community_report_score": 86
     }
   }
 ]

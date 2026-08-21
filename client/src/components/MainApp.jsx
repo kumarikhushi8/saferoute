@@ -10,9 +10,9 @@ function MainApp() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
-  // Route Selection State
-  const [origin, setOrigin] = useState('-73.985,40.758');
-  const [destination, setDestination] = useState('-73.935,40.730');
+  // Route Selection State (Default: Connaught Place to Hauz Khas, Delhi)
+  const [origin, setOrigin] = useState('77.2167,28.6304');
+  const [destination, setDestination] = useState('77.1989,28.5494');
   const [mapSelectionMode, setMapSelectionMode] = useState(null); // 'origin' | 'destination' | 'report' | null
 
   // Community Reporting State
