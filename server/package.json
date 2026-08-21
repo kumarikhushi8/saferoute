@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
+    "start": "concurrently \"node index.js\" \"python ml/app.py\"",
+    "dev": "concurrently \"nodemon index.js\" \"python ml/app.py\""
   },
   "keywords": [],
   "author": "",
@@ -19,6 +19,7 @@
     "mongoose": "^9.9.3"
   },
   "devDependencies": {
+    "concurrently": "^10.0.5",
     "nodemon": "^3.1.14"
   }
 }
