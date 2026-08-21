@@ -183,12 +183,23 @@ app.post('/api/route', async (req, res) => {
     if (response.data && response.data.routes && response.data.routes.length > 0) {
       const routes = response.data.routes;
       
+      // Calculate Bounding Box for OSM Fetching
+      const [lng1, lat1] = origin.split(',').map(Number);
+      const [lng2, lat2] = destination.split(',').map(Number);
+      const minLat = Math.min(lat1, lat2);
+      const maxLat = Math.max(lat1, lat2);
+      const minLng = Math.min(lng1, lng2);
+      const maxLng = Math.max(lng1, lng2);
+      
+      const { getDynamicOSMData } = require('./src/services/osmService');
+      const osmZones = await getDynamicOSMData(minLat, minLng, maxLat, maxLng);
+      
       // Fetch recent reports to pass to the scoring engine
       const recentReports = await Report.find().limit(100);
       
       // Calculate safety score for each route using the ML Microservice
       const scoredRoutes = await Promise.all(routes.map(async (r) => {
-        const score = await calculateRouteSafetyScore(r.geometry, recentReports);
+        const score = await calculateRouteSafetyScore(r.geometry, recentReports, osmZones);
         return {
           geometry: r.geometry,
           duration: r.duration,

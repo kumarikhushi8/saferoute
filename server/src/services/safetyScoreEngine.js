@@ -51,7 +51,7 @@ const DEFAULT_METRICS = {
  * @param {Array} recentReports - Array of live report documents from the database
  * @returns {Promise<number>} Aggregate safety score 0-100
  */
-async function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
+async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZones = null) {
   if (!routeGeoJSON || !routeGeoJSON.coordinates || routeGeoJSON.coordinates.length === 0) {
     return 50; // default fallback
   }
@@ -61,13 +61,16 @@ async function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
   
   const batchMetrics = [];
   
+  // Use dynamic OSM data if available, otherwise fallback to static seed data
+  const zonesToUse = (osmZones && osmZones.length > 0) ? osmZones : seedData;
+  
   // 1. Collect all metrics along the route
   for (let i = 0; i < coords.length; i += step) {
     const pt = coords[i];
     let nearestZone = null;
     let minDistance = Infinity;
 
-    for (const zone of seedData) {
+    for (const zone of zonesToUse) {
       const dist = getDistanceFromLatLonInKm(pt, zone.coordinates);
       if (dist < minDistance) {
         minDistance = dist;
