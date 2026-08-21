@@ -188,6 +188,7 @@ function MainApp() {
     setIsLoading(true);
     setError('');
     setRoutesData(null);
+    setHeatmapZones([]);
     setShareLink('');
     
     try {
@@ -201,6 +202,12 @@ function MainApp() {
           fastest: response.data.fastest,
           safest: response.data.safest
         });
+        
+        // Immediately load the heatmap data fetched alongside the route
+        if (response.data.heatmapZones) {
+          setHeatmapZones(response.data.heatmapZones);
+        }
+        
         // Automatically enable heatmap visualization along the new route
         setShowHeatmap(true);
       } else {

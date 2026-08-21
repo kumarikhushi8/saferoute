@@ -360,7 +360,14 @@ app.post('/api/route', async (req, res) => {
       fastest.summary = await generateRouteSummary(Math.round(fastest.duration / 60), Math.round(fastest.distance / 1000), fastest.score, true, routesAreIdentical);
       safest.summary = await generateRouteSummary(Math.round(safest.duration / 60), Math.round(safest.distance / 1000), safest.score, false, routesAreIdentical);
 
-      return res.json({ fastest, safest });
+      // Filter out only the risky zones for the heatmap overlay
+      const riskyZones = (osmZones || []).filter(zone => 
+        (zone.id && zone.id.includes('risk-zone')) || 
+        (zone.metrics && zone.metrics.lighting_score < 50) || 
+        (zone.metrics && zone.metrics.crime_incidence_score > 60)
+      );
+
+      return res.json({ fastest, safest, heatmapZones: riskyZones });
     } else {
       return res.status(404).json({ error: 'No route found' });
     }

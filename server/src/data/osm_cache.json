@@ -1,5 +1,6 @@
 {
-  "28.48,77.20,28.61,77.47": {
+  "28.57,77.31,28.58,77.37": {
+    "timestamp": 1787335578305,
     "zones": [
       {
         "id": "safe-zone-police-308931002",
@@ -18,11 +19,491 @@
         }
       },
       {
+        "id": "safe-zone-police-2465428862",
+        "name": "New Ashok Nagar Police Station",
+        "coordinates": [
+          77.3112386,
+          28.5983359
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.9017036934924372",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.32535345648364,
+          28.57448963712827
+        ],
+        "radiusKm": 0.6628593879418074,
+        "metrics": {
+          "lighting_score": 26.782001757091155,
+          "crowd_density_score": 23.48375828144745,
+          "crime_incidence_score": 61.1657930900765,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.39528121057529797",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.34746513536363,
+          28.58353789624605
+        ],
+        "radiusKm": 0.7733266465671156,
+        "metrics": {
+          "lighting_score": 21.401839397956728,
+          "crowd_density_score": 28.674770782967812,
+          "crime_incidence_score": 78.35563933570499,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.44513268520524574",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.32171527266712,
+          28.582123582091448
+        ],
+        "radiusKm": 1.0395056145153139,
+        "metrics": {
+          "lighting_score": 29.571615932401656,
+          "crowd_density_score": 17.12872102103648,
+          "crime_incidence_score": 73.99347570879107,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.9856451642574634",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.34004528190155,
+          28.57666030579455
+        ],
+        "radiusKm": 1.056406627401991,
+        "metrics": {
+          "lighting_score": 21.025385930023372,
+          "crowd_density_score": 21.061412077675644,
+          "crime_incidence_score": 60.586463363434035,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 298
+    }
+  },
+  "28.38,77.03,28.63,77.55": {
+    "timestamp": 1787335601215,
+    "zones": [
+      {
+        "id": "safe-zone-police-308931002",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3375263,
+          28.5779649
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066848",
+        "name": "Police Station Sadar",
+        "coordinates": [
+          77.0375117,
+          28.4291623
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066849",
+        "name": "Sadar Police Station",
+        "coordinates": [
+          77.0360665,
+          28.4640597
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066852",
+        "name": "Sushant Lok Police Station",
+        "coordinates": [
+          77.0728175,
+          28.462993
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066861",
+        "name": "Sector 18 Police Station",
+        "coordinates": [
+          77.0660949,
+          28.4863642
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-484649692",
+        "name": "Police Station Sector 56",
+        "coordinates": [
+          77.1031506,
+          28.4248272
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-571593163",
+        "name": "Shipra Police station",
+        "coordinates": [
+          77.3782631,
+          28.6378072
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1157203547",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.1810077,
+          28.6345193
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1179280491",
+        "name": "Vikas Puri",
+        "coordinates": [
+          77.0682683,
+          28.6301441
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1355995275",
+        "name": "Police Post Kaushambi, Police Station Indirapuram",
+        "coordinates": [
+          77.3270651,
+          28.6421878
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1575177481",
+        "name": "Police chowki NIT 3",
+        "coordinates": [
+          77.2900781,
+          28.3959429
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1578318239",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.2971327,
+          28.4309808
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
         "id": "safe-zone-police-2004001910",
         "name": "Police Station Malviya Nagar",
         "coordinates": [
           77.2045562,
           28.5306718
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2136306864",
+        "name": "Hari Nagar Police Station",
+        "coordinates": [
+          77.0997911,
+          28.6097133
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2165822105",
+        "name": "Prasad Nagar Police Station",
+        "coordinates": [
+          77.180705,
+          28.6478735
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2408446621",
+        "name": "Dwarka Police Station",
+        "coordinates": [
+          77.0584523,
+          28.5649687
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2446007658",
+        "name": "Rajendra Nagar Police Station",
+        "coordinates": [
+          77.1826937,
+          28.634698
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2446008279",
+        "name": "Police Residential Complex",
+        "coordinates": [
+          77.1837505,
+          28.6349617
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2465428862",
+        "name": "New Ashok Nagar Police Station",
+        "coordinates": [
+          77.3112386,
+          28.5983359
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2677421751",
+        "name": "Subroto Park Police Station",
+        "coordinates": [
+          77.1651188,
+          28.5942138
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.22463672276700086",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.29178370789344,
+          28.5818612044732
+        ],
+        "radiusKm": 0.865121653515129,
+        "metrics": {
+          "lighting_score": 21.1420853576299,
+          "crowd_density_score": 13.916565613397722,
+          "crime_incidence_score": 63.93936465183453,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.7218795738788774",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.15466582970203,
+          28.444142540052095
+        ],
+        "radiusKm": 0.6330082529209967,
+        "metrics": {
+          "lighting_score": 23.550802407802486,
+          "crowd_density_score": 25.659326337650278,
+          "crime_incidence_score": 63.499070986853624,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.47819767321801754",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.36096489019623,
+          28.38984962098156
+        ],
+        "radiusKm": 0.7988354168429803,
+        "metrics": {
+          "lighting_score": 23.84502469460414,
+          "crowd_density_score": 12.288861525563346,
+          "crime_incidence_score": 66.76232376761888,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.8163577489730925",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.02773408068724,
+          28.618224852120832
+        ],
+        "radiusKm": 0.6934427972920918,
+        "metrics": {
+          "lighting_score": 20.41324849122857,
+          "crowd_density_score": 14.023676130569044,
+          "crime_incidence_score": 74.76834420218414,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 280
+    }
+  },
+  "28.52,77.26,28.58,77.39": {
+    "timestamp": 1787335612058,
+    "zones": [
+      {
+        "id": "safe-zone-police-308931002",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3375263,
+          28.5779649
         ],
         "radiusKm": 1.5,
         "metrics": {
@@ -66,6 +547,254 @@
         }
       },
       {
+        "id": "safe-zone-police-5906571700",
+        "name": "Police Station Hazrat Nizamudin Railway station",
+        "coordinates": [
+          77.2536138,
+          28.5879796
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-6274319087",
+        "name": "Police Station Pul Prahladpur",
+        "coordinates": [
+          77.2907092,
+          28.5019105
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.17644910019904503",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.3855588665493,
+          28.551278749094877
+        ],
+        "radiusKm": 0.8825930895654346,
+        "metrics": {
+          "lighting_score": 24.491507780623696,
+          "crowd_density_score": 27.65892267471631,
+          "crime_incidence_score": 60.83840275446262,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.0884895101351757",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.3160094491463,
+          28.560963472049337
+        ],
+        "radiusKm": 0.9764467088825424,
+        "metrics": {
+          "lighting_score": 20.31413420133492,
+          "crowd_density_score": 26.196475102617935,
+          "crime_incidence_score": 76.83479085704505,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.4314043595487498",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.30304722748431,
+          28.530247186525525
+        ],
+        "radiusKm": 0.9473078942660995,
+        "metrics": {
+          "lighting_score": 22.367132768185996,
+          "crowd_density_score": 12.662944042777323,
+          "crime_incidence_score": 76.17434458358878,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.6736759413618153",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.36332979622362,
+          28.521454080223144
+        ],
+        "radiusKm": 0.6673380073019588,
+        "metrics": {
+          "lighting_score": 28.734982393543046,
+          "crowd_density_score": 18.88861309860657,
+          "crime_incidence_score": 78.3321673142629,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 295
+    }
+  },
+  "28.36,77.11,28.61,77.64": {
+    "timestamp": 1787335621119,
+    "zones": [
+      {
+        "id": "safe-zone-police-308931002",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3375263,
+          28.5779649
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-484649692",
+        "name": "Police Station Sector 56",
+        "coordinates": [
+          77.1031506,
+          28.4248272
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1575177481",
+        "name": "Police chowki NIT 3",
+        "coordinates": [
+          77.2900781,
+          28.3959429
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1578318239",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.2971327,
+          28.4309808
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2004001910",
+        "name": "Police Station Malviya Nagar",
+        "coordinates": [
+          77.2045562,
+          28.5306718
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2136306864",
+        "name": "Hari Nagar Police Station",
+        "coordinates": [
+          77.0997911,
+          28.6097133
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2465428862",
+        "name": "New Ashok Nagar Police Station",
+        "coordinates": [
+          77.3112386,
+          28.5983359
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2677421751",
+        "name": "Subroto Park Police Station",
+        "coordinates": [
+          77.1651188,
+          28.5942138
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-3386751338",
+        "name": "Police Station",
+        "coordinates": [
+          77.2543284,
+          28.5246843
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
         "id": "safe-zone-police-4052699977",
         "name": "police station",
         "coordinates": [
@@ -82,75 +811,252 @@
         }
       },
       {
-        "id": "risk-zone-procedural-0.9206195821577683",
+        "id": "risk-zone-procedural-0.7780768335743646",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.32416621490529,
-          28.52412029715346
+          77.47995491891336,
+          28.60480337963785
         ],
-        "radiusKm": 0.938083934247496,
+        "radiusKm": 0.8209011923325288,
         "metrics": {
-          "lighting_score": 22.989802408214114,
-          "crowd_density_score": 26.47647667176909,
-          "crime_incidence_score": 76.50902104794737,
+          "lighting_score": 28.211020697382935,
+          "crowd_density_score": 26.628452464429635,
+          "crime_incidence_score": 63.97305298775891,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       },
       {
-        "id": "risk-zone-procedural-0.6195273601803553",
+        "id": "risk-zone-procedural-0.1873936314878294",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.30170397650261,
-          28.585471971175075
+          77.54808388879117,
+          28.43515222245526
         ],
-        "radiusKm": 0.6487890185043101,
+        "radiusKm": 1.0725415142531376,
         "metrics": {
-          "lighting_score": 23.838256467745495,
-          "crowd_density_score": 12.539595013703597,
-          "crime_incidence_score": 66.7380716371068,
+          "lighting_score": 26.962186601940388,
+          "crowd_density_score": 28.637642089903224,
+          "crime_incidence_score": 72.05605453716436,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       },
       {
-        "id": "risk-zone-procedural-0.6035636666327046",
+        "id": "risk-zone-procedural-0.5034124697900643",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.21550581689219,
-          28.5550266439928
+          77.54770677267025,
+          28.49866151526395
         ],
-        "radiusKm": 1.063484971577239,
+        "radiusKm": 0.9196434343600257,
         "metrics": {
-          "lighting_score": 24.490082288335707,
-          "crowd_density_score": 10.532227991483872,
-          "crime_incidence_score": 68.12380570794986,
+          "lighting_score": 26.49640145349954,
+          "crowd_density_score": 18.367534717404357,
+          "crime_incidence_score": 66.17364051117909,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       },
       {
-        "id": "risk-zone-procedural-0.6464394484515851",
+        "id": "risk-zone-procedural-0.13736349292687422",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.36226605005336,
-          28.496629700074905
+          77.59311604542243,
+          28.53755050261105
         ],
-        "radiusKm": 0.688272039548807,
+        "radiusKm": 0.6059658758490928,
         "metrics": {
-          "lighting_score": 25.841100354528553,
-          "crowd_density_score": 24.722864672457437,
-          "crime_incidence_score": 68.43375505910223,
+          "lighting_score": 29.243310450243662,
+          "crowd_density_score": 25.521223927153997,
+          "crime_incidence_score": 64.69658633777112,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       }
     ],
     "metadata": {
-      "poiCount": 295
+      "poiCount": 290
     }
   },
-  "28.53,77.30,28.63,77.40": {
+  "22.29,73.18,22.31,73.36": {
+    "timestamp": 1787335654242,
+    "zones": [
+      {
+        "id": "safe-zone-police-1885476293",
+        "name": "Makarpura Road Police Station",
+        "coordinates": [
+          73.2032808,
+          22.2707302
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.8024256289829962",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.22650327264512,
+          22.31094026527764
+        ],
+        "radiusKm": 0.7236824872499903,
+        "metrics": {
+          "lighting_score": 24.360849399157704,
+          "crowd_density_score": 14.996207794309571,
+          "crime_incidence_score": 61.346431387756475,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.1967203523658183",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.29225859095739,
+          22.294532342863103
+        ],
+        "radiusKm": 0.8378168591509081,
+        "metrics": {
+          "lighting_score": 29.62946503010122,
+          "crowd_density_score": 23.695471585292154,
+          "crime_incidence_score": 74.38597174292741,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.12781144415111723",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.33402640412993,
+          22.309384094648856
+        ],
+        "radiusKm": 0.9890108582209994,
+        "metrics": {
+          "lighting_score": 26.04165612368471,
+          "crowd_density_score": 26.741806378607492,
+          "crime_incidence_score": 65.8520413006334,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.42645278220067095",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.28841802879806,
+          22.305820325908126
+        ],
+        "radiusKm": 0.7241494874115638,
+        "metrics": {
+          "lighting_score": 25.04080632570116,
+          "crowd_density_score": 29.620123558872788,
+          "crime_incidence_score": 66.12388897958829,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 57
+    }
+  },
+  "22.23,73.10,22.36,73.36": {
+    "timestamp": 1787335674001,
+    "zones": [
+      {
+        "id": "safe-zone-police-1885476293",
+        "name": "Makarpura Road Police Station",
+        "coordinates": [
+          73.2032808,
+          22.2707302
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.03418038710615001",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.27270044725496,
+          22.29587609495974
+        ],
+        "radiusKm": 0.9101354384393074,
+        "metrics": {
+          "lighting_score": 29.511800285160504,
+          "crowd_density_score": 19.856720151153134,
+          "crime_incidence_score": 67.8039191503808,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.022529904490652175",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.15235856134059,
+          22.32682608090856
+        ],
+        "radiusKm": 0.6423763484930332,
+        "metrics": {
+          "lighting_score": 23.67394483872488,
+          "crowd_density_score": 20.983309216461034,
+          "crime_incidence_score": 68.67730794045869,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.38774949671936665",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.13357039792159,
+          22.330156061747466
+        ],
+        "radiusKm": 0.950558993506604,
+        "metrics": {
+          "lighting_score": 24.628449260536883,
+          "crowd_density_score": 11.890906963564518,
+          "crime_incidence_score": 79.72725766519702,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.3888096421485089",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          73.33146140032376,
+          22.25362234585709
+        ],
+        "radiusKm": 0.8709549696370272,
+        "metrics": {
+          "lighting_score": 21.30104277511097,
+          "crowd_density_score": 29.671843799041092,
+          "crime_incidence_score": 67.96624838802262,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 87
+    }
+  },
+  "28.57,77.32,28.58,77.37": {
+    "timestamp": 1787336080773,
     "zones": [
       {
         "id": "safe-zone-police-308931002",
@@ -158,189 +1064,6 @@
         "coordinates": [
           77.3375263,
           28.5779649
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "safe-zone-police-571593163",
-        "name": "Shipra Police station",
-        "coordinates": [
-          77.3782631,
-          28.6378072
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "safe-zone-police-1355995275",
-        "name": "Police Post Kaushambi, Police Station Indirapuram",
-        "coordinates": [
-          77.3270651,
-          28.6421878
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "safe-zone-police-2465428862",
-        "name": "New Ashok Nagar Police Station",
-        "coordinates": [
-          77.3112386,
-          28.5983359
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "safe-zone-police-6395824654",
-        "name": "Police Station Zone",
-        "coordinates": [
-          77.3171717,
-          28.613379
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "safe-zone-police-9659078217",
-        "name": "Police",
-        "coordinates": [
-          77.3845655,
-          28.5289358
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "risk-zone-procedural-0.654607799237041",
-        "name": "Unlit/Deserted Area (Demo)",
-        "coordinates": [
-          77.36400384850882,
-          28.553821054933692
-        ],
-        "radiusKm": 0.7580675441399223,
-        "metrics": {
-          "lighting_score": 26.320734427821566,
-          "crowd_density_score": 15.164233923277926,
-          "crime_incidence_score": 65.12467773912297,
-          "cctv_police_proximity_score": 20,
-          "live_community_report_score": 40
-        }
-      },
-      {
-        "id": "risk-zone-procedural-0.9101987749624227",
-        "name": "Unlit/Deserted Area (Demo)",
-        "coordinates": [
-          77.31964418968185,
-          28.56862566209338
-        ],
-        "radiusKm": 0.6824523534389,
-        "metrics": {
-          "lighting_score": 20.77365734140845,
-          "crowd_density_score": 11.780028782736293,
-          "crime_incidence_score": 69.15200814734811,
-          "cctv_police_proximity_score": 20,
-          "live_community_report_score": 40
-        }
-      },
-      {
-        "id": "risk-zone-procedural-0.7271316864718855",
-        "name": "Unlit/Deserted Area (Demo)",
-        "coordinates": [
-          77.31057426192059,
-          28.536080143735223
-        ],
-        "radiusKm": 1.0677713695667397,
-        "metrics": {
-          "lighting_score": 28.813773044297207,
-          "crowd_density_score": 25.699886737099742,
-          "crime_incidence_score": 62.24684526761622,
-          "cctv_police_proximity_score": 20,
-          "live_community_report_score": 40
-        }
-      },
-      {
-        "id": "risk-zone-procedural-0.19228780010032476",
-        "name": "Unlit/Deserted Area (Demo)",
-        "coordinates": [
-          77.34021732618993,
-          28.597824655472746
-        ],
-        "radiusKm": 0.9434097748525824,
-        "metrics": {
-          "lighting_score": 26.76966572018978,
-          "crowd_density_score": 15.934401242232124,
-          "crime_incidence_score": 68.79700085272,
-          "cctv_police_proximity_score": 20,
-          "live_community_report_score": 40
-        }
-      }
-    ],
-    "metadata": {
-      "poiCount": 294
-    }
-  },
-  "28.57,77.32,28.58,77.33": {
-    "zones": [
-      {
-        "id": "safe-zone-police-308931002",
-        "name": "Police Station Zone",
-        "coordinates": [
-          77.3375263,
-          28.5779649
-        ],
-        "radiusKm": 1.5,
-        "metrics": {
-          "lighting_score": 90,
-          "crowd_density_score": 70,
-          "crime_incidence_score": 20,
-          "cctv_police_proximity_score": 100,
-          "live_community_report_score": 90
-        }
-      },
-      {
-        "id": "safe-zone-police-2465428862",
-        "name": "New Ashok Nagar Police Station",
-        "coordinates": [
-          77.3112386,
-          28.5983359
         ],
         "radiusKm": 1.5,
         "metrics": {
@@ -384,6 +1107,70 @@
         }
       },
       {
+        "id": "risk-zone-unlit-293342244",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.2978815,
+          28.5963954
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-422163488",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.2963231,
+          28.5911038
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-1068131982",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.3347319,
+          28.5479624
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
+        "id": "risk-zone-unlit-1071569397",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.2988132,
+          28.590876
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      },
+      {
         "id": "risk-zone-unlit-1195195383",
         "name": "Unlit Road Segment",
         "coordinates": [
@@ -400,72 +1187,688 @@
         }
       },
       {
-        "id": "risk-zone-procedural-0.3289839290857638",
+        "id": "risk-zone-unlit-1501659430",
+        "name": "Unlit Road Segment",
+        "coordinates": [
+          77.2983832,
+          28.5898676
+        ],
+        "radiusKm": 0.8,
+        "metrics": {
+          "lighting_score": 15,
+          "crowd_density_score": 25,
+          "crime_incidence_score": 75,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 35
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 268
+    }
+  },
+  "28.61,77.21,28.64,77.28": {
+    "timestamp": 1787336090862,
+    "zones": [
+      {
+        "id": "safe-zone-police-2722843601",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.2432349,
+          28.6499319
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-3245667203",
+        "name": "Lahori Gate Police Station",
+        "coordinates": [
+          77.2190161,
+          28.6558358
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-3245702263",
+        "name": "Kotwali Police Station",
+        "coordinates": [
+          77.2310844,
+          28.6585978
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-3245702592",
+        "name": "Jama Masjid Police Station",
+        "coordinates": [
+          77.2337052,
+          28.6524641
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-3249140375",
+        "name": "Cycle Market Police Post",
+        "coordinates": [
+          77.2347384,
+          28.6559206
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-6134779778",
+        "name": "Police Station New Delhi Railway Station",
+        "coordinates": [
+          77.2189266,
+          28.6437003
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-6148020512",
+        "name": "Police Post",
+        "coordinates": [
+          77.2222854,
+          28.635912
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.8231653626176125",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.32745093597347,
-          28.578229459420605
+          77.2390894589156,
+          28.617100171369277
         ],
-        "radiusKm": 0.6102704725617313,
+        "radiusKm": 0.6586408172288613,
         "metrics": {
-          "lighting_score": 26.80083632184938,
-          "crowd_density_score": 26.286545946942866,
-          "crime_incidence_score": 65.56496171892684,
+          "lighting_score": 26.939899311799486,
+          "crowd_density_score": 12.830070365116237,
+          "crime_incidence_score": 68.29953193356869,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       },
       {
-        "id": "risk-zone-procedural-0.8565326325699658",
+        "id": "risk-zone-procedural-0.6640753233925664",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.32913790927302,
-          28.572999264945437
+          77.23001704279855,
+          28.62432009436407
         ],
-        "radiusKm": 0.6881278588681567,
+        "radiusKm": 0.907886449370915,
         "metrics": {
-          "lighting_score": 20.304590396534792,
-          "crowd_density_score": 17.136980160478334,
-          "crime_incidence_score": 63.63320456902268,
+          "lighting_score": 29.04544927274,
+          "crowd_density_score": 16.33083145352092,
+          "crime_incidence_score": 61.30595600405739,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       },
       {
-        "id": "risk-zone-procedural-0.22931796270456084",
+        "id": "risk-zone-procedural-0.45065218881222313",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.3210207002385,
-          28.57373233576464
+          77.22934516992241,
+          28.633344300979946
         ],
-        "radiusKm": 1.0695475588062542,
+        "radiusKm": 0.7880399691081339,
         "metrics": {
-          "lighting_score": 23.56680699426002,
-          "crowd_density_score": 18.869790683355447,
-          "crime_incidence_score": 66.87102195999744,
+          "lighting_score": 28.069194394801926,
+          "crowd_density_score": 11.812669578033276,
+          "crime_incidence_score": 63.53659857898747,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       },
       {
-        "id": "risk-zone-procedural-0.9975266112931608",
+        "id": "risk-zone-procedural-0.25650361607555194",
         "name": "Unlit/Deserted Area (Demo)",
         "coordinates": [
-          77.32113078131626,
-          28.573344284835756
+          77.22833693085194,
+          28.615687168428114
         ],
-        "radiusKm": 1.0543418910331193,
+        "radiusKm": 1.0922171550409274,
         "metrics": {
-          "lighting_score": 26.880452222573574,
-          "crowd_density_score": 23.551516437784805,
-          "crime_incidence_score": 72.95183115284563,
+          "lighting_score": 26.44235741938525,
+          "crowd_density_score": 10.936075030630514,
+          "crime_incidence_score": 72.08032896478292,
           "cctv_police_proximity_score": 20,
           "live_community_report_score": 40
         }
       }
     ],
     "metadata": {
-      "poiCount": 231
+      "poiCount": 293
+    }
+  },
+  "28.41,76.99,28.66,77.52": {
+    "timestamp": 1787336127075,
+    "zones": [
+      {
+        "id": "safe-zone-police-308931002",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3375263,
+          28.5779649
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066848",
+        "name": "Police Station Sadar",
+        "coordinates": [
+          77.0375117,
+          28.4291623
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066849",
+        "name": "Sadar Police Station",
+        "coordinates": [
+          77.0360665,
+          28.4640597
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066852",
+        "name": "Sushant Lok Police Station",
+        "coordinates": [
+          77.0728175,
+          28.462993
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-332066861",
+        "name": "Sector 18 Police Station",
+        "coordinates": [
+          77.0660949,
+          28.4863642
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-484649692",
+        "name": "Police Station Sector 56",
+        "coordinates": [
+          77.1031506,
+          28.4248272
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-571593163",
+        "name": "Shipra Police station",
+        "coordinates": [
+          77.3782631,
+          28.6378072
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1157203547",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.1810077,
+          28.6345193
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1179280491",
+        "name": "Vikas Puri",
+        "coordinates": [
+          77.0682683,
+          28.6301441
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1355995275",
+        "name": "Police Post Kaushambi, Police Station Indirapuram",
+        "coordinates": [
+          77.3270651,
+          28.6421878
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1575177481",
+        "name": "Police chowki NIT 3",
+        "coordinates": [
+          77.2900781,
+          28.3959429
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1578318239",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.2971327,
+          28.4309808
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1764309442",
+        "name": "Najafgarh Police Thana",
+        "coordinates": [
+          76.9828316,
+          28.6098145
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-1776071592",
+        "name": "Police Chowki",
+        "coordinates": [
+          76.9867433,
+          28.6126106
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2004001910",
+        "name": "Police Station Malviya Nagar",
+        "coordinates": [
+          77.2045562,
+          28.5306718
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2136306864",
+        "name": "Hari Nagar Police Station",
+        "coordinates": [
+          77.0997911,
+          28.6097133
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-2165822105",
+        "name": "Prasad Nagar Police Station",
+        "coordinates": [
+          77.180705,
+          28.6478735
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.26641647965709825",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.05911605690102,
+          28.42682548693583
+        ],
+        "radiusKm": 0.9785978342874907,
+        "metrics": {
+          "lighting_score": 21.236583712963892,
+          "crowd_density_score": 28.614893408763344,
+          "crime_incidence_score": 62.672071045925044,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.78427239765212",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.1127170069865,
+          28.48325539767232
+        ],
+        "radiusKm": 0.7587835331525689,
+        "metrics": {
+          "lighting_score": 26.563115350695952,
+          "crowd_density_score": 15.193428352420833,
+          "crime_incidence_score": 70.56966168074793,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.6066257476564667",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.23153558579638,
+          28.531094927152868
+        ],
+        "radiusKm": 0.7651741105408261,
+        "metrics": {
+          "lighting_score": 27.51897819177256,
+          "crowd_density_score": 18.89909242298286,
+          "crime_incidence_score": 65.30177103618895,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.8711629629359737",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.02676964127241,
+          28.49941484774651
+        ],
+        "radiusKm": 0.8903111787591003,
+        "metrics": {
+          "lighting_score": 27.585049316010625,
+          "crowd_density_score": 29.292415683140057,
+          "crime_incidence_score": 68.98378437508777,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 283
+    }
+  },
+  "28.54,77.30,28.57,77.36": {
+    "timestamp": 1787336144637,
+    "zones": [
+      {
+        "id": "safe-zone-police-308931002",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3375263,
+          28.5779649
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-11276492167",
+        "name": "Police check point",
+        "coordinates": [
+          77.2877917,
+          28.5617873
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-13059709520",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.2917074,
+          28.5356392
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-13835547209",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.3237677,
+          28.5669719
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.9909248973524593",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.32093603934355,
+          28.544216758116534
+        ],
+        "radiusKm": 0.7702067723270327,
+        "metrics": {
+          "lighting_score": 29.22164115404835,
+          "crowd_density_score": 15.520539261571466,
+          "crime_incidence_score": 62.03547872046637,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.30990695728521367",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.3534471679589,
+          28.55116494990617
+        ],
+        "radiusKm": 0.9709121986177132,
+        "metrics": {
+          "lighting_score": 24.033764107115267,
+          "crowd_density_score": 12.761723938835088,
+          "crime_incidence_score": 66.33958836317149,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.25955193425667156",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.36150858233083,
+          28.566626175360522
+        ],
+        "radiusKm": 1.0628800938973977,
+        "metrics": {
+          "lighting_score": 20.854322590491027,
+          "crowd_density_score": 17.135435663709018,
+          "crime_incidence_score": 74.6831964466498,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.388996814469701",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.32310719873466,
+          28.56466975666641
+        ],
+        "radiusKm": 0.9206428096347139,
+        "metrics": {
+          "lighting_score": 22.864460418548173,
+          "crowd_density_score": 20.24744851825463,
+          "crime_incidence_score": 61.61264627103796,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 296
     }
   }
 }
