@@ -89,7 +89,34 @@ const BoundsEmitter = ({ onBoundsChange }) => {
   return null;
 };
 
-const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMode, onMapClick, showHeatmap = false, heatmapZones = [], origin, destination, onBoundsChange }) => {
+// Component to lock map interaction during loading
+const MapLocker = ({ isLoading }) => {
+  const map = useMap();
+  useEffect(() => {
+    if (isLoading) {
+      map.dragging.disable();
+      map.touchZoom.disable();
+      map.doubleClickZoom.disable();
+      map.scrollWheelZoom.disable();
+      map.boxZoom.disable();
+      map.keyboard.disable();
+      if (map.tap) map.tap.disable();
+      map.getContainer().style.cursor = 'wait';
+    } else {
+      map.dragging.enable();
+      map.touchZoom.enable();
+      map.doubleClickZoom.enable();
+      map.scrollWheelZoom.enable();
+      map.boxZoom.enable();
+      map.keyboard.enable();
+      if (map.tap) map.tap.enable();
+      map.getContainer().style.cursor = '';
+    }
+  }, [isLoading, map]);
+  return null;
+};
+
+const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMode, onMapClick, showHeatmap = false, heatmapZones = [], origin, destination, onBoundsChange, isLoading }) => {
   // Default center: Delhi, India
   const defaultCenter = [28.6139, 77.2090];
 
@@ -101,6 +128,7 @@ const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMo
         style={{ height: '100%', width: '100%' }}
         zoomControl={false}
       >
+        <MapLocker isLoading={isLoading} />
         <BoundsEmitter onBoundsChange={onBoundsChange} />
         {/* Dark theme styled map tiles (CartoDB Dark Matter) */}
         <TileLayer

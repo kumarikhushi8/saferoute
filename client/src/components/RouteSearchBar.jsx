@@ -13,7 +13,20 @@ const LocationInput = ({ label, value, onChange, placeholder, isMapMode, onToggl
     if (value && value !== query) {
       // Check if it's a raw coordinate (like "77.123,28.123")
       if (/^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/.test(value)) {
-        setQuery(`📍 Selected on Map (${value})`);
+        const [lon, lat] = value.split(',');
+        setQuery(`📍 Loading name...`);
+        // Reverse geocode
+        axios.get(`https://photon.komoot.io/reverse?lon=${lon}&lat=${lat}`)
+          .then(res => {
+            if (res.data.features && res.data.features.length > 0) {
+              const props = res.data.features[0].properties;
+              const name = [props.name, props.city || props.county, props.state].filter(Boolean).join(', ');
+              setQuery(`📍 ${name || value}`);
+            } else {
+              setQuery(`📍 ${value}`);
+            }
+          })
+          .catch(() => setQuery(`📍 ${value}`));
       } else if (!query) {
         setQuery(value);
       }
@@ -23,7 +36,7 @@ const LocationInput = ({ label, value, onChange, placeholder, isMapMode, onToggl
   useEffect(() => {
     const timer = setTimeout(async () => {
       // If query is short, or is already a coordinate format, don't search
-      if (!query || query.length < 3 || query.includes('Selected on Map')) {
+      if (!query || query.length < 3 || query.includes('📍')) {
         setResults([]);
         return;
       }
@@ -80,7 +93,7 @@ const LocationInput = ({ label, value, onChange, placeholder, isMapMode, onToggl
             onChange={(e) => {
               setQuery(e.target.value);
               // Clear the actual underlying coordinate value if they start typing manually
-              if (value && query.includes('Selected on Map')) {
+              if (value && query.includes('📍')) {
                 onChange('');
               }
             }}

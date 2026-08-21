@@ -55,7 +55,12 @@ function MainApp() {
         const response = await axios.get(url);
         setHeatmapZones(response.data);
       } catch (err) {
-        console.error('Failed to fetch heatmap data:', err);
+        if (err.response && err.response.status === 400) {
+          alert("Map area is too large to fetch live Night Risk data. Please zoom in closer!");
+        } else {
+          console.error('Failed to fetch heatmap data:', err);
+        }
+        return; // Don't turn it on if it fails
       }
     }
     setShowHeatmap(!showHeatmap);
@@ -68,7 +73,11 @@ function MainApp() {
       const delayFetch = setTimeout(() => {
         axios.get(`/api/heatmap?minLat=${mapBounds.minLat}&maxLat=${mapBounds.maxLat}&minLng=${mapBounds.minLng}&maxLng=${mapBounds.maxLng}`)
           .then(res => setHeatmapZones(res.data))
-          .catch(err => console.error('Failed to fetch updated heatmap', err));
+          .catch(err => {
+            if (err.response && err.response.status === 400) {
+              setHeatmapZones([]); // clear zones if too zoomed out
+            }
+          });
       }, 1000); // 1 second debounce
 
       return () => clearTimeout(delayFetch);
@@ -218,6 +227,7 @@ function MainApp() {
           origin={origin}
           destination={destination}
           onBoundsChange={setMapBounds}
+          isLoading={isLoading}
         />
       </div>
       

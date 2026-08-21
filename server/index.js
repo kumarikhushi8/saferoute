@@ -71,7 +71,7 @@ app.get('/api/heatmap', async (req, res) => {
       // Prevent massive queries that would timeout Overpass API
       const latDiff = Math.abs(parseFloat(maxLat) - parseFloat(minLat));
       const lngDiff = Math.abs(parseFloat(maxLng) - parseFloat(minLng));
-      if (latDiff > 0.5 || lngDiff > 0.5) {
+      if (latDiff > 2.0 || lngDiff > 2.0) {
          return res.status(400).json({ error: 'Area too large for live heatmap. Please zoom in.' });
       }
 
