@@ -20,9 +20,7 @@ const PORT = process.env.PORT || 5000;
 connectDB();
 
 // Middleware
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173'
-}));
+app.use(cors());
 app.use(express.json());
 
 // Routes
@@ -63,18 +61,47 @@ app.get('/api/reports', async (req, res) => {
   }
 });
 
-app.get('/api/heatmap', (req, res) => {
-  const seedDataPath = path.join(__dirname, 'src', 'data', 'seedSafetyData.json');
-  try {
-    const seedData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'));
-    // Filter zones with low lighting or high crime
-    const riskyZones = seedData.filter(zone => 
-      zone.metrics.lighting_score < 50 || zone.metrics.crime_incidence_score > 60
-    );
-    res.json(riskyZones);
-  } catch(error) {
-    console.error('Error loading heatmap:', error);
-    res.status(500).json({ error: 'Failed to load heatmap data' });
+app.get('/api/heatmap', async (req, res) => {
+  const { minLat, minLng, maxLat, maxLng } = req.query;
+
+  if (minLat && minLng && maxLat && maxLng) {
+    try {
+      const { getDynamicOSMData } = require('./src/services/osmService');
+      
+      // Prevent massive queries that would timeout Overpass API
+      const latDiff = Math.abs(parseFloat(maxLat) - parseFloat(minLat));
+      const lngDiff = Math.abs(parseFloat(maxLng) - parseFloat(minLng));
+      if (latDiff > 0.5 || lngDiff > 0.5) {
+         return res.status(400).json({ error: 'Area too large for live heatmap. Please zoom in.' });
+      }
+
+      const { zones } = await getDynamicOSMData(parseFloat(minLat), parseFloat(minLng), parseFloat(maxLat), parseFloat(maxLng));
+      
+      // Filter out only the risky zones (e.g., unlit roads or high crime)
+      const riskyZones = zones.filter(zone => 
+        zone.id.includes('risk-zone') || 
+        zone.metrics.lighting_score < 50 || 
+        zone.metrics.crime_incidence_score > 60
+      );
+      
+      res.json(riskyZones);
+    } catch (error) {
+      console.error('Error generating dynamic heatmap:', error);
+      res.status(500).json({ error: 'Failed to generate dynamic heatmap' });
+    }
+  } else {
+    // Fallback to static seed data if no bounds provided
+    const seedDataPath = path.join(__dirname, 'src', 'data', 'seedSafetyData.json');
+    try {
+      const seedData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'));
+      const riskyZones = seedData.filter(zone => 
+        zone.metrics.lighting_score < 50 || zone.metrics.crime_incidence_score > 60
+      );
+      res.json(riskyZones);
+    } catch(error) {
+      console.error('Error loading heatmap:', error);
+      res.status(500).json({ error: 'Failed to load heatmap data' });
+    }
   }
 });
 

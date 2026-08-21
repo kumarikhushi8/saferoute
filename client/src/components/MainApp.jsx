@@ -21,6 +21,7 @@ function MainApp() {
   // Heatmap State
   const [showHeatmap, setShowHeatmap] = useState(false);
   const [heatmapZones, setHeatmapZones] = useState([]);
+  const [mapBounds, setMapBounds] = useState(null);
 
   // SOS State
   const [isSosActive, setIsSosActive] = useState(false);
@@ -47,7 +48,11 @@ function MainApp() {
   const toggleHeatmap = async () => {
     if (!showHeatmap) {
       try {
-        const response = await axios.get('/api/heatmap');
+        let url = '/api/heatmap';
+        if (mapBounds) {
+          url += `?minLat=${mapBounds.minLat}&maxLat=${mapBounds.maxLat}&minLng=${mapBounds.minLng}&maxLng=${mapBounds.maxLng}`;
+        }
+        const response = await axios.get(url);
         setHeatmapZones(response.data);
       } catch (err) {
         console.error('Failed to fetch heatmap data:', err);
@@ -55,6 +60,20 @@ function MainApp() {
     }
     setShowHeatmap(!showHeatmap);
   };
+
+  // Whenever map is dragged or zoomed, and heatmap is active, we could re-fetch
+  // Added a debounce to prevent API spam and rate limits
+  useEffect(() => {
+    if (showHeatmap && mapBounds && !isLoading) {
+      const delayFetch = setTimeout(() => {
+        axios.get(`/api/heatmap?minLat=${mapBounds.minLat}&maxLat=${mapBounds.maxLat}&minLng=${mapBounds.minLng}&maxLng=${mapBounds.maxLng}`)
+          .then(res => setHeatmapZones(res.data))
+          .catch(err => console.error('Failed to fetch updated heatmap', err));
+      }, 1000); // 1 second debounce
+
+      return () => clearTimeout(delayFetch);
+    }
+  }, [mapBounds, showHeatmap, isLoading]);
 
   const handleSOS = async () => {
     setIsSosActive(true);
@@ -198,6 +217,7 @@ function MainApp() {
           heatmapZones={heatmapZones}
           origin={origin}
           destination={destination}
+          onBoundsChange={setMapBounds}
         />
       </div>
       

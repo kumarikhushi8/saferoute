@@ -798,5 +798,805 @@
       "cctv_police_proximity_score": 100,
       "live_community_report_score": 86
     }
+  },
+  {
+    "id": "risk-zone-unlit-0",
+    "name": "Unlit/Risky Area 0",
+    "coordinates": [
+      77.17397035092577,
+      28.533957723685987
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 11,
+      "crowd_density_score": 30,
+      "crime_incidence_score": 87,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-1",
+    "name": "Unlit/Risky Area 1",
+    "coordinates": [
+      77.1725356106452,
+      28.62833741613109
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 0,
+      "crowd_density_score": 10,
+      "crime_incidence_score": 76,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-2",
+    "name": "Unlit/Risky Area 2",
+    "coordinates": [
+      77.27836889313923,
+      28.54210755612416
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 15,
+      "crowd_density_score": 25,
+      "crime_incidence_score": 98,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-3",
+    "name": "Unlit/Risky Area 3",
+    "coordinates": [
+      77.26549557504758,
+      28.563935600374997
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 35,
+      "crowd_density_score": 28,
+      "crime_incidence_score": 89,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-4",
+    "name": "Unlit/Risky Area 4",
+    "coordinates": [
+      77.21976109834286,
+      28.529684760140608
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 38,
+      "crowd_density_score": 31,
+      "crime_incidence_score": 71,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-5",
+    "name": "Unlit/Risky Area 5",
+    "coordinates": [
+      77.25546693841129,
+      28.517117544796317
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 5,
+      "crowd_density_score": 23,
+      "crime_incidence_score": 82,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-6",
+    "name": "Unlit/Risky Area 6",
+    "coordinates": [
+      77.19494119975168,
+      28.62250171921316
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 14,
+      "crowd_density_score": 9,
+      "crime_incidence_score": 93,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-7",
+    "name": "Unlit/Risky Area 7",
+    "coordinates": [
+      77.16729838096639,
+      28.565605610659798
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 12,
+      "crowd_density_score": 37,
+      "crime_incidence_score": 80,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-8",
+    "name": "Unlit/Risky Area 8",
+    "coordinates": [
+      77.27443567313045,
+      28.566925664365243
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 13,
+      "crowd_density_score": 29,
+      "crime_incidence_score": 89,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-9",
+    "name": "Unlit/Risky Area 9",
+    "coordinates": [
+      77.24261492840758,
+      28.501936152353096
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 33,
+      "crowd_density_score": 39,
+      "crime_incidence_score": 97,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-10",
+    "name": "Unlit/Risky Area 10",
+    "coordinates": [
+      77.24610959730404,
+      28.663447082226696
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 9,
+      "crowd_density_score": 34,
+      "crime_incidence_score": 86,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-11",
+    "name": "Unlit/Risky Area 11",
+    "coordinates": [
+      77.21683825916558,
+      28.697474214876046
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 15,
+      "crowd_density_score": 15,
+      "crime_incidence_score": 71,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-12",
+    "name": "Unlit/Risky Area 12",
+    "coordinates": [
+      77.28971658961741,
+      28.57753380549643
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 3,
+      "crowd_density_score": 27,
+      "crime_incidence_score": 96,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-13",
+    "name": "Unlit/Risky Area 13",
+    "coordinates": [
+      77.14472896874265,
+      28.586647837507883
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 31,
+      "crowd_density_score": 21,
+      "crime_incidence_score": 76,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-14",
+    "name": "Unlit/Risky Area 14",
+    "coordinates": [
+      77.25661467266809,
+      28.629128201856492
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 11,
+      "crowd_density_score": 19,
+      "crime_incidence_score": 75,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-15",
+    "name": "Unlit/Risky Area 15",
+    "coordinates": [
+      77.23272347445423,
+      28.55414590243883
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 1,
+      "crowd_density_score": 33,
+      "crime_incidence_score": 71,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-16",
+    "name": "Unlit/Risky Area 16",
+    "coordinates": [
+      77.17475708780157,
+      28.65784777634855
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 20,
+      "crowd_density_score": 16,
+      "crime_incidence_score": 77,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-17",
+    "name": "Unlit/Risky Area 17",
+    "coordinates": [
+      77.11139570102412,
+      28.555588327790286
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 39,
+      "crowd_density_score": 9,
+      "crime_incidence_score": 75,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-18",
+    "name": "Unlit/Risky Area 18",
+    "coordinates": [
+      77.27583572734169,
+      28.566687670225292
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 32,
+      "crowd_density_score": 17,
+      "crime_incidence_score": 93,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-19",
+    "name": "Unlit/Risky Area 19",
+    "coordinates": [
+      77.15838751791648,
+      28.5515051319957
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 8,
+      "crowd_density_score": 32,
+      "crime_incidence_score": 77,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-20",
+    "name": "Unlit/Risky Area 20",
+    "coordinates": [
+      77.15683440612563,
+      28.612554016142536
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 35,
+      "crowd_density_score": 19,
+      "crime_incidence_score": 78,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-21",
+    "name": "Unlit/Risky Area 21",
+    "coordinates": [
+      77.12070362994642,
+      28.681898110455382
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 8,
+      "crowd_density_score": 12,
+      "crime_incidence_score": 90,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-22",
+    "name": "Unlit/Risky Area 22",
+    "coordinates": [
+      77.22728389189565,
+      28.674242658613554
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 27,
+      "crowd_density_score": 26,
+      "crime_incidence_score": 98,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-23",
+    "name": "Unlit/Risky Area 23",
+    "coordinates": [
+      77.19260754887414,
+      28.595045852478705
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 33,
+      "crowd_density_score": 35,
+      "crime_incidence_score": 80,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-24",
+    "name": "Unlit/Risky Area 24",
+    "coordinates": [
+      77.19995738871408,
+      28.68514132000683
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 10,
+      "crowd_density_score": 26,
+      "crime_incidence_score": 85,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-25",
+    "name": "Unlit/Risky Area 25",
+    "coordinates": [
+      77.14406366503437,
+      28.576542469257937
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 14,
+      "crowd_density_score": 3,
+      "crime_incidence_score": 75,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-26",
+    "name": "Unlit/Risky Area 26",
+    "coordinates": [
+      77.23943079904392,
+      28.53691093150871
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 19,
+      "crowd_density_score": 25,
+      "crime_incidence_score": 86,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-27",
+    "name": "Unlit/Risky Area 27",
+    "coordinates": [
+      77.20303467955809,
+      28.51138968510514
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 1,
+      "crowd_density_score": 28,
+      "crime_incidence_score": 72,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-28",
+    "name": "Unlit/Risky Area 28",
+    "coordinates": [
+      77.22938225322419,
+      28.635001280737473
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 9,
+      "crowd_density_score": 35,
+      "crime_incidence_score": 99,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-29",
+    "name": "Unlit/Risky Area 29",
+    "coordinates": [
+      77.15510450252131,
+      28.60526271412156
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 13,
+      "crowd_density_score": 25,
+      "crime_incidence_score": 76,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-30",
+    "name": "Unlit/Risky Area 30",
+    "coordinates": [
+      77.12322787117476,
+      28.5363950738218
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 14,
+      "crowd_density_score": 17,
+      "crime_incidence_score": 89,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-31",
+    "name": "Unlit/Risky Area 31",
+    "coordinates": [
+      77.29953246624125,
+      28.69585436915209
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 16,
+      "crowd_density_score": 29,
+      "crime_incidence_score": 82,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-32",
+    "name": "Unlit/Risky Area 32",
+    "coordinates": [
+      77.2344843263715,
+      28.661745310668273
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 29,
+      "crowd_density_score": 27,
+      "crime_incidence_score": 90,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-33",
+    "name": "Unlit/Risky Area 33",
+    "coordinates": [
+      77.29379885147836,
+      28.644074343202863
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 18,
+      "crowd_density_score": 9,
+      "crime_incidence_score": 85,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-34",
+    "name": "Unlit/Risky Area 34",
+    "coordinates": [
+      77.17135512601585,
+      28.59817408693114
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 37,
+      "crowd_density_score": 4,
+      "crime_incidence_score": 74,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-35",
+    "name": "Unlit/Risky Area 35",
+    "coordinates": [
+      77.17558861612928,
+      28.602473849788396
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 22,
+      "crowd_density_score": 15,
+      "crime_incidence_score": 77,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-36",
+    "name": "Unlit/Risky Area 36",
+    "coordinates": [
+      77.25838195288433,
+      28.546939701644874
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 7,
+      "crowd_density_score": 2,
+      "crime_incidence_score": 87,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-37",
+    "name": "Unlit/Risky Area 37",
+    "coordinates": [
+      77.18472387578015,
+      28.563903252192652
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 30,
+      "crowd_density_score": 15,
+      "crime_incidence_score": 81,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-38",
+    "name": "Unlit/Risky Area 38",
+    "coordinates": [
+      77.2623103130721,
+      28.5412731085204
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 5,
+      "crowd_density_score": 30,
+      "crime_incidence_score": 75,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-39",
+    "name": "Unlit/Risky Area 39",
+    "coordinates": [
+      77.27526390661099,
+      28.64850135935574
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 38,
+      "crowd_density_score": 33,
+      "crime_incidence_score": 72,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-40",
+    "name": "Unlit/Risky Area 40",
+    "coordinates": [
+      77.13045189177383,
+      28.630129398828945
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 25,
+      "crowd_density_score": 6,
+      "crime_incidence_score": 76,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-41",
+    "name": "Unlit/Risky Area 41",
+    "coordinates": [
+      77.11765034309028,
+      28.608166829516268
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 18,
+      "crowd_density_score": 22,
+      "crime_incidence_score": 76,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-42",
+    "name": "Unlit/Risky Area 42",
+    "coordinates": [
+      77.16935832463487,
+      28.507938990429412
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 12,
+      "crowd_density_score": 28,
+      "crime_incidence_score": 97,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-43",
+    "name": "Unlit/Risky Area 43",
+    "coordinates": [
+      77.21810769453833,
+      28.689684809330537
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 3,
+      "crowd_density_score": 29,
+      "crime_incidence_score": 73,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-44",
+    "name": "Unlit/Risky Area 44",
+    "coordinates": [
+      77.29955108986259,
+      28.556015912122025
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 34,
+      "crowd_density_score": 5,
+      "crime_incidence_score": 89,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-45",
+    "name": "Unlit/Risky Area 45",
+    "coordinates": [
+      77.20436346588234,
+      28.576983887421793
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 38,
+      "crowd_density_score": 32,
+      "crime_incidence_score": 95,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-46",
+    "name": "Unlit/Risky Area 46",
+    "coordinates": [
+      77.1023837335679,
+      28.578087895641957
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 29,
+      "crowd_density_score": 16,
+      "crime_incidence_score": 75,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-47",
+    "name": "Unlit/Risky Area 47",
+    "coordinates": [
+      77.16223852843747,
+      28.592191196334852
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 39,
+      "crowd_density_score": 22,
+      "crime_incidence_score": 75,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-48",
+    "name": "Unlit/Risky Area 48",
+    "coordinates": [
+      77.1189639722277,
+      28.63579255589912
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 1,
+      "crowd_density_score": 18,
+      "crime_incidence_score": 80,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
+  },
+  {
+    "id": "risk-zone-unlit-49",
+    "name": "Unlit/Risky Area 49",
+    "coordinates": [
+      77.24896558703604,
+      28.541709204170385
+    ],
+    "radiusKm": 1,
+    "metrics": {
+      "lighting_score": 30,
+      "crowd_density_score": 37,
+      "crime_incidence_score": 79,
+      "cctv_police_proximity_score": 10,
+      "live_community_report_score": 30
+    }
   }
 ]

@@ -57,7 +57,39 @@ const MapRecenter = ({ routeGeoJSON }) => {
   return null;
 };
 
-const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMode, onMapClick, showHeatmap = false, heatmapZones = [], origin, destination }) => {
+// Component to emit map bounds
+const BoundsEmitter = ({ onBoundsChange }) => {
+  const map = useMapEvents({
+    moveend() {
+      if (onBoundsChange) {
+        const bounds = map.getBounds();
+        onBoundsChange({
+          minLat: bounds.getSouth(),
+          maxLat: bounds.getNorth(),
+          minLng: bounds.getWest(),
+          maxLng: bounds.getEast()
+        });
+      }
+    }
+  });
+
+  // Emit initially once map is ready
+  useEffect(() => {
+    if (onBoundsChange && map) {
+      const bounds = map.getBounds();
+      onBoundsChange({
+        minLat: bounds.getSouth(),
+        maxLat: bounds.getNorth(),
+        minLng: bounds.getWest(),
+        maxLng: bounds.getEast()
+      });
+    }
+  }, [map, onBoundsChange]);
+
+  return null;
+};
+
+const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMode, onMapClick, showHeatmap = false, heatmapZones = [], origin, destination, onBoundsChange }) => {
   // Default center: Delhi, India
   const defaultCenter = [28.6139, 77.2090];
 
@@ -69,6 +101,7 @@ const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMo
         style={{ height: '100%', width: '100%' }}
         zoomControl={false}
       >
+        <BoundsEmitter onBoundsChange={onBoundsChange} />
         {/* Dark theme styled map tiles (CartoDB Dark Matter) */}
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
