@@ -1,0 +1,54 @@
+[
+  {
+    "id": "zone-1",
+    "name": "Times Square / Broadway (High Safety)",
+    "coordinates": [-73.985, 40.758],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 95,
+      "crowd_density_score": 90,
+      "crime_incidence_score": 20,
+      "cctv_police_proximity_score": 90,
+      "live_community_report_score": 85
+    }
+  },
+  {
+    "id": "zone-2",
+    "name": "Midtown East (Balanced Safety)",
+    "coordinates": [-73.970, 40.750],
+    "radiusKm": 1.0,
+    "metrics": {
+      "lighting_score": 80,
+      "crowd_density_score": 60,
+      "crime_incidence_score": 30,
+      "cctv_police_proximity_score": 70,
+      "live_community_report_score": 70
+    }
+  },
+  {
+    "id": "zone-3",
+    "name": "Industrial / Warehouse Alley (Low Safety)",
+    "coordinates": [-73.955, 40.740],
+    "radiusKm": 1.5,
+    "metrics": {
+      "lighting_score": 30,
+      "crowd_density_score": 15,
+      "crime_incidence_score": 80,
+      "cctv_police_proximity_score": 20,
+      "live_community_report_score": 20
+    }
+  },
+  {
+    "id": "zone-4",
+    "name": "Queens Main Ave (High Safety)",
+    "coordinates": [-73.935, 40.730],
+    "radiusKm": 1.0,
+    "metrics": {
+      "lighting_score": 85,
+      "crowd_density_score": 75,
+      "crime_incidence_score": 25,
+      "cctv_police_proximity_score": 80,
+      "live_community_report_score": 90
+    }
+  }
+]

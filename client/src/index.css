@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #0f1424;
+  --color-accentPurple: #7c5cff;
+  --color-accentYellow: #f4c430;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: white;
+  }
+}
+
+/* Ensure the Leaflet map takes up adequate space */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
