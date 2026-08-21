@@ -8,6 +8,7 @@ const path = require('path');
 const connectDB = require('./src/config/db');
 const { calculateRouteSafetyScore } = require('./src/services/safetyScoreEngine');
 const Report = require('./src/models/Report');
+const User = require('./src/models/User');
 
 dotenv.config();
 
@@ -68,11 +69,84 @@ app.get('/api/heatmap', (req, res) => {
   }
 });
 
-app.post('/api/sos', (req, res) => {
-  const { lat, lng } = req.body;
+app.post('/api/register', async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+    if (!name || !email || !password) return res.status(400).json({ error: 'All fields are required' });
+    
+    const existing = await User.findOne({ email });
+    if (existing) return res.status(400).json({ error: 'Email already in use' });
+
+    const user = new User({ name, email, password }); // Plaintext for demo MVP
+    await user.save();
+    
+    res.status(201).json({ id: user._id, name: user.name, email: user.email, emergencyContacts: user.emergencyContacts });
+  } catch (err) {
+    console.error('Registration error:', err);
+    res.status(500).json({ error: 'Registration failed' });
+  }
+});
+
+app.post('/api/login', async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    const user = await User.findOne({ email, password });
+    if (!user) return res.status(401).json({ error: 'Invalid email or password' });
+
+    res.json({ id: user._id, name: user.name, email: user.email, emergencyContacts: user.emergencyContacts });
+  } catch (err) {
+    console.error('Login error:', err);
+    res.status(500).json({ error: 'Login failed' });
+  }
+});
+
+app.get('/api/user/:id/contacts', async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    res.json(user.emergencyContacts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to fetch contacts' });
+  }
+});
+
+app.post('/api/user/:id/contacts', async (req, res) => {
+  try {
+    const { name, phone } = req.body;
+    const user = await User.findById(req.params.id);
+    if (!user) return res.status(404).json({ error: 'User not found' });
+    
+    user.emergencyContacts.push({ name, phone });
+    await user.save();
+    res.json(user.emergencyContacts);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to add contact' });
+  }
+});
+
+app.post('/api/sos', async (req, res) => {
+  const { lat, lng, userId } = req.body;
   console.log('\n=============================================');
   console.log('🚨 SOS TRIGGERED! 🚨');
-  console.log(`Sending emergency location [${lat}, ${lng}] to contacts...`);
+  
+  if (userId) {
+    try {
+      const user = await User.findById(userId);
+      if (user && user.emergencyContacts.length > 0) {
+        console.log(`Alerting ${user.name}'s Emergency Contacts:`);
+        user.emergencyContacts.forEach(contact => {
+          console.log(` -> 📱 SMS to ${contact.name} (${contact.phone}): "EMERGENCY! ${user.name} needs help at coordinates [${lat}, ${lng}]. Track them here: http://localhost:5173/track/${userId}"`);
+        });
+      } else {
+        console.log(`No emergency contacts found for user ${userId}. Broadcasting to authorities...`);
+      }
+    } catch (e) {
+      console.log('Error fetching user for SOS:', e.message);
+    }
+  } else {
+    console.log(`Sending generic emergency location [${lat}, ${lng}] to emergency services...`);
+  }
+  
   console.log('=============================================\n');
   res.json({ success: true, message: 'Emergency contacts notified.' });
 });

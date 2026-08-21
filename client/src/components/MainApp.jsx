@@ -134,8 +134,19 @@ function MainApp() {
       <header className="bg-[#1a1f35] border-b border-gray-800 p-4 shadow-md z-10 relative">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-full bg-accentPurple flex items-center justify-center font-bold text-lg">
-              S
+            <div className="flex items-center justify-center text-accentPurple drop-shadow-[0_0_8px_rgba(124,92,255,0.8)]">
+              <svg viewBox="0 0 100 100" fill="currentColor" className="w-8 h-8">
+                <defs>
+                  <mask id="map-cutout-main">
+                    <rect x="0" y="0" width="100" height="100" fill="white" />
+                    <path d="M10 70 Q 30 75 50 65 T 90 60" fill="none" stroke="black" strokeWidth="4" />
+                    <path d="M50 15 C38.95 15 30 23.95 30 35 C30 50 46.5 68 48.5 70.3 C49.3 71.2 50.7 71.2 51.5 70.3 C53.5 68 70 50 70 35 C70 23.95 61.05 15 50 15 Z" fill="black" stroke="black" strokeWidth="3" strokeLinejoin="round" />
+                  </mask>
+                </defs>
+                <polygon points="26,55 48,55 48,85 15,85" mask="url(#map-cutout-main)" />
+                <polygon points="52,55 74,55 85,85 52,85" mask="url(#map-cutout-main)" />
+                <path d="M50 15 C38.95 15 30 23.95 30 35 C30 50 46.5 68 48.5 70.3 C49.3 71.2 50.7 71.2 51.5 70.3 C53.5 68 70 50 70 35 C70 23.95 61.05 15 50 15 Z M50 45 C44.48 45 40 40.52 40 35 C40 29.48 44.48 25 50 25 C55.52 25 60 29.48 60 35 C60 40.52 55.52 45 50 45 Z" />
+              </svg>
             </div>
             <h1 className="text-2xl font-bold">SafeRoute</h1>
           </div>
