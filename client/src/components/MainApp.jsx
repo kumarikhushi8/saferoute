@@ -128,8 +128,14 @@ function MainApp() {
         lng: latlng.lng,
         reason
       });
-      alert('Report submitted! Re-fetch your route to see the safety score update.');
       fetchReports();
+      
+      // Real-time recalculation: immediately update the active route scores if a route exists
+      if (routesData && origin && destination) {
+        handleSearch(origin, destination);
+      } else {
+        alert('Hazard reported!');
+      }
     } catch (err) {
       alert('Failed to submit report.');
     } finally {
