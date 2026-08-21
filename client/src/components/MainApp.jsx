@@ -5,7 +5,6 @@ import { io } from 'socket.io-client';
 
 const socket = io(`http://${window.location.hostname}:5000`);
 import RouteSearchBar from './RouteSearchBar';
-import { useNavigate } from 'react-router-dom';
 
 function MainApp() {
   const [routesData, setRoutesData] = useState(null);
@@ -133,16 +132,17 @@ function MainApp() {
   };
 
   useEffect(() => {
-    fetchReports();
-    if (user) {
+    Promise.resolve().then(() => fetchReports());
+    const localUser = JSON.parse(localStorage.getItem('saferoute-user'));
+    if (localUser) {
       const token = localStorage.getItem('saferoute-token');
-      axios.get(`/api/user/${user.id}/contacts`, {
+      axios.get(`/api/user/${localUser.id}/contacts`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => setContacts(res.data))
       .catch(err => console.error("Error fetching contacts", err));
     }
-  }, []); // user is only used for initial mount fetch here
+  }, []);
 
   const handleAddContact = async (e) => {
     e.preventDefault();
@@ -160,6 +160,7 @@ function MainApp() {
       setNewContactName('');
       setNewContactPhone('');
     } catch (err) {
+      console.error(err);
       alert("Failed to add contact");
     }
   };
@@ -199,6 +200,7 @@ function MainApp() {
         alert('Hazard reported!');
       }
     } catch (err) {
+      console.error(err);
       alert('Failed to submit report.');
     } finally {
       setMapSelectionMode(null);

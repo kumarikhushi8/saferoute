@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
@@ -65,7 +65,9 @@ function LandingPage() {
   };
 
   // Generate random glowing dots over a city area (e.g. NYC)
-  const dots = useMemo(() => {
+  const [dots, setDots] = useState([]);
+  
+  useEffect(() => {
     const generatedDots = [];
     for (let i = 0; i < 100; i++) {
       // Clustered towards center
@@ -76,7 +78,7 @@ function LandingPage() {
       const delay = Math.random() * 1;
       generatedDots.push({ lat, lng, size, opacity, delay });
     }
-    return generatedDots;
+    Promise.resolve().then(() => setDots(generatedDots));
   }, []);
 
   useEffect(() => {

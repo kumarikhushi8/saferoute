@@ -14,7 +14,7 @@ const LocationInput = ({ label, value, onChange, placeholder, isMapMode, onToggl
       // Check if it's a raw coordinate (like "77.123,28.123")
       if (/^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/.test(value)) {
         const [lon, lat] = value.split(',');
-        setQuery(`📍 Loading name...`);
+        Promise.resolve().then(() => setQuery(`📍 Loading name...`));
         // Reverse geocode
         axios.get(`https://photon.komoot.io/reverse?lon=${lon}&lat=${lat}`)
           .then(res => {
@@ -28,10 +28,10 @@ const LocationInput = ({ label, value, onChange, placeholder, isMapMode, onToggl
           })
           .catch(() => setQuery(`📍 ${value}`));
       } else if (!query) {
-        setQuery(value);
+        Promise.resolve().then(() => setQuery(value));
       }
     }
-  }, [value]);
+  }, [value, query]);
 
   useEffect(() => {
     const timer = setTimeout(async () => {
