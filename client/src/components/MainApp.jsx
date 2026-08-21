@@ -10,9 +10,9 @@ function MainApp() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
-  // Route Selection State (Default: Connaught Place to Hauz Khas, Delhi)
-  const [origin, setOrigin] = useState('77.2167,28.6304');
-  const [destination, setDestination] = useState('77.1989,28.5494');
+  // Route Selection State
+  const [origin, setOrigin] = useState('');
+  const [destination, setDestination] = useState('');
   const [mapSelectionMode, setMapSelectionMode] = useState(null); // 'origin' | 'destination' | 'report' | null
 
   // Community Reporting State
@@ -324,6 +324,8 @@ function MainApp() {
             isLoading={isLoading} 
             origin={origin}
             destination={destination}
+            setOrigin={setOrigin}
+            setDestination={setDestination}
             mapSelectionMode={mapSelectionMode}
             setMapSelectionMode={setMapSelectionMode}
           />
