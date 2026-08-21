@@ -45,6 +45,8 @@ const DEFAULT_METRICS = {
   live_community_report_score: 50
 };
 
+const { getBaselineCrimeScore } = require('./crimeDataService');
+
 /**
  * Evaluates the safety score for an entire route using the ML Microservice.
  * @param {Object} routeGeoJSON - GeoJSON LineString geometry of the route
@@ -58,6 +60,15 @@ async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZo
 
   const coords = routeGeoJSON.coordinates;
   const step = Math.max(1, Math.floor(coords.length / 50)); 
+  
+  // Dynamic historical crime baseline
+  const startPt = coords[0];
+  const baselineCrime = getBaselineCrimeScore(startPt[0], startPt[1]);
+  
+  const dynamicDefaultMetrics = {
+    ...DEFAULT_METRICS,
+    crime_incidence_score: baselineCrime
+  };
   
   const batchMetrics = [];
   
@@ -78,7 +89,7 @@ async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZo
       }
     }
 
-    let metricsToUse = { ...DEFAULT_METRICS };
+    let metricsToUse = { ...dynamicDefaultMetrics };
     if (nearestZone && minDistance <= nearestZone.radiusKm) {
       metricsToUse = { ...nearestZone.metrics };
     }

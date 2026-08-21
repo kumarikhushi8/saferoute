@@ -1,0 +1,1597 @@
+[
+  {
+    "city": "Visakhapatnam",
+    "state": "Andhra Pradesh",
+    "coordinates": [
+      83.2185,
+      17.6868
+    ],
+    "historical_crime_index": 38,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Vijayawada",
+    "state": "Andhra Pradesh",
+    "coordinates": [
+      80.648,
+      16.5062
+    ],
+    "historical_crime_index": 53,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Guntur",
+    "state": "Andhra Pradesh",
+    "coordinates": [
+      80.4365,
+      16.3067
+    ],
+    "historical_crime_index": 40,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Nellore",
+    "state": "Andhra Pradesh",
+    "coordinates": [
+      79.9865,
+      14.4426
+    ],
+    "historical_crime_index": 51,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Tirupati",
+    "state": "Andhra Pradesh",
+    "coordinates": [
+      79.4192,
+      13.6288
+    ],
+    "historical_crime_index": 33,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Itanagar",
+    "state": "Arunachal Pradesh",
+    "coordinates": [
+      93.6053,
+      27.0844
+    ],
+    "historical_crime_index": 32,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Tawang",
+    "state": "Arunachal Pradesh",
+    "coordinates": [
+      91.8697,
+      27.5861
+    ],
+    "historical_crime_index": 55,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Pasighat",
+    "state": "Arunachal Pradesh",
+    "coordinates": [
+      95.3333,
+      28.0667
+    ],
+    "historical_crime_index": 60,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ziro",
+    "state": "Arunachal Pradesh",
+    "coordinates": [
+      93.8333,
+      27.6333
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bomdila",
+    "state": "Arunachal Pradesh",
+    "coordinates": [
+      92.4167,
+      27.2667
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Guwahati",
+    "state": "Assam",
+    "coordinates": [
+      91.7362,
+      26.1445
+    ],
+    "historical_crime_index": 56,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Silchar",
+    "state": "Assam",
+    "coordinates": [
+      92.8,
+      24.8333
+    ],
+    "historical_crime_index": 50,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Dibrugarh",
+    "state": "Assam",
+    "coordinates": [
+      94.912,
+      27.4728
+    ],
+    "historical_crime_index": 31,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jorhat",
+    "state": "Assam",
+    "coordinates": [
+      94.2037,
+      26.7509
+    ],
+    "historical_crime_index": 50,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Tezpur",
+    "state": "Assam",
+    "coordinates": [
+      92.7926,
+      26.6528
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Patna",
+    "state": "Bihar",
+    "coordinates": [
+      85.1376,
+      25.5941
+    ],
+    "historical_crime_index": 38,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Gaya",
+    "state": "Bihar",
+    "coordinates": [
+      85.0002,
+      24.7914
+    ],
+    "historical_crime_index": 25,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bhagalpur",
+    "state": "Bihar",
+    "coordinates": [
+      87.0139,
+      25.2425
+    ],
+    "historical_crime_index": 29,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Muzaffarpur",
+    "state": "Bihar",
+    "coordinates": [
+      85.3647,
+      26.1209
+    ],
+    "historical_crime_index": 28,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Darbhanga",
+    "state": "Bihar",
+    "coordinates": [
+      85.8918,
+      26.1542
+    ],
+    "historical_crime_index": 57,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Raipur",
+    "state": "Chhattisgarh",
+    "coordinates": [
+      81.6296,
+      21.2514
+    ],
+    "historical_crime_index": 51,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bhilai",
+    "state": "Chhattisgarh",
+    "coordinates": [
+      81.3509,
+      21.1938
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bilaspur",
+    "state": "Chhattisgarh",
+    "coordinates": [
+      82.1409,
+      22.0797
+    ],
+    "historical_crime_index": 52,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Korba",
+    "state": "Chhattisgarh",
+    "coordinates": [
+      82.7501,
+      22.3595
+    ],
+    "historical_crime_index": 51,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Durg",
+    "state": "Chhattisgarh",
+    "coordinates": [
+      81.2849,
+      21.1904
+    ],
+    "historical_crime_index": 33,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Panaji",
+    "state": "Goa",
+    "coordinates": [
+      73.8278,
+      15.4909
+    ],
+    "historical_crime_index": 46,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Margao",
+    "state": "Goa",
+    "coordinates": [
+      73.9585,
+      15.2736
+    ],
+    "historical_crime_index": 35,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Vasco da Gama",
+    "state": "Goa",
+    "coordinates": [
+      73.8113,
+      15.3951
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Mapusa",
+    "state": "Goa",
+    "coordinates": [
+      73.8143,
+      15.5937
+    ],
+    "historical_crime_index": 35,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ponda",
+    "state": "Goa",
+    "coordinates": [
+      74.018,
+      15.4025
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ahmedabad",
+    "state": "Gujarat",
+    "coordinates": [
+      72.5714,
+      23.0225
+    ],
+    "historical_crime_index": 60,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Surat",
+    "state": "Gujarat",
+    "coordinates": [
+      72.8311,
+      21.1702
+    ],
+    "historical_crime_index": 48,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Vadodara",
+    "state": "Gujarat",
+    "coordinates": [
+      73.1812,
+      22.3072
+    ],
+    "historical_crime_index": 58,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Rajkot",
+    "state": "Gujarat",
+    "coordinates": [
+      70.8022,
+      22.3039
+    ],
+    "historical_crime_index": 58,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bhavnagar",
+    "state": "Gujarat",
+    "coordinates": [
+      72.1519,
+      21.7645
+    ],
+    "historical_crime_index": 33,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Gurugram",
+    "state": "Haryana",
+    "coordinates": [
+      77.0266,
+      28.4595
+    ],
+    "historical_crime_index": 58,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Faridabad",
+    "state": "Haryana",
+    "coordinates": [
+      77.3178,
+      28.4089
+    ],
+    "historical_crime_index": 48,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Panipat",
+    "state": "Haryana",
+    "coordinates": [
+      76.9635,
+      29.3909
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ambala",
+    "state": "Haryana",
+    "coordinates": [
+      76.7767,
+      30.3782
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Rohtak",
+    "state": "Haryana",
+    "coordinates": [
+      76.5892,
+      28.8955
+    ],
+    "historical_crime_index": 45,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Shimla",
+    "state": "Himachal Pradesh",
+    "coordinates": [
+      77.1734,
+      31.1048
+    ],
+    "historical_crime_index": 58,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Manali",
+    "state": "Himachal Pradesh",
+    "coordinates": [
+      77.1887,
+      32.2396
+    ],
+    "historical_crime_index": 56,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Dharamshala",
+    "state": "Himachal Pradesh",
+    "coordinates": [
+      76.3234,
+      32.219
+    ],
+    "historical_crime_index": 43,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kullu",
+    "state": "Himachal Pradesh",
+    "coordinates": [
+      77.1095,
+      31.9579
+    ],
+    "historical_crime_index": 46,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Solan",
+    "state": "Himachal Pradesh",
+    "coordinates": [
+      77.0999,
+      30.9084
+    ],
+    "historical_crime_index": 33,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ranchi",
+    "state": "Jharkhand",
+    "coordinates": [
+      85.3096,
+      23.3441
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jamshedpur",
+    "state": "Jharkhand",
+    "coordinates": [
+      86.2029,
+      22.8046
+    ],
+    "historical_crime_index": 27,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Dhanbad",
+    "state": "Jharkhand",
+    "coordinates": [
+      86.4304,
+      23.7915
+    ],
+    "historical_crime_index": 52,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bokaro",
+    "state": "Jharkhand",
+    "coordinates": [
+      86.1511,
+      23.6693
+    ],
+    "historical_crime_index": 59,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Deoghar",
+    "state": "Jharkhand",
+    "coordinates": [
+      86.6969,
+      24.4841
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "coordinates": [
+      77.5946,
+      12.9716
+    ],
+    "historical_crime_index": 72,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Mysuru",
+    "state": "Karnataka",
+    "coordinates": [
+      76.6394,
+      12.2958
+    ],
+    "historical_crime_index": 29,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Hubballi",
+    "state": "Karnataka",
+    "coordinates": [
+      75.124,
+      15.3647
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Mangaluru",
+    "state": "Karnataka",
+    "coordinates": [
+      74.856,
+      12.9141
+    ],
+    "historical_crime_index": 48,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Belagavi",
+    "state": "Karnataka",
+    "coordinates": [
+      74.4977,
+      15.8497
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Thiruvananthapuram",
+    "state": "Kerala",
+    "coordinates": [
+      76.9366,
+      8.5241
+    ],
+    "historical_crime_index": 28,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kochi",
+    "state": "Kerala",
+    "coordinates": [
+      76.2673,
+      9.9312
+    ],
+    "historical_crime_index": 51,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kozhikode",
+    "state": "Kerala",
+    "coordinates": [
+      75.7804,
+      11.2588
+    ],
+    "historical_crime_index": 49,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Thrissur",
+    "state": "Kerala",
+    "coordinates": [
+      76.2144,
+      10.5276
+    ],
+    "historical_crime_index": 28,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kollam",
+    "state": "Kerala",
+    "coordinates": [
+      76.6141,
+      8.8932
+    ],
+    "historical_crime_index": 59,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Indore",
+    "state": "Madhya Pradesh",
+    "coordinates": [
+      75.8577,
+      22.7196
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bhopal",
+    "state": "Madhya Pradesh",
+    "coordinates": [
+      77.4126,
+      23.2599
+    ],
+    "historical_crime_index": 37,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jabalpur",
+    "state": "Madhya Pradesh",
+    "coordinates": [
+      79.9864,
+      23.1815
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Gwalior",
+    "state": "Madhya Pradesh",
+    "coordinates": [
+      78.1828,
+      26.2183
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ujjain",
+    "state": "Madhya Pradesh",
+    "coordinates": [
+      75.7885,
+      23.1765
+    ],
+    "historical_crime_index": 48,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "coordinates": [
+      72.8777,
+      19.076
+    ],
+    "historical_crime_index": 81,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Pune",
+    "state": "Maharashtra",
+    "coordinates": [
+      73.8567,
+      18.5204
+    ],
+    "historical_crime_index": 27,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Nagpur",
+    "state": "Maharashtra",
+    "coordinates": [
+      79.0882,
+      21.1458
+    ],
+    "historical_crime_index": 27,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Nashik",
+    "state": "Maharashtra",
+    "coordinates": [
+      73.79,
+      20.0059
+    ],
+    "historical_crime_index": 49,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Aurangabad",
+    "state": "Maharashtra",
+    "coordinates": [
+      75.3433,
+      19.8762
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Imphal",
+    "state": "Manipur",
+    "coordinates": [
+      93.9368,
+      24.817
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Churachandpur",
+    "state": "Manipur",
+    "coordinates": [
+      93.6667,
+      24.3333
+    ],
+    "historical_crime_index": 32,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Thoubal",
+    "state": "Manipur",
+    "coordinates": [
+      94.0167,
+      24.6333
+    ],
+    "historical_crime_index": 50,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ukhrul",
+    "state": "Manipur",
+    "coordinates": [
+      94.3667,
+      25.1167
+    ],
+    "historical_crime_index": 58,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Senapati",
+    "state": "Manipur",
+    "coordinates": [
+      94.0167,
+      25.2667
+    ],
+    "historical_crime_index": 31,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Shillong",
+    "state": "Meghalaya",
+    "coordinates": [
+      91.8933,
+      25.5788
+    ],
+    "historical_crime_index": 55,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Tura",
+    "state": "Meghalaya",
+    "coordinates": [
+      90.2185,
+      25.5146
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jowai",
+    "state": "Meghalaya",
+    "coordinates": [
+      92.2,
+      25.4333
+    ],
+    "historical_crime_index": 32,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Nongstoin",
+    "state": "Meghalaya",
+    "coordinates": [
+      91.2667,
+      25.5167
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Williamnagar",
+    "state": "Meghalaya",
+    "coordinates": [
+      90.6167,
+      25.6167
+    ],
+    "historical_crime_index": 42,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Aizawl",
+    "state": "Mizoram",
+    "coordinates": [
+      92.7176,
+      23.7271
+    ],
+    "historical_crime_index": 50,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Lunglei",
+    "state": "Mizoram",
+    "coordinates": [
+      92.7333,
+      22.8833
+    ],
+    "historical_crime_index": 45,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Saiha",
+    "state": "Mizoram",
+    "coordinates": [
+      92.9667,
+      22.4833
+    ],
+    "historical_crime_index": 38,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Champhai",
+    "state": "Mizoram",
+    "coordinates": [
+      93.3333,
+      23.4667
+    ],
+    "historical_crime_index": 60,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kolasib",
+    "state": "Mizoram",
+    "coordinates": [
+      92.6833,
+      24.2167
+    ],
+    "historical_crime_index": 59,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kohima",
+    "state": "Nagaland",
+    "coordinates": [
+      94.1077,
+      25.6701
+    ],
+    "historical_crime_index": 55,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Dimapur",
+    "state": "Nagaland",
+    "coordinates": [
+      93.7333,
+      25.8667
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Mokokchung",
+    "state": "Nagaland",
+    "coordinates": [
+      94.5333,
+      26.3333
+    ],
+    "historical_crime_index": 31,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Tuensang",
+    "state": "Nagaland",
+    "coordinates": [
+      94.8167,
+      26.2833
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Wokha",
+    "state": "Nagaland",
+    "coordinates": [
+      94.2667,
+      26.1
+    ],
+    "historical_crime_index": 50,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bhubaneswar",
+    "state": "Odisha",
+    "coordinates": [
+      85.8245,
+      20.2961
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Cuttack",
+    "state": "Odisha",
+    "coordinates": [
+      85.8828,
+      20.4625
+    ],
+    "historical_crime_index": 56,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Rourkela",
+    "state": "Odisha",
+    "coordinates": [
+      84.8536,
+      22.2604
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Brahmapur",
+    "state": "Odisha",
+    "coordinates": [
+      84.7941,
+      19.315
+    ],
+    "historical_crime_index": 57,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Sambalpur",
+    "state": "Odisha",
+    "coordinates": [
+      83.9777,
+      21.4669
+    ],
+    "historical_crime_index": 56,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ludhiana",
+    "state": "Punjab",
+    "coordinates": [
+      75.8573,
+      30.901
+    ],
+    "historical_crime_index": 56,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Amritsar",
+    "state": "Punjab",
+    "coordinates": [
+      74.8723,
+      31.634
+    ],
+    "historical_crime_index": 37,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jalandhar",
+    "state": "Punjab",
+    "coordinates": [
+      75.5762,
+      31.326
+    ],
+    "historical_crime_index": 54,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Patiala",
+    "state": "Punjab",
+    "coordinates": [
+      76.3869,
+      30.3398
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Bathinda",
+    "state": "Punjab",
+    "coordinates": [
+      74.9455,
+      30.211
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jaipur",
+    "state": "Rajasthan",
+    "coordinates": [
+      75.7873,
+      26.9124
+    ],
+    "historical_crime_index": 59,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Jodhpur",
+    "state": "Rajasthan",
+    "coordinates": [
+      73.0243,
+      26.2389
+    ],
+    "historical_crime_index": 25,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Udaipur",
+    "state": "Rajasthan",
+    "coordinates": [
+      73.7125,
+      24.5854
+    ],
+    "historical_crime_index": 60,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kota",
+    "state": "Rajasthan",
+    "coordinates": [
+      75.8648,
+      25.2138
+    ],
+    "historical_crime_index": 52,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Ajmer",
+    "state": "Rajasthan",
+    "coordinates": [
+      74.6399,
+      26.4499
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Gangtok",
+    "state": "Sikkim",
+    "coordinates": [
+      88.6065,
+      27.3389
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Namchi",
+    "state": "Sikkim",
+    "coordinates": [
+      88.35,
+      27.1667
+    ],
+    "historical_crime_index": 27,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Gyalshing",
+    "state": "Sikkim",
+    "coordinates": [
+      88.2667,
+      27.2833
+    ],
+    "historical_crime_index": 53,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Mangan",
+    "state": "Sikkim",
+    "coordinates": [
+      88.528,
+      27.496
+    ],
+    "historical_crime_index": 27,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Singtam",
+    "state": "Sikkim",
+    "coordinates": [
+      88.5,
+      27.2333
+    ],
+    "historical_crime_index": 49,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Chennai",
+    "state": "Tamil Nadu",
+    "coordinates": [
+      80.2707,
+      13.0827
+    ],
+    "historical_crime_index": 62,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Coimbatore",
+    "state": "Tamil Nadu",
+    "coordinates": [
+      76.9558,
+      11.0168
+    ],
+    "historical_crime_index": 40,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Madurai",
+    "state": "Tamil Nadu",
+    "coordinates": [
+      78.1198,
+      9.9252
+    ],
+    "historical_crime_index": 46,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Tiruchirappalli",
+    "state": "Tamil Nadu",
+    "coordinates": [
+      78.7047,
+      10.7905
+    ],
+    "historical_crime_index": 40,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Salem",
+    "state": "Tamil Nadu",
+    "coordinates": [
+      78.146,
+      11.6643
+    ],
+    "historical_crime_index": 60,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "coordinates": [
+      78.4867,
+      17.385
+    ],
+    "historical_crime_index": 73,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Warangal",
+    "state": "Telangana",
+    "coordinates": [
+      79.5941,
+      17.9689
+    ],
+    "historical_crime_index": 47,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Nizamabad",
+    "state": "Telangana",
+    "coordinates": [
+      78.1,
+      18.6705
+    ],
+    "historical_crime_index": 45,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Khammam",
+    "state": "Telangana",
+    "coordinates": [
+      80.1514,
+      17.2473
+    ],
+    "historical_crime_index": 51,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Karimnagar",
+    "state": "Telangana",
+    "coordinates": [
+      79.1288,
+      18.4386
+    ],
+    "historical_crime_index": 45,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Agartala",
+    "state": "Tripura",
+    "coordinates": [
+      91.2868,
+      23.8315
+    ],
+    "historical_crime_index": 26,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Dharmanagar",
+    "state": "Tripura",
+    "coordinates": [
+      92.1667,
+      24.3667
+    ],
+    "historical_crime_index": 49,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Udaipur",
+    "state": "Tripura",
+    "coordinates": [
+      91.4833,
+      23.5333
+    ],
+    "historical_crime_index": 44,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kailashahar",
+    "state": "Tripura",
+    "coordinates": [
+      92.0,
+      24.3167
+    ],
+    "historical_crime_index": 41,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Belonia",
+    "state": "Tripura",
+    "coordinates": [
+      91.45,
+      23.25
+    ],
+    "historical_crime_index": 45,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Lucknow",
+    "state": "Uttar Pradesh",
+    "coordinates": [
+      80.9462,
+      26.8467
+    ],
+    "historical_crime_index": 32,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kanpur",
+    "state": "Uttar Pradesh",
+    "coordinates": [
+      80.3319,
+      26.4499
+    ],
+    "historical_crime_index": 40,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Agra",
+    "state": "Uttar Pradesh",
+    "coordinates": [
+      78.0081,
+      27.1767
+    ],
+    "historical_crime_index": 35,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "coordinates": [
+      82.9739,
+      25.3176
+    ],
+    "historical_crime_index": 59,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Noida",
+    "state": "Uttar Pradesh",
+    "coordinates": [
+      77.391,
+      28.5355
+    ],
+    "historical_crime_index": 36,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Dehradun",
+    "state": "Uttarakhand",
+    "coordinates": [
+      78.0322,
+      30.3165
+    ],
+    "historical_crime_index": 42,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Haridwar",
+    "state": "Uttarakhand",
+    "coordinates": [
+      78.1642,
+      29.9457
+    ],
+    "historical_crime_index": 33,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Roorkee",
+    "state": "Uttarakhand",
+    "coordinates": [
+      77.888,
+      29.8543
+    ],
+    "historical_crime_index": 39,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Haldwani",
+    "state": "Uttarakhand",
+    "coordinates": [
+      79.5126,
+      29.2183
+    ],
+    "historical_crime_index": 57,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Nainital",
+    "state": "Uttarakhand",
+    "coordinates": [
+      79.4542,
+      29.3919
+    ],
+    "historical_crime_index": 29,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Kolkata",
+    "state": "West Bengal",
+    "coordinates": [
+      88.3639,
+      22.5726
+    ],
+    "historical_crime_index": 62,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Howrah",
+    "state": "West Bengal",
+    "coordinates": [
+      88.311,
+      22.5958
+    ],
+    "historical_crime_index": 33,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Siliguri",
+    "state": "West Bengal",
+    "coordinates": [
+      88.3953,
+      26.7271
+    ],
+    "historical_crime_index": 52,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Durgapur",
+    "state": "West Bengal",
+    "coordinates": [
+      87.3119,
+      23.5204
+    ],
+    "historical_crime_index": 34,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "Asansol",
+    "state": "West Bengal",
+    "coordinates": [
+      86.9524,
+      23.6739
+    ],
+    "historical_crime_index": 45,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "New Delhi",
+    "state": "Delhi (NCT)",
+    "coordinates": [
+      77.209,
+      28.6139
+    ],
+    "historical_crime_index": 81,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "North Delhi",
+    "state": "Delhi (NCT)",
+    "coordinates": [
+      77.1025,
+      28.7041
+    ],
+    "historical_crime_index": 48,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "South Delhi",
+    "state": "Delhi (NCT)",
+    "coordinates": [
+      77.204,
+      28.5523
+    ],
+    "historical_crime_index": 48,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "East Delhi",
+    "state": "Delhi (NCT)",
+    "coordinates": [
+      77.2882,
+      28.6415
+    ],
+    "historical_crime_index": 58,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  },
+  {
+    "city": "West Delhi",
+    "state": "Delhi (NCT)",
+    "coordinates": [
+      77.0833,
+      28.65
+    ],
+    "historical_crime_index": 37,
+    "year": 2023,
+    "source": "NCRB Proxy Data"
+  }
+]
