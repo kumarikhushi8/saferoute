@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"node index.js\" \"python ml/app.py\"",
-    "dev": "concurrently \"nodemon index.js\" \"python ml/app.py\""
+    "dev": "concurrently \"nodemon --ignore src/data/ index.js\" \"python ml/app.py\""
   },
   "keywords": [],
   "author": "",
