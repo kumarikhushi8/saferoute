@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Marker } from 'react-leaflet';
 import L from 'leaflet';
@@ -24,6 +24,42 @@ const createGlowingDot = (size, opacity, animationDelay) => {
 
 function LandingPage() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [isLoginMode, setIsLoginMode] = useState(true);
+  const [formData, setFormData] = useState({ name: '', email: '', password: '' });
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem('saferoute-user');
+    if (storedUser) setUser(JSON.parse(storedUser));
+  }, []);
+
+  const handleAuth = async (e) => {
+    e.preventDefault();
+    setError('');
+    setLoading(true);
+    const endpoint = isLoginMode ? '/api/login' : '/api/register';
+    const payload = isLoginMode ? { email: formData.email, password: formData.password } : formData;
+    
+    try {
+      const res = await fetch(`http://localhost:5000${endpoint}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'Authentication failed');
+      
+      localStorage.setItem('saferoute-user', JSON.stringify(data));
+      setUser(data);
+      navigate('/app');
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Generate random glowing dots over a city area (e.g. NYC)
   const mapCenter = [40.758, -73.985];
@@ -93,22 +129,88 @@ function LandingPage() {
             SAFEROUTE
           </div>
           
-          <div className="relative pointer-events-auto">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight leading-tight">
+          <div className="relative pointer-events-auto mt-16">
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 tracking-tight leading-tight">
               Navigate the City <br/>
               <span className="text-neonGreen">Without Compromise</span>
             </h1>
             
-            <p className="text-gray-400 text-lg leading-relaxed max-w-md mb-10">
-              SafeRoute analyzes real-time community reports, lighting data, and historical crime stats to find you the optimal path balancing speed and security.
+            <p className="text-gray-400 text-base leading-relaxed max-w-md mb-8">
+              SafeRoute analyzes real-time community reports and crime stats to find you the optimal path balancing speed and security.
             </p>
             
-            <button 
-              onClick={() => navigate('/app')}
-              className="bg-neonGreen hover:bg-green-500 text-white font-bold py-4 px-10 rounded text-sm tracking-wider shadow-[0_0_15px_rgba(46,204,113,0.4)] transition-all hover:shadow-[0_0_25px_rgba(46,204,113,0.6)]"
-            >
-              GET STARTED
-            </button>
+            <div className="bg-[#1a1f35]/90 backdrop-blur border border-gray-800 p-6 rounded-lg max-w-md shadow-2xl">
+              {user ? (
+                <div className="text-center">
+                  <h2 className="text-2xl font-bold text-white mb-2">Welcome back, {user.name}!</h2>
+                  <p className="text-gray-400 mb-6">Your emergency contacts are loaded and ready.</p>
+                  <button 
+                    onClick={() => navigate('/app')}
+                    className="w-full bg-neonGreen hover:bg-green-500 text-white font-bold py-3 px-4 rounded transition-all shadow-[0_0_15px_rgba(46,204,113,0.4)]"
+                  >
+                    ENTER APP
+                  </button>
+                  <button onClick={() => { localStorage.removeItem('saferoute-user'); setUser(null); }} className="mt-4 text-xs text-gray-500 hover:text-white transition-colors">
+                    Sign Out
+                  </button>
+                </div>
+              ) : (
+                <form onSubmit={handleAuth} className="flex flex-col gap-4">
+                  <h2 className="text-xl font-bold text-white mb-2">
+                    {isLoginMode ? 'Sign in to access SOS' : 'Register to set Emergency Contacts'}
+                  </h2>
+                  
+                  {error && <div className="text-red-400 text-sm bg-red-900/20 p-2 rounded">{error}</div>}
+                  
+                  {!isLoginMode && (
+                    <input 
+                      type="text" 
+                      placeholder="Full Name" 
+                      value={formData.name}
+                      onChange={e => setFormData({...formData, name: e.target.value})}
+                      className="bg-[#0f1424] border border-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:border-neonGreen"
+                      required
+                    />
+                  )}
+                  
+                  <input 
+                    type="email" 
+                    placeholder="Email Address" 
+                    value={formData.email}
+                    onChange={e => setFormData({...formData, email: e.target.value})}
+                    className="bg-[#0f1424] border border-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:border-neonGreen"
+                    required
+                  />
+                  
+                  <input 
+                    type="password" 
+                    placeholder="Password" 
+                    value={formData.password}
+                    onChange={e => setFormData({...formData, password: e.target.value})}
+                    className="bg-[#0f1424] border border-gray-700 text-white px-4 py-2 rounded focus:outline-none focus:border-neonGreen"
+                    required
+                  />
+                  
+                  <button 
+                    type="submit"
+                    disabled={loading}
+                    className="bg-neonGreen hover:bg-green-500 text-white font-bold py-3 px-4 rounded mt-2 transition-all shadow-[0_0_10px_rgba(46,204,113,0.2)] disabled:opacity-50"
+                  >
+                    {loading ? 'Processing...' : (isLoginMode ? 'LOGIN' : 'REGISTER')}
+                  </button>
+                  
+                  <div className="text-center text-sm text-gray-400 mt-2">
+                    {isLoginMode ? "Don't have an account? " : "Already have an account? "}
+                    <span 
+                      className="text-neonGreen cursor-pointer hover:underline"
+                      onClick={() => { setIsLoginMode(!isLoginMode); setError(''); }}
+                    >
+                      {isLoginMode ? 'Register here' : 'Login here'}
+                    </span>
+                  </div>
+                </form>
+              )}
+            </div>
           </div>
         </div>
 

@@ -24,6 +24,12 @@ function MainApp() {
   // Tracking Share Link
   const [shareLink, setShareLink] = useState('');
 
+  // User and Contacts State
+  const [user, setUser] = useState(null);
+  const [contacts, setContacts] = useState([]);
+  const [newContactName, setNewContactName] = useState('');
+  const [newContactPhone, setNewContactPhone] = useState('');
+
   const fetchReports = async () => {
     try {
       const response = await axios.get('/api/reports');
@@ -51,7 +57,7 @@ function MainApp() {
       const lat = 40.758;
       const lng = -73.985;
       
-      await axios.post('/api/sos', { lat, lng });
+      await axios.post('/api/sos', { lat, lng, userId: user?.id });
       alert('🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!');
     } catch (err) {
       console.error('Failed to trigger SOS:', err);
@@ -63,7 +69,33 @@ function MainApp() {
 
   useEffect(() => {
     fetchReports();
+    const storedUser = localStorage.getItem('saferoute-user');
+    if (storedUser) {
+      const parsed = JSON.parse(storedUser);
+      setUser(parsed);
+      setContacts(parsed.emergencyContacts || []);
+      // Refresh contacts from backend
+      axios.get(`/api/user/${parsed.id}/contacts`)
+        .then(res => setContacts(res.data))
+        .catch(err => console.error("Error fetching contacts", err));
+    }
   }, []);
+
+  const handleAddContact = async (e) => {
+    e.preventDefault();
+    if (!user || !newContactName || !newContactPhone) return;
+    try {
+      const res = await axios.post(`/api/user/${user.id}/contacts`, { name: newContactName, phone: newContactPhone });
+      setContacts(res.data);
+      const updatedUser = { ...user, emergencyContacts: res.data };
+      setUser(updatedUser);
+      localStorage.setItem('saferoute-user', JSON.stringify(updatedUser));
+      setNewContactName('');
+      setNewContactPhone('');
+    } catch (err) {
+      alert("Failed to add contact");
+    }
+  };
 
   const handleMapClick = async (latlng) => {
     if (!isReportMode) return;
@@ -265,12 +297,39 @@ function MainApp() {
           )}
           
           {/* Mock instructions/info */}
-          <div className="mt-auto pt-6 border-t border-gray-800">
-            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-3">Try these coordinates</h3>
-            <ul className="text-sm text-gray-500 space-y-2">
+          <div className="mt-auto pt-4 border-t border-gray-800">
+            <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-2">Try these coordinates</h3>
+            <ul className="text-sm text-gray-500 space-y-1 mb-4">
               <li><strong className="text-gray-300">Origin:</strong> -73.985,40.758 (Times Square)</li>
               <li><strong className="text-gray-300">Dest:</strong> -73.935,40.730 (Queens)</li>
             </ul>
+            
+            {/* Emergency Contacts Section */}
+            {user && (
+              <div className="pt-4 border-t border-gray-800">
+                <div className="flex justify-between items-center mb-2">
+                  <h3 className="text-sm font-semibold text-gray-400 uppercase tracking-wider">Emergency Contacts</h3>
+                  <span className="text-xs bg-gray-800 px-2 py-1 rounded text-gray-300">{contacts.length} saved</span>
+                </div>
+                
+                <form onSubmit={handleAddContact} className="flex gap-2 mb-3">
+                  <input type="text" placeholder="Name" value={newContactName} onChange={e => setNewContactName(e.target.value)} className="bg-[#0f1424] border border-gray-700 text-xs px-2 py-2 rounded w-1/3 focus:outline-none focus:border-neonGreen" required />
+                  <input type="text" placeholder="Phone" value={newContactPhone} onChange={e => setNewContactPhone(e.target.value)} className="bg-[#0f1424] border border-gray-700 text-xs px-2 py-2 rounded w-1/3 focus:outline-none focus:border-neonGreen" required />
+                  <button type="submit" className="bg-neonGreen hover:bg-green-500 text-background font-bold text-xs px-2 rounded w-1/3 transition-colors uppercase tracking-wider">Add</button>
+                </form>
+                
+                <div className="space-y-1 max-h-24 overflow-y-auto">
+                  {contacts.length === 0 ? (
+                    <div className="text-xs text-gray-500 italic">No contacts added. Adding contacts allows SOS to automatically SMS them.</div>
+                  ) : contacts.map((c, i) => (
+                    <div key={i} className="text-xs bg-[#1a1f35] p-2 rounded flex justify-between border border-gray-800">
+                      <span className="font-bold text-white">{c.name}</span>
+                      <span className="text-gray-400">{c.phone}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
         
