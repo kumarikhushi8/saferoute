@@ -170,7 +170,7 @@ app.post('/api/user/:id/contacts', async (req, res) => {
 });
 
 app.post('/api/sos', async (req, res) => {
-  const { lat, lng, userId } = req.body;
+  const { lat, lng, userId, trackingUrl } = req.body;
   console.log('\n=============================================');
   console.log('🚨 SOS TRIGGERED! 🚨');
   
@@ -181,10 +181,27 @@ app.post('/api/sos', async (req, res) => {
         console.log(`Alerting ${user.name}'s Emergency Contacts:`);
         
         // Use LLM to draft the exact context-aware message
-        const sosDraft = await draftSOSMessage(user, lat, lng);
+        const sosDraft = await draftSOSMessage(user, lat, lng, trackingUrl);
         
-        user.emergencyContacts.forEach(contact => {
+        user.emergencyContacts.forEach(async (contact) => {
           console.log(` -> 📱 SMS to ${contact.name} (${contact.phone}): "${sosDraft}"`);
+          
+          // Send real SMS via Twilio if configured
+          if (process.env.TWILIO_ACCOUNT_SID && process.env.TWILIO_AUTH_TOKEN && process.env.TWILIO_PHONE_NUMBER) {
+            try {
+              const twilioClient = require('twilio')(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+              await twilioClient.messages.create({
+                body: sosDraft,
+                from: process.env.TWILIO_PHONE_NUMBER,
+                to: contact.phone
+              });
+              console.log(`    ✅ Successfully dispatched SMS to ${contact.phone}`);
+            } catch (twilioErr) {
+              console.error(`    ❌ Failed to send Twilio SMS to ${contact.phone}:`, twilioErr.message);
+            }
+          } else {
+            console.log(`    ⚠️ Twilio not configured in .env. Skipping real SMS dispatch.`);
+          }
         });
       } else {
         console.log(`No emergency contacts found for user ${userId}. Broadcasting to authorities...`);
@@ -352,8 +369,14 @@ app.post('/api/route', async (req, res) => {
       return res.status(404).json({ error: 'No route found' });
     }
   } catch (error) {
-    console.error('Error fetching route from OSRM:', error.message);
-    return res.status(500).json({ error: 'Failed to fetch route', details: error.message });
+    let errorMsg = 'Failed to fetch route';
+    if (error.response && error.response.data && error.response.data.message) {
+      errorMsg = error.response.data.message;
+    } else if (error.response && error.response.status === 400) {
+      errorMsg = 'Route not possible or distance too great.';
+    }
+    console.error('Error fetching route from OSRM:', errorMsg);
+    return res.status(500).json({ error: errorMsg, details: error.message });
   }
 });
 

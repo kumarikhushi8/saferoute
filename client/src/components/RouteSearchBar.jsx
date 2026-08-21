@@ -118,7 +118,7 @@ const LocationInput = ({ label, value, onChange, placeholder, isMapMode, onToggl
           {results.map((r, i) => (
             <div 
               key={i}
-              onClick={() => handleSelect(r)}
+              onMouseDown={() => handleSelect(r)}
               className="p-3 border-b border-gray-800 hover:bg-gray-800 cursor-pointer text-sm text-gray-200 transition-colors"
             >
               <div className="font-bold truncate text-white">{r.display_name.split(',')[0]}</div>

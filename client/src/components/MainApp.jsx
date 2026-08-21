@@ -87,11 +87,24 @@ function MainApp() {
   const handleSOS = async () => {
     setIsSosActive(true);
     try {
-      const lat = 40.758;
-      const lng = -73.985;
+      const lat = mapBounds ? (mapBounds.minLat + mapBounds.maxLat) / 2 : 28.6139;
+      const lng = mapBounds ? (mapBounds.minLng + mapBounds.maxLng) / 2 : 77.2090;
       
-      await axios.post('/api/sos', { lat, lng, userId: user?.id });
-      alert('🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!');
+      // Generate tracking URL and mock the active route to local storage for the Live Tracking MVP
+      const trackingId = 'sos-' + Math.random().toString(36).substr(2, 6);
+      const trackingUrl = `${window.location.origin}/track/${trackingId}`;
+      
+      if (routesData && routesData[activeRouteMode]) {
+        localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify(routesData[activeRouteMode]));
+      } else {
+        // Mock a 1-point route if user clicks SOS before searching
+        localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify({
+          geometry: { coordinates: [[lng, lat]] }
+        }));
+      }
+
+      await axios.post('/api/sos', { lat, lng, userId: user?.id, trackingUrl });
+      alert(`🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!\n\nLink: ${trackingUrl}`);
     } catch (err) {
       console.error('Failed to trigger SOS:', err);
       alert('Failed to connect to SOS service.');

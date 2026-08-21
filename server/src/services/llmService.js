@@ -86,16 +86,17 @@ async function generateRouteSummary(durationMins, distanceKm, score, isFastest, 
   return typeof textResponse === 'string' ? textResponse : fallback;
 }
 
-async function draftSOSMessage(user, lat, lng) {
+async function draftSOSMessage(user, lat, lng, trackingUrl) {
   const prompt = `
     You are an emergency response AI. Draft a short, urgent SMS message to be sent to emergency contacts.
     User Name: ${user ? user.name : 'A SafeRoute User'}
     Location: Lat ${lat}, Lng ${lng}
+    Tracking Link: ${trackingUrl || 'Not available'}
     
-    The message must include a plea for help, the user's name, and state that their live location is being tracked. Keep it under 160 characters (standard SMS length). Do NOT use markdown or quotes.
+    The message must include a plea for help, the user's name, and the Tracking Link so they can watch the live location. Keep it under 160 characters (standard SMS length). Do NOT use markdown or quotes.
   `;
   
-  const fallback = `🚨 URGENT: ${user ? user.name : 'A SafeRoute User'} has triggered an SOS! They need immediate assistance. Live tracking active at Lat ${lat}, Lng ${lng}. Check SafeRoute app now.`;
+  const fallback = `🚨 URGENT: ${user ? user.name : 'A SafeRoute User'} has triggered an SOS! They need immediate assistance. Live tracking active: ${trackingUrl || `Lat ${lat}, Lng ${lng}`}.`;
     
   const textResponse = await callLLM(prompt, fallback);
   return typeof textResponse === 'string' ? textResponse : fallback;
