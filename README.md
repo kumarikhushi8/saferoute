@@ -161,7 +161,7 @@ SafeRoute is built for **women, students, and night-shift workers** who need to 
 
 ## 👥 Team
 
-**Team FusionX** — Kumari Khushi  ·Swati Pal 
+**Team FusionX** — Kumari Khushi · Swati Pal 
 
 ---
 
