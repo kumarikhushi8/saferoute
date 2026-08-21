@@ -1,14 +1,28 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const axios = require('axios');
 
-// Initialize Gemini. If the key is missing or invalid, we will fallback to mock data.
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || 'mock-key');
+async function callLLM(prompt, fallback) {
+  const apiKey = process.env.OPENROUTER_API_KEY;
+  if (!apiKey || apiKey === 'mock-key') return fallback;
 
-async function callGemini(prompt, fallback) {
   try {
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-    const result = await model.generateContent(prompt);
-    const response = await result.response;
-    const text = response.text();
+    const response = await axios.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: 'google/gemini-2.0-flash-lite-preview-02-05:free',
+        messages: [{ role: 'user', content: prompt }]
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${apiKey}`,
+          'HTTP-Referer': 'http://localhost:5173', // Required by OpenRouter
+          'X-Title': 'SafeRoute Hackathon', // Required by OpenRouter
+          'Content-Type': 'application/json'
+        }
+      }
+    );
+
+    const text = response.data.choices[0].message.content;
+    
     // Try to parse JSON if requested
     try {
       const jsonMatch = text.match(/```(?:json)?\s*([\s\S]*?)\s*```/);
@@ -42,7 +56,7 @@ async function classifyReport(reason) {
     isSpam: false
   };
 
-  return await callGemini(prompt, fallback);
+  return await callLLM(prompt, fallback);
 }
 
 async function generateRouteSummary(durationMins, distanceKm, score, isFastest, routesAreIdentical = false) {
@@ -68,7 +82,7 @@ async function generateRouteSummary(durationMins, distanceKm, score, isFastest, 
       : `This route prioritizes your safety, achieving a high score of ${score}/100 due to excellent street lighting and proximity to police stations. While it takes slightly longer at ${durationMins} minutes, the added security makes it the recommended choice for walking alone.`;
   }
     
-  const textResponse = await callGemini(prompt, fallback);
+  const textResponse = await callLLM(prompt, fallback);
   return typeof textResponse === 'string' ? textResponse : fallback;
 }
 
@@ -83,7 +97,7 @@ async function draftSOSMessage(user, lat, lng) {
   
   const fallback = `🚨 URGENT: ${user ? user.name : 'A SafeRoute User'} has triggered an SOS! They need immediate assistance. Live tracking active at Lat ${lat}, Lng ${lng}. Check SafeRoute app now.`;
     
-  const textResponse = await callGemini(prompt, fallback);
+  const textResponse = await callLLM(prompt, fallback);
   return typeof textResponse === 'string' ? textResponse : fallback;
 }
 
