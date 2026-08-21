@@ -10,9 +10,13 @@ function MainApp() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   
+  // Route Selection State
+  const [origin, setOrigin] = useState('-73.985,40.758');
+  const [destination, setDestination] = useState('-73.935,40.730');
+  const [mapSelectionMode, setMapSelectionMode] = useState(null); // 'origin' | 'destination' | 'report' | null
+
   // Community Reporting State
   const [liveReports, setLiveReports] = useState([]);
-  const [isReportMode, setIsReportMode] = useState(false);
 
   // Heatmap State
   const [showHeatmap, setShowHeatmap] = useState(false);
@@ -99,11 +103,22 @@ function MainApp() {
   };
 
   const handleMapClick = async (latlng) => {
-    if (!isReportMode) return;
+    if (mapSelectionMode === 'origin') {
+      setOrigin(`${latlng.lng.toFixed(5)},${latlng.lat.toFixed(5)}`);
+      setMapSelectionMode(null);
+      return;
+    }
+    if (mapSelectionMode === 'destination') {
+      setDestination(`${latlng.lng.toFixed(5)},${latlng.lat.toFixed(5)}`);
+      setMapSelectionMode(null);
+      return;
+    }
+
+    if (mapSelectionMode !== 'report') return;
     
     const reason = window.prompt("What makes this spot unsafe? (e.g. 'Poor lighting', 'Suspicious activity')");
     if (!reason) {
-      setIsReportMode(false);
+      setMapSelectionMode(null);
       return;
     }
     
@@ -118,7 +133,7 @@ function MainApp() {
     } catch (err) {
       alert('Failed to submit report.');
     } finally {
-      setIsReportMode(false);
+      setMapSelectionMode(null);
     }
   };
 
@@ -171,10 +186,12 @@ function MainApp() {
           routesData={routesData} 
           activeRouteMode={activeRouteMode} 
           liveReports={liveReports}
-          isReportMode={isReportMode}
+          mapSelectionMode={mapSelectionMode}
           onMapClick={handleMapClick}
           showHeatmap={showHeatmap}
           heatmapZones={heatmapZones}
+          origin={origin}
+          destination={destination}
         />
       </div>
       
@@ -210,10 +227,10 @@ function MainApp() {
           </button>
           <div className="w-px h-6 bg-gray-700 mx-2"></div>
           <button 
-            onClick={() => setIsReportMode(!isReportMode)}
-            className={`px-5 py-2 rounded-full font-bold text-sm transition-colors ${isReportMode ? 'bg-accentYellow text-black' : 'text-gray-300 hover:text-white hover:bg-gray-800/50'}`}
+            onClick={() => setMapSelectionMode(mapSelectionMode === 'report' ? null : 'report')}
+            className={`px-5 py-2 rounded-full font-bold text-sm transition-colors ${mapSelectionMode === 'report' ? 'bg-accentYellow text-black' : 'text-gray-300 hover:text-white hover:bg-gray-800/50'}`}
           >
-            {isReportMode ? 'Cancel Reporting' : '📍 Report Hazard'}
+            {mapSelectionMode === 'report' ? 'Cancel Reporting' : '📍 Report Hazard'}
           </button>
           <button 
             onClick={toggleHeatmap}
@@ -276,7 +293,14 @@ function MainApp() {
         <div className="bg-[#0f1424]/80 backdrop-blur-xl border border-gray-800/80 p-5 rounded-2xl shadow-2xl">
           <h2 className="text-xl font-bold mb-4 text-white">Find <span className="text-neonGreen">Safe</span>Route</h2>
           
-          <RouteSearchBar onSearch={handleSearch} isLoading={isLoading} />
+          <RouteSearchBar 
+            onSearch={() => handleSearch(origin, destination)} 
+            isLoading={isLoading} 
+            origin={origin}
+            destination={destination}
+            mapSelectionMode={mapSelectionMode}
+            setMapSelectionMode={setMapSelectionMode}
+          />
           
           {error && (
             <div className="mt-4 bg-red-900/30 border border-red-500/50 text-red-200 p-3 rounded-lg text-sm">
@@ -284,9 +308,9 @@ function MainApp() {
             </div>
           )}
           
-          {isReportMode && (
+          {mapSelectionMode && (
             <div className="mt-4 bg-accentYellow/20 border border-accentYellow/50 text-accentYellow p-3 rounded-lg text-sm animate-pulse text-center font-medium">
-              📍 Click anywhere on the map to drop a hazard pin
+              📍 Click anywhere on the map to drop a pin
             </div>
           )}
         </div>
@@ -294,7 +318,7 @@ function MainApp() {
         {/* Mobile Action Buttons (Visible only on small screens) */}
         <div className="md:hidden flex gap-2 mt-4">
           <button onClick={handleSOS} className="flex-1 bg-red-600 rounded-xl py-3 font-bold text-white shadow-lg">SOS</button>
-          <button onClick={() => setIsReportMode(!isReportMode)} className="flex-1 bg-gray-800/80 backdrop-blur rounded-xl py-3 font-bold text-white shadow-lg text-sm">Report</button>
+          <button onClick={() => setMapSelectionMode(mapSelectionMode === 'report' ? null : 'report')} className="flex-1 bg-gray-800/80 backdrop-blur rounded-xl py-3 font-bold text-white shadow-lg text-sm">Report</button>
         </div>
       </div>
 

@@ -45,7 +45,7 @@ async function classifyReport(reason) {
   return await callGemini(prompt, fallback);
 }
 
-async function generateRouteSummary(durationMins, distanceKm, score, isFastest) {
+async function generateRouteSummary(durationMins, distanceKm, score, isFastest, routesAreIdentical = false) {
   const prompt = `
     You are a navigation assistant. Write a single, concise, natural language sentence describing a route.
     Route stats:
@@ -53,13 +53,20 @@ async function generateRouteSummary(durationMins, distanceKm, score, isFastest) 
     - Distance: ${distanceKm} km
     - Safety Score (0-100): ${score}
     - Is this the fastest route?: ${isFastest}
+    - Are the fastest and safest routes identical?: ${routesAreIdentical}
     
-    If it's safe but slow, mention the trade-off. If it's fast but less safe, mention the trade-off. Keep it under 20 words. Do NOT use markdown.
+    If the fastest and safest routes are identical, mention that this route offers the best of both time and safety.
+    Otherwise, if it's safe but slow, mention the trade-off. If it's fast but less safe, mention the trade-off. Keep it under 20 words. Do NOT use markdown.
   `;
   
-  const fallback = isFastest 
-    ? `This is the fastest route, taking ${durationMins} mins, but it has a lower safety score of ${score}/100.` 
-    : `This route prioritizes safety with a score of ${score}/100, taking a slightly longer ${durationMins} mins.`;
+  let fallback;
+  if (routesAreIdentical) {
+    fallback = `This route is both the fastest and safest option, taking ${durationMins} mins with a score of ${score}/100.`;
+  } else {
+    fallback = isFastest 
+      ? `This is the fastest route, taking ${durationMins} mins, but it has a lower safety score of ${score}/100.` 
+      : `This route prioritizes safety with a score of ${score}/100, taking a slightly longer ${durationMins} mins.`;
+  }
     
   const textResponse = await callGemini(prompt, fallback);
   return typeof textResponse === 'string' ? textResponse : fallback;

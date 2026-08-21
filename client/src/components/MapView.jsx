@@ -25,22 +25,22 @@ const reportIcon = new L.Icon({
 });
 
 // Component to handle map clicks
-const MapClickHandler = ({ onMapClick, isReportMode }) => {
+const MapClickHandler = ({ onMapClick, mapSelectionMode }) => {
   const map = useMapEvents({
     click(e) {
-      if (isReportMode && onMapClick) {
+      if (mapSelectionMode && onMapClick) {
         onMapClick(e.latlng);
       }
     }
   });
   
   useEffect(() => {
-    if (isReportMode) {
+    if (mapSelectionMode) {
       map.getContainer().style.cursor = 'crosshair';
     } else {
       map.getContainer().style.cursor = '';
     }
-  }, [isReportMode, map]);
+  }, [mapSelectionMode, map]);
 
   return null;
 };
@@ -57,7 +57,7 @@ const MapRecenter = ({ routeGeoJSON }) => {
   return null;
 };
 
-const MapView = ({ routesData, activeRouteMode, liveReports = [], isReportMode, onMapClick, showHeatmap = false, heatmapZones = [] }) => {
+const MapView = ({ routesData, activeRouteMode, liveReports = [], mapSelectionMode, onMapClick, showHeatmap = false, heatmapZones = [], origin, destination }) => {
   // Default center: Somewhere like NYC or just [40.7128, -74.0060]
   const defaultCenter = [40.7128, -74.0060];
 
@@ -103,7 +103,17 @@ const MapView = ({ routesData, activeRouteMode, liveReports = [], isReportMode, 
           <MapRecenter routeGeoJSON={routesData[activeRouteMode]?.geometry} />
         )}
 
-        <MapClickHandler onMapClick={onMapClick} isReportMode={isReportMode} />
+        <MapClickHandler onMapClick={onMapClick} mapSelectionMode={mapSelectionMode} />
+
+        {/* Origin Marker */}
+        {origin && (
+          <Marker position={[parseFloat(origin.split(',')[1]), parseFloat(origin.split(',')[0])]} />
+        )}
+
+        {/* Destination Marker */}
+        {destination && (
+          <Marker position={[parseFloat(destination.split(',')[1]), parseFloat(destination.split(',')[0])]} />
+        )}
 
         {/* Render Night Risk Heatmap */}
         {showHeatmap && heatmapZones.map((zone, idx) => (

@@ -204,8 +204,9 @@ app.post('/api/route', async (req, res) => {
       const safest = [...scoredRoutes].sort((a, b) => b.score - a.score)[0];
       
       // Generate AI Summaries for both routes
-      fastest.summary = await generateRouteSummary(Math.round(fastest.duration / 60), Math.round(fastest.distance / 1000), fastest.score, true);
-      safest.summary = await generateRouteSummary(Math.round(safest.duration / 60), Math.round(safest.distance / 1000), safest.score, false);
+      const routesAreIdentical = fastest.duration === safest.duration && fastest.score === safest.score;
+      fastest.summary = await generateRouteSummary(Math.round(fastest.duration / 60), Math.round(fastest.distance / 1000), fastest.score, true, routesAreIdentical);
+      safest.summary = await generateRouteSummary(Math.round(safest.duration / 60), Math.round(safest.distance / 1000), safest.score, false, routesAreIdentical);
 
       return res.json({ fastest, safest });
     } else {
