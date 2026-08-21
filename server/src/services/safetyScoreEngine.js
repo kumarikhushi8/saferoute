@@ -85,6 +85,30 @@ async function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
 
   if (batchMetrics.length === 0) return 50;
 
+  // -- COMPUTER VISION INTEGRATION --
+  // Let's do a CV check for the middle point of the route to anchor the real-world metrics!
+  try {
+    const midPoint = coords[Math.floor(coords.length / 2)];
+    const cvResponse = await axios.post('http://localhost:5001/analyze_street', {
+      lng: midPoint[0],
+      lat: midPoint[1]
+    });
+    
+    if (cvResponse.data && cvResponse.data.cv_metrics) {
+      console.log(`\n📷 [Computer Vision] Analyzed street image at ${midPoint[1]}, ${midPoint[0]}`);
+      console.log(` -> YOLOv8 Detections: ${cvResponse.data.cv_metrics.persons_detected} persons, ${cvResponse.data.cv_metrics.cars_detected} cars`);
+      console.log(` -> OpenCV Brightness: ${cvResponse.data.cv_metrics.avg_pixel_brightness}`);
+      
+      // Blend the real CV scores with the baseline data
+      batchMetrics.forEach(m => {
+        m.lighting_score = (m.lighting_score + cvResponse.data.lighting_score) / 2;
+        m.crowd_density_score = (m.crowd_density_score + cvResponse.data.crowd_density_score) / 2;
+      });
+    }
+  } catch (error) {
+    // Fail silently in production if CV is slow/down
+  }
+
   // 2. Fetch predictions from Python ML microservice in one batch!
   let averageScore = 50;
   try {

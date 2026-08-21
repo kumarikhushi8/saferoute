@@ -62,7 +62,7 @@ const MapView = ({ routesData, activeRouteMode, liveReports = [], isReportMode, 
   const defaultCenter = [40.7128, -74.0060];
 
   return (
-    <div className="h-full w-full rounded-lg overflow-hidden border border-gray-800 shadow-xl">
+    <div className="h-full w-full bg-[#0f1424]">
       <MapContainer 
         center={defaultCenter} 
         zoom={13} 
