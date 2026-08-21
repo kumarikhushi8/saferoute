@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MapView from './MapView';
+import { io } from 'socket.io-client';
+
+const socket = io(`http://${window.location.hostname}:5000`);
 import RouteSearchBar from './RouteSearchBar';
 import { useNavigate } from 'react-router-dom';
 
@@ -229,11 +232,41 @@ function MainApp() {
 
   const shareLiveLocation = () => {
     if (!routesData) return;
+    
     // Generate a mock tracking ID
     const trackingId = 'trk-' + Math.random().toString(36).substr(2, 6);
-    // Persist route to local storage for the demo tracking page to pick up
-    localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify(routesData[activeRouteMode]));
     
+    // Extract the active route coordinates. Note: Backend provides [lng, lat], Leaflet wants [lat, lng].
+    // Wait, the backend provides [lng, lat] for OSRM, but wait, LiveTracking.jsx currently expects parsed.geometry.coordinates to be [lng, lat] and maps it to [lat, lng].
+    // So let's send the exact raw geometry array.
+    const activeRouteGeoJSON = routesData[activeRouteMode];
+    
+    // Connect to WebSocket server and broadcast the route
+    socket.emit('start_tracking', {
+      trackingId,
+      route: activeRouteGeoJSON
+    });
+    
+    // Simulate user movement every 1.5 seconds and broadcast it to the server
+    const coords = activeRouteGeoJSON.geometry.coordinates;
+    let currentIndex = 0;
+    
+    // We store the interval on window so it doesn't get lost between renders, or we can just use a simple interval for the demo
+    if (window.liveTrackingInterval) clearInterval(window.liveTrackingInterval);
+    
+    window.liveTrackingInterval = setInterval(() => {
+      if (currentIndex < coords.length) {
+        socket.emit('location_update', {
+          trackingId,
+          position: [coords[currentIndex][1], coords[currentIndex][0]], // [lat, lng]
+          index: currentIndex
+        });
+        currentIndex++;
+      } else {
+        clearInterval(window.liveTrackingInterval);
+      }
+    }, 1500);
+
     const link = `${window.location.origin}/track/${trackingId}`;
     setShareLink(link);
     navigator.clipboard.writeText(link).catch(() => {});

@@ -12,6 +12,8 @@ const Report = require('./src/models/Report');
 const User = require('./src/models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const http = require('http');
+const { Server } = require('socket.io');
 
 dotenv.config();
 
@@ -31,6 +33,14 @@ const authenticateToken = (req, res, next) => {
 };
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server, {
+  cors: {
+    origin: '*',
+    methods: ['GET', 'POST']
+  }
+});
+
 const PORT = process.env.PORT || 5000;
 
 // Connect to MongoDB
@@ -406,8 +416,64 @@ app.post('/api/route', async (req, res) => {
   }
 });
 
+// ==========================================
+// WEBSOCKET: LIVE TRACKING
+// ==========================================
+const activeSessions = new Map();
+
+io.on('connection', (socket) => {
+  console.log(`[Socket] User connected: ${socket.id}`);
+
+  // Sender starts a tracking session
+  socket.on('start_tracking', (data) => {
+    const { trackingId, route } = data;
+    if (!trackingId) return;
+
+    console.log(`[Socket] Session started: ${trackingId}`);
+    activeSessions.set(trackingId, { route, currentPosition: null });
+    socket.join(trackingId);
+  });
+
+  // Receiver joins a tracking session
+  socket.on('join_tracking', (trackingId) => {
+    if (!trackingId) return;
+    
+    console.log(`[Socket] User joined tracking session: ${trackingId}`);
+    socket.join(trackingId);
+
+    // Send existing route data to the new receiver
+    if (activeSessions.has(trackingId)) {
+      const session = activeSessions.get(trackingId);
+      socket.emit('route_data', session.route);
+      if (session.currentPosition) {
+        socket.emit('location_update', session.currentPosition);
+      }
+    } else {
+      socket.emit('tracking_error', 'Live tracking session not found or expired.');
+    }
+  });
+
+  // Sender updates their live location
+  socket.on('location_update', (data) => {
+    const { trackingId, position, index } = data;
+    if (!trackingId) return;
+
+    if (activeSessions.has(trackingId)) {
+      const session = activeSessions.get(trackingId);
+      session.currentPosition = { position, index };
+    }
+
+    // Broadcast to receivers in this room
+    socket.to(trackingId).emit('location_update', { position, index });
+  });
+
+  socket.on('disconnect', () => {
+    console.log(`[Socket] User disconnected: ${socket.id}`);
+  });
+});
+
 // Start Server
-app.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log(`Server running on port ${PORT}`);
 });
 

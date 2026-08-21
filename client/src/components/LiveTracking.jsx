@@ -2,6 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { MapContainer, TileLayer, Polyline, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
+import { io } from 'socket.io-client';
+
+const socket = io(`http://${window.location.hostname}:5000`);
 
 // Fix Leaflet's default icon path issues
 import iconUrl from 'leaflet/dist/images/marker-icon.png';
@@ -61,42 +64,38 @@ function LiveTracking() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    // For MVP Demo: fetch from local storage
-    const storedRoute = localStorage.getItem(`saferoute-${id}`);
-    if (storedRoute) {
-      try {
-        const parsed = JSON.parse(storedRoute);
-        // Ensure coordinates exist. OSRM uses [lng, lat], Leaflet uses [lat, lng]
-        if (parsed.geometry && parsed.geometry.coordinates) {
-          const latLngCoords = parsed.geometry.coordinates.map(coord => [coord[1], coord[0]]);
-          setRoute(latLngCoords);
-        } else {
-          setError('Invalid route data format.');
-        }
-      } catch (e) {
-        setError('Failed to parse route data.');
+    // Join the tracking session
+    socket.emit('join_tracking', id);
+
+    // Listen for the initial route data payload
+    socket.on('route_data', (routePayload) => {
+      if (routePayload && routePayload.geometry && routePayload.geometry.coordinates) {
+        // Convert [lng, lat] from OSRM to [lat, lng] for Leaflet
+        const latLngCoords = routePayload.geometry.coordinates.map(coord => [coord[1], coord[0]]);
+        setRoute(latLngCoords);
+      } else {
+        setError('Invalid route data received from server.');
       }
-    } else {
-      setError('Live tracking session not found or expired.');
-    }
+    });
+
+    // Listen for tracking errors (e.g. invalid session)
+    socket.on('tracking_error', (errMsg) => {
+      setError(errMsg);
+    });
+
+    // Listen for real-time location updates
+    socket.on('location_update', (data) => {
+      // We don't strictly need to set the index if we just set the exact currentPosition, 
+      // but keeping track of the index is useful for the progress bar.
+      setCurrentPositionIndex(data.index);
+    });
+
+    return () => {
+      socket.off('route_data');
+      socket.off('location_update');
+      socket.off('tracking_error');
+    };
   }, [id]);
-
-  useEffect(() => {
-    if (!route || route.length === 0) return;
-
-    // Simulate movement: advance one coordinate every 1.5 seconds
-    const interval = setInterval(() => {
-      setCurrentPositionIndex(prev => {
-        if (prev < route.length - 1) {
-          return prev + 1;
-        }
-        clearInterval(interval);
-        return prev;
-      });
-    }, 1500);
-
-    return () => clearInterval(interval);
-  }, [route]);
 
   if (error) {
     return (
