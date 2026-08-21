@@ -428,8 +428,13 @@ app.post('/api/route', async (req, res) => {
 const clientBuildPath = path.join(__dirname, '../client/dist');
 app.use(express.static(clientBuildPath));
 
-app.get('*', (req, res) => {
-  res.sendFile(path.join(clientBuildPath, 'index.html'));
+// Fallback to index.html for React Router
+app.use((req, res, next) => {
+  if (req.method === 'GET') {
+    res.sendFile(path.join(clientBuildPath, 'index.html'));
+  } else {
+    next();
+  }
 });
 
 // ==========================================

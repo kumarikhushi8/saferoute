@@ -95,28 +95,7 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
     
     console.log(`[OSM Live Fetch] complete: ${policeCount} police stations, ${unlitCount} unlit segments, ${poiCount} POIs.`);
     
-    // Hackathon Demo Fallback: If OSM has very sparse lighting data for this area, generate procedural risk zones
-    if (unlitCount < 3) {
-      console.log(`[OSM] Only ${unlitCount} unlit roads found. Injecting procedural risk zones for demonstration.`);
-      for (let i = 0; i < 4; i++) {
-        const randLat = minLat + Math.random() * (maxLat - minLat);
-        const randLng = minLng + Math.random() * (maxLng - minLng);
-        zones.push({
-          id: `risk-zone-procedural-${Math.random()}`,
-          name: 'Unlit/Deserted Area (Demo)',
-          coordinates: [randLng, randLat],
-          radiusKm: 0.6 + (Math.random() * 0.5),
-          metrics: {
-            lighting_score: 20 + Math.random() * 10,
-            crowd_density_score: 10 + Math.random() * 20,
-            crime_incidence_score: 60 + Math.random() * 20,
-            cctv_police_proximity_score: 20,
-            live_community_report_score: 40
-          }
-        });
-      }
-    }
-    
+    // Removed procedural risk zone injection for production. Only real OSM data will be shown.
     const result = { zones, metadata: { poiCount } };
     
     // Save to cache
@@ -126,28 +105,10 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
     return result;
     
   } catch (error) {
-    console.log(`[OSM API Timeout/Error] ${error.message}. Injecting procedural risk zones instantly.`);
+    console.log(`[OSM API Timeout/Error] ${error.message}. Returning empty risk zones.`);
     
-    // If Overpass is throttling or down, do NOT return an empty map after a long delay!
-    // Instantly generate and return procedural risk zones so the UX remains flawless.
+    // Return empty zones instead of fake data so the UI reflects reality
     const zones = [];
-    for (let i = 0; i < 4; i++) {
-      const randLat = minLat + Math.random() * (maxLat - minLat);
-      const randLng = minLng + Math.random() * (maxLng - minLng);
-      zones.push({
-        id: `risk-zone-procedural-${Math.random()}`,
-        name: 'Unlit/Deserted Area (Demo)',
-        coordinates: [randLng, randLat],
-        radiusKm: 0.6 + (Math.random() * 0.5),
-        metrics: {
-          lighting_score: 20 + Math.random() * 10,
-          crowd_density_score: 10 + Math.random() * 20,
-          crime_incidence_score: 60 + Math.random() * 20,
-          cctv_police_proximity_score: 20,
-          live_community_report_score: 40
-        }
-      });
-    }
     
     // Do NOT cache error fallbacks so it can try fetching real data again later
     return { zones, metadata: { poiCount: 0 } };

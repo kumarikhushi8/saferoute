@@ -2131,5 +2131,172 @@
     "metadata": {
       "poiCount": 86
     }
+  },
+  "28.58,77.17,28.59,77.18": {
+    "zones": [
+      {
+        "id": "safe-zone-police-2677421751",
+        "name": "Subroto Park Police Station",
+        "coordinates": [
+          77.1651188,
+          28.5942138
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-4052699977",
+        "name": "police station",
+        "coordinates": [
+          77.195299,
+          28.5820097
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-10904526570",
+        "name": "Traffic Police Station, RK Puram, Sector-4",
+        "coordinates": [
+          77.1811399,
+          28.560194
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-11792933573",
+        "name": "Police Station Zone",
+        "coordinates": [
+          77.1683104,
+          28.5956693
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-12028883564",
+        "name": "Facilitation Kiosk",
+        "coordinates": [
+          77.1973707,
+          28.5758546
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "safe-zone-police-12030756373",
+        "name": "Police Booth",
+        "coordinates": [
+          77.195241,
+          28.5757026
+        ],
+        "radiusKm": 1.5,
+        "metrics": {
+          "lighting_score": 90,
+          "crowd_density_score": 70,
+          "crime_incidence_score": 20,
+          "cctv_police_proximity_score": 100,
+          "live_community_report_score": 90
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.13672842938442065",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.17434658996643,
+          28.578492118477815
+        ],
+        "radiusKm": 0.9673505601984379,
+        "metrics": {
+          "lighting_score": 23.8839495017677,
+          "crowd_density_score": 21.80427857095021,
+          "crime_incidence_score": 79.73379620242972,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.5613213733326111",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.179472023871,
+          28.583993119420217
+        ],
+        "radiusKm": 1.0361879156249447,
+        "metrics": {
+          "lighting_score": 28.157427907907035,
+          "crowd_density_score": 22.848953418140976,
+          "crime_incidence_score": 64.7971970752668,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.4267791961205749",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.17696760319582,
+          28.581050941478463
+        ],
+        "radiusKm": 0.6443695810827981,
+        "metrics": {
+          "lighting_score": 28.989269276331985,
+          "crowd_density_score": 22.935524778616802,
+          "crime_incidence_score": 72.74755210238249,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      },
+      {
+        "id": "risk-zone-procedural-0.304344550568728",
+        "name": "Unlit/Deserted Area (Demo)",
+        "coordinates": [
+          77.17687522746374,
+          28.576195944240865
+        ],
+        "radiusKm": 0.6275470125728232,
+        "metrics": {
+          "lighting_score": 23.971085727024192,
+          "crowd_density_score": 10.00296216209975,
+          "crime_incidence_score": 64.13434581169027,
+          "cctv_police_proximity_score": 20,
+          "live_community_report_score": 40
+        }
+      }
+    ],
+    "metadata": {
+      "poiCount": 294
+    }
   }
 }
