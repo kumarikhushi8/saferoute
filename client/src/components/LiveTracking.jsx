@@ -60,7 +60,7 @@ function LiveTracking() {
   const { id } = useParams();
   const navigate = useNavigate();
   const [route, setRoute] = useState(null);
-  const [currentPositionIndex, setCurrentPositionIndex] = useState(0);
+  const [currentPosition, setCurrentPosition] = useState(null);
   const [error, setError] = useState('');
 
   useEffect(() => {
@@ -85,9 +85,9 @@ function LiveTracking() {
 
     // Listen for real-time location updates
     socket.on('location_update', (data) => {
-      // We don't strictly need to set the index if we just set the exact currentPosition, 
-      // but keeping track of the index is useful for the progress bar.
-      setCurrentPositionIndex(data.index);
+      if (data && data.position) {
+        setCurrentPosition(data.position); // [lat, lng]
+      }
     });
 
     return () => {
@@ -122,10 +122,19 @@ function LiveTracking() {
     );
   }
 
-  const currentPosition = route[currentPositionIndex];
   const origin = route[0];
   const destination = route[route.length - 1];
-  const isArrived = currentPositionIndex === route.length - 1;
+  
+  // Use the real-time position if available, otherwise default to origin
+  const activePos = currentPosition || origin;
+  
+  // Basic distance check to see if arrived (within 50 meters of destination)
+  // Distance function in meters
+  const getDistance = (pos1, pos2) => {
+    if (!pos1 || !pos2) return Infinity;
+    return L.latLng(pos1[0], pos1[1]).distanceTo(L.latLng(pos2[0], pos2[1]));
+  };
+  const isArrived = getDistance(activePos, destination) < 50;
 
   return (
     <div className="min-h-screen flex flex-col h-screen bg-[#0f1424] text-white">
@@ -176,25 +185,29 @@ function LiveTracking() {
           <Marker position={destination}>
             <Popup>Destination</Popup>
           </Marker>
-
-          {/* Live Position Marker */}
-          <Marker position={currentPosition} icon={UserLiveIcon}>
-            <Popup>
-              <strong>Live Location</strong><br/>
-              {isArrived ? 'Arrived at destination' : 'En route...'}
-            </Popup>
-          </Marker>
+          {/* Real-time moving user marker */}
+          {activePos && (
+            <Marker position={activePos} icon={UserLiveIcon} zIndexOffset={1000}>
+              <Popup className="custom-popup">
+                <div className="font-bold text-accentPurple">Trusted Contact</div>
+                <div className="text-sm">Live Location</div>
+              </Popup>
+            </Marker>
+          )}
         </MapContainer>
         
         {/* Overlay HUD */}
         <div className="absolute bottom-6 left-6 z-[1000] bg-[#1a1f35]/90 backdrop-blur border border-gray-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
           <h3 className="font-bold mb-2">Trip Status</h3>
-          <div className="w-full bg-gray-800 rounded-full h-2 mb-2">
-            <div className="bg-accentPurple h-2 rounded-full transition-all duration-1000" style={{ width: `${(currentPositionIndex / (route.length - 1)) * 100}%` }}></div>
-          </div>
-          <div className="text-xs text-gray-400 flex justify-between">
+            <div className="w-full bg-gray-700 rounded-full h-2 mb-2">
+              <div 
+                className="bg-accentPurple h-2 rounded-full transition-all duration-1000" 
+                style={{ width: isArrived ? '100%' : (currentPosition ? '50%' : '5%') }}
+              ></div>
+            </div>
+            <div className="text-xs text-gray-400 flex justify-between">
             <span>Started</span>
-            <span>{Math.round((currentPositionIndex / (route.length - 1)) * 100)}%</span>
+            <span>{isArrived ? '100' : (currentPosition ? '50' : '0')}%</span>
             <span>Arriving</span>
           </div>
         </div>

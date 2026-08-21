@@ -125,26 +125,20 @@ function MainApp() {
             index: 0
           });
           
-          // If simulating movement along a route, we can do it here, or just track real location
-          // For MVP, we will simulate movement along the active route if it exists
-          if (activeRouteGeoJSON.geometry.coordinates.length > 0) {
-            const coords = activeRouteGeoJSON.geometry.coordinates;
-            let currentIndex = 0;
-            if (window.liveTrackingInterval) clearInterval(window.liveTrackingInterval);
-            
-            window.liveTrackingInterval = setInterval(() => {
-              if (currentIndex < coords.length) {
-                socket.emit('location_update', {
-                  trackingId,
-                  position: [coords[currentIndex][1], coords[currentIndex][0]],
-                  index: currentIndex
-                });
-                currentIndex++;
-              } else {
-                clearInterval(window.liveTrackingInterval);
-              }
-            }, 1500);
-          }
+          // Start watching user's real GPS position for the SOS live feed
+          if (window.liveTrackingWatcher) navigator.geolocation.clearWatch(window.liveTrackingWatcher);
+          
+          window.liveTrackingWatcher = navigator.geolocation.watchPosition(
+            (newPos) => {
+              socket.emit('location_update', {
+                trackingId,
+                position: [newPos.coords.latitude, newPos.coords.longitude],
+                index: 0
+              });
+            },
+            (error) => console.error("Error watching SOS position:", error),
+            { enableHighAccuracy: true, maximumAge: 0 }
+          );
         } catch (err) {
           console.error('Failed to trigger SOS:', err);
           alert('Failed to connect to SOS service.');
@@ -290,25 +284,20 @@ function MainApp() {
       route: activeRouteGeoJSON
     });
     
-    // Simulate user movement every 1.5 seconds and broadcast it to the server
-    const coords = activeRouteGeoJSON.geometry.coordinates;
-    let currentIndex = 0;
+    // Watch the user's real GPS position and broadcast it to the server
+    if (window.liveTrackingWatcher) navigator.geolocation.clearWatch(window.liveTrackingWatcher);
     
-    // We store the interval on window so it doesn't get lost between renders, or we can just use a simple interval for the demo
-    if (window.liveTrackingInterval) clearInterval(window.liveTrackingInterval);
-    
-    window.liveTrackingInterval = setInterval(() => {
-      if (currentIndex < coords.length) {
+    window.liveTrackingWatcher = navigator.geolocation.watchPosition(
+      (position) => {
         socket.emit('location_update', {
           trackingId,
-          position: [coords[currentIndex][1], coords[currentIndex][0]], // [lat, lng]
-          index: currentIndex
+          position: [position.coords.latitude, position.coords.longitude],
+          index: 0
         });
-        currentIndex++;
-      } else {
-        clearInterval(window.liveTrackingInterval);
-      }
-    }, 1500);
+      },
+      (error) => console.error("Error watching position:", error),
+      { enableHighAccuracy: true, maximumAge: 0 }
+    );
 
     const link = `${window.location.origin}/track/${trackingId}`;
     setShareLink(link);
