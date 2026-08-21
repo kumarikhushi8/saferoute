@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently \"node index.js\" \"python ml/app.py\"",
-    "dev": "concurrently \"nodemon --ignore src/data/ index.js\" \"python ml/app.py\""
+    "dev": "concurrently \"nodemon --ignore src/data/ index.js\" \"python ml/app.py\"",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -18,6 +19,7 @@
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
+    "express-rate-limit": "^8.6.2",
     "jimp": "^1.6.1",
     "mongoose": "^9.9.3",
     "socket.io": "^4.8.3",
@@ -25,6 +27,8 @@
   },
   "devDependencies": {
     "concurrently": "^10.0.5",
-    "nodemon": "^3.1.14"
+    "jest": "^30.4.2",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.2.2"
   }
 }

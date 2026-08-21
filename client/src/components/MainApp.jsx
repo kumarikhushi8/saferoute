@@ -33,8 +33,14 @@ function MainApp() {
   const [shareLink, setShareLink] = useState('');
 
   // User and Contacts State
-  const [user, setUser] = useState(null);
-  const [contacts, setContacts] = useState([]);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('saferoute-user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
+  const [contacts, setContacts] = useState(() => {
+    const storedUser = localStorage.getItem('saferoute-user');
+    return storedUser ? (JSON.parse(storedUser).emergencyContacts || []) : [];
+  });
   const [newContactName, setNewContactName] = useState('');
   const [newContactPhone, setNewContactPhone] = useState('');
   const [showContactsPanel, setShowContactsPanel] = useState(false);
@@ -89,48 +95,54 @@ function MainApp() {
 
   const handleSOS = async () => {
     setIsSosActive(true);
-    try {
-      const lat = mapBounds ? (mapBounds.minLat + mapBounds.maxLat) / 2 : 28.6139;
-      const lng = mapBounds ? (mapBounds.minLng + mapBounds.maxLng) / 2 : 77.2090;
-      
-      // Generate tracking URL and mock the active route to local storage for the Live Tracking MVP
-      const trackingId = 'sos-' + Math.random().toString(36).substr(2, 6);
-      const trackingUrl = `${window.location.origin}/track/${trackingId}`;
-      
-      if (routesData && routesData[activeRouteMode]) {
-        localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify(routesData[activeRouteMode]));
-      } else {
-        // Mock a 1-point route if user clicks SOS before searching
-        localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify({
-          geometry: { coordinates: [[lng, lat]] }
-        }));
-      }
-
-      await axios.post('/api/sos', { lat, lng, userId: user?.id, trackingUrl });
-      alert(`🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!\n\nLink: ${trackingUrl}`);
-    } catch (err) {
-      console.error('Failed to trigger SOS:', err);
-      alert('Failed to connect to SOS service.');
-    } finally {
-      setTimeout(() => setIsSosActive(false), 2000);
+    
+    // Generate tracking URL and mock the active route to local storage for the Live Tracking MVP
+    const trackingId = 'sos-' + Math.random().toString(36).substr(2, 6);
+    const trackingUrl = `${window.location.origin}/track/${trackingId}`;
+    
+    if (routesData && routesData[activeRouteMode]) {
+      localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify(routesData[activeRouteMode]));
+    } else {
+      // Mock a 1-point route if user clicks SOS before searching
+      localStorage.setItem(`saferoute-${trackingId}`, JSON.stringify({
+        geometry: { coordinates: [] }
+      }));
     }
+
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+        
+        try {
+          await axios.post('/api/sos', { lat, lng, userId: user?.id, trackingUrl });
+          alert(`🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!\n\nLink: ${trackingUrl}`);
+        } catch (err) {
+          console.error('Failed to trigger SOS:', err);
+          alert('Failed to connect to SOS service.');
+        } finally {
+          setTimeout(() => setIsSosActive(false), 2000);
+        }
+      },
+      (error) => {
+        console.error("Error getting location: ", error);
+        alert("Could not get your location for SOS.");
+        setIsSosActive(false);
+      }
+    );
   };
 
   useEffect(() => {
     fetchReports();
-    const storedUser = localStorage.getItem('saferoute-user');
-    if (storedUser) {
-      const parsed = JSON.parse(storedUser);
-      setUser(parsed);
-      setContacts(parsed.emergencyContacts || []);
+    if (user) {
       const token = localStorage.getItem('saferoute-token');
-      axios.get(`/api/user/${parsed.id}/contacts`, {
+      axios.get(`/api/user/${user.id}/contacts`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(res => setContacts(res.data))
       .catch(err => console.error("Error fetching contacts", err));
     }
-  }, []);
+  }, []); // user is only used for initial mount fetch here
 
   const handleAddContact = async (e) => {
     e.preventDefault();

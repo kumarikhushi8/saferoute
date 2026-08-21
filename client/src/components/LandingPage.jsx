@@ -22,18 +22,20 @@ const createGlowingDot = (size, opacity, animationDelay) => {
   });
 };
 
+const MAP_CENTER = [40.758, -73.985];
+
 function LandingPage() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(() => {
+    const storedUser = localStorage.getItem('saferoute-user');
+    return storedUser ? JSON.parse(storedUser) : null;
+  });
   const [isLoginMode, setIsLoginMode] = useState(true);
   const [formData, setFormData] = useState({ name: '', email: '', password: '' });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const storedUser = localStorage.getItem('saferoute-user');
-    if (storedUser) setUser(JSON.parse(storedUser));
-  }, []);
+
 
   const handleAuth = async (e) => {
     e.preventDefault();
@@ -63,13 +65,12 @@ function LandingPage() {
   };
 
   // Generate random glowing dots over a city area (e.g. NYC)
-  const mapCenter = [40.758, -73.985];
   const dots = useMemo(() => {
     const generatedDots = [];
     for (let i = 0; i < 100; i++) {
       // Clustered towards center
-      const lat = mapCenter[0] + (Math.random() - 0.5) * 0.1 * (Math.random() > 0.5 ? 0.2 : 1);
-      const lng = mapCenter[1] + (Math.random() - 0.5) * 0.1 * (Math.random() > 0.5 ? 0.2 : 1);
+      const lat = MAP_CENTER[0] + (Math.random() - 0.5) * 0.1 * (Math.random() > 0.5 ? 0.2 : 1);
+      const lng = MAP_CENTER[1] + (Math.random() - 0.5) * 0.1 * (Math.random() > 0.5 ? 0.2 : 1);
       const size = Math.random() > 0.8 ? (Math.random() * 8 + 6) : (Math.random() * 4 + 2);
       const opacity = Math.random() * 0.6 + 0.4;
       const delay = Math.random() * 1;
@@ -225,7 +226,7 @@ function LandingPage() {
           <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-dribbbleBg to-transparent z-10 pointer-events-none"></div>
 
           <MapContainer 
-            center={mapCenter} 
+            center={MAP_CENTER} 
             zoom={13} 
             zoomControl={false}
             dragging={false}

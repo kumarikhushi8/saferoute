@@ -14,10 +14,24 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const http = require('http');
 const { Server } = require('socket.io');
+const rateLimit = require('express-rate-limit');
 
 dotenv.config();
 
 const JWT_SECRET = process.env.JWT_SECRET || 'saferoute-super-secret';
+
+// Rate Limiters
+const reportLimiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  max: 5,
+  message: { error: 'Too many reports created from this IP, please try again after 10 minutes' }
+});
+
+const sosLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 2,
+  message: { error: 'SOS rate limit exceeded. Please try again after 15 minutes' }
+});
 
 // JWT Middleware
 const authenticateToken = (req, res, next) => {
@@ -51,7 +65,7 @@ app.use(cors());
 app.use(express.json());
 
 // Routes
-app.post('/api/reports', async (req, res) => {
+app.post('/api/reports', reportLimiter, async (req, res) => {
   try {
     const { lat, lng, reason } = req.body;
     if (!lat || !lng || !reason) {
@@ -188,7 +202,8 @@ app.post('/api/user/:id/contacts', authenticateToken, async (req, res) => {
   }
 });
 
-app.post('/api/sos', async (req, res) => {
+// Apply stricter limiter to prevent Twilio SMS spam charges
+app.post('/api/sos', sosLimiter, async (req, res) => {
   const { lat, lng, userId, trackingUrl } = req.body;
   console.log('\n=============================================');
   console.log('🚨 SOS TRIGGERED! 🚨');
@@ -324,6 +339,7 @@ app.get('/api/admin/evaluate-point', async (req, res) => {
     res.status(500).json({ error: 'Failed to evaluate point' });
   }
 });
+
 
 app.post('/api/route', async (req, res) => {
   let { origin, destination } = req.body;
