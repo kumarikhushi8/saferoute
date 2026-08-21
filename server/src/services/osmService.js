@@ -29,24 +29,26 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
   const padding = 0.02;
   const bbox = `${minLat - padding},${minLng - padding},${maxLat + padding},${maxLng + padding}`;
   
-  // 3. Construct Overpass Query (Police & Unlit Roads)
+  // 3. Construct Overpass Query (Police & Unlit Roads & POIs)
   const query = `
     [out:json][timeout:25];
     (
       node["amenity"="police"](${bbox});
       way["highway"]["lit"="no"](${bbox});
+      node["amenity"~"cafe|restaurant|marketplace"](${bbox});
+      node["shop"](${bbox});
     );
-    out center 150;
+    out center 300;
   `;
   
   try {
     const response = await axios.post(OVERPASS_URL, `data=${encodeURIComponent(query)}`, { headers: HEADERS });
     const elements = response.data.elements || [];
     
-    // Process elements into zones exactly like seedSafetyData
     const zones = [];
     let policeCount = 0;
     let unlitCount = 0;
+    let poiCount = 0;
 
     for (const el of elements) {
       if (el.tags && el.tags.amenity === 'police') {
@@ -82,16 +84,21 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
            });
            unlitCount++;
         }
+      } else if (el.tags && (el.tags.shop || el.tags.amenity)) {
+        // It's a crowd-generating POI
+        poiCount++;
       }
     }
     
-    console.log(`[OSM Live Fetch] complete: ${policeCount} police stations, ${unlitCount} unlit segments.`);
+    console.log(`[OSM Live Fetch] complete: ${policeCount} police stations, ${unlitCount} unlit segments, ${poiCount} POIs.`);
+    
+    const result = { zones, metadata: { poiCount } };
     
     // Save to cache
-    cache[gridKey] = zones;
+    cache[gridKey] = result;
     fs.writeFileSync(CACHE_FILE, JSON.stringify(cache, null, 2), 'utf8');
     
-    return zones;
+    return result;
     
   } catch (error) {
     console.error("Overpass API failed:", error.message);

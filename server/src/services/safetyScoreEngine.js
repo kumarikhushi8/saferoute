@@ -53,7 +53,7 @@ const { getBaselineCrimeScore } = require('./crimeDataService');
  * @param {Array} recentReports - Array of live report documents from the database
  * @returns {Promise<number>} Aggregate safety score 0-100
  */
-async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZones = null) {
+async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZones = null, osmMetadata = null, nasaLightingScore = 50) {
   if (!routeGeoJSON || !routeGeoJSON.coordinates || routeGeoJSON.coordinates.length === 0) {
     return 50; // default fallback
   }
@@ -65,9 +65,23 @@ async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZo
   const startPt = coords[0];
   const baselineCrime = getBaselineCrimeScore(startPt[0], startPt[1]);
   
+  // Time-of-Day Crowd Density Heuristic based on POIs
+  const hour = new Date().getHours();
+  let crowdScore = 50;
+  if (osmMetadata && osmMetadata.poiCount) {
+    const poiDensity = Math.min(osmMetadata.poiCount, 100);
+    if (hour >= 6 && hour <= 19) {
+      crowdScore = 50 + (poiDensity * 0.5); // Day: bustling, safer
+    } else {
+      crowdScore = 50 - (poiDensity * 0.3); // Night: closed shops, isolated
+    }
+  }
+  
   const dynamicDefaultMetrics = {
     ...DEFAULT_METRICS,
-    crime_incidence_score: baselineCrime
+    crime_incidence_score: baselineCrime,
+    crowd_density_score: Math.max(0, Math.min(100, crowdScore)),
+    lighting_score: nasaLightingScore
   };
   
   const batchMetrics = [];

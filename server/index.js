@@ -192,14 +192,17 @@ app.post('/api/route', async (req, res) => {
       const maxLng = Math.max(lng1, lng2);
       
       const { getDynamicOSMData } = require('./src/services/osmService');
-      const osmZones = await getDynamicOSMData(minLat, minLng, maxLat, maxLng);
+      const { zones: osmZones, metadata: osmMetadata } = await getDynamicOSMData(minLat, minLng, maxLat, maxLng);
+      
+      const { getNasaMacroLightingScore } = require('./src/services/nasaService');
+      const nasaLightingScore = await getNasaMacroLightingScore(minLat, minLng);
       
       // Fetch recent reports to pass to the scoring engine
       const recentReports = await Report.find().limit(100);
       
       // Calculate safety score for each route using the ML Microservice
       const scoredRoutes = await Promise.all(routes.map(async (r) => {
-        const score = await calculateRouteSafetyScore(r.geometry, recentReports, osmZones);
+        const score = await calculateRouteSafetyScore(r.geometry, recentReports, osmZones, osmMetadata, nasaLightingScore);
         return {
           geometry: r.geometry,
           duration: r.duration,

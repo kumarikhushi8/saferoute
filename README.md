@@ -4,7 +4,7 @@
 
 > "Because the fastest way home is not always the safest."
 
-Built by **Team FusionX** — CodeFusion 2026 · Problem Track: Smart Mobility & Public Safety
+Built by **Team FusionX** (Kumari Khushi, Swati Pal) — CodeFusion 2026 · Problem Track: Smart Mobility & Public Safety
 
 ---
 
@@ -29,51 +29,26 @@ SafeRoute is a safety-first navigation layer that ranks routes by **safety first
 | ❌ Ranks purely by distance & ETA | ✅ Ranks by community-verified safety |
 | ❌ No community safety input | ✅ Real-time reports keep data fresh |
 
-## ✨ Key Features
+## ✨ Enterprise-Grade Data Architecture
 
-- 🛡️ **AI Safety Score (0–100)** — every road segment scored using street lighting, crowd density, historical crime data, CCTV/police proximity, and live community reports
-- 🔀 **Safety-Optimized Routing** — one-click toggle between Safest / Balanced / Fastest routes with transparent safety metrics
-- 👥 **Community Reporting** — flag an unsafe stretch or broken streetlight in seconds; visible to nearby users instantly
-- 🌙 **Night Risk Heatmap** — visualizes high-risk zones across the city after dark
-- 🔔 **SOS with Live Location** — one-click alert shares live location with emergency contacts
-- 📍 **Trusted Contact Sharing** — loved ones can track a journey in real time until it ends
+We didn't just mock data for a hackathon. Our backend is a genuine, scalable data powerhouse:
 
-## 🏗️ System Flow
-
-```
-User Request → Maps API → AI Safety Engine → Route Optimizer → Safe Route
-```
-
-1. **User Request** — user submits origin and destination
-2. **Maps API** — fetches candidate paths and traffic data (Google Maps / OSM)
-3. **AI Safety Engine** — scores every street segment for lighting, crowd, crime & hazard risk
-4. **Route Optimizer** — re-ranks candidate paths by safety score and user preferences
-5. **Safe Route** — delivers the safest viable path to the user's screen
-
-### Safety Score Formula
-
-```
-safety_score = (
-    0.30 × lighting_score +
-    0.25 × crowd_density_score +
-    0.20 × (100 - crime_incidence_score) +
-    0.15 × cctv_police_proximity_score +
-    0.10 × live_community_report_score
-)
-```
-
-See [`docs/SAFETY_SCORE_FORMULA.md`](docs/SAFETY_SCORE_FORMULA.md) for full details.
+- 🛰️ **NASA GIBS Live Image Processing**: SafeRoute dynamically fetches NASA *Earth at Night* (VIIRS) satellite imagery tiles for any route and physically scans the pixels using Node.js to calculate macro neighborhood brightness.
+- 🗺️ **Live OSM Geo-Caching**: We query the Overpass API in real-time to fetch `lit=no` (broken streetlights), `amenity=police` (CCTV proxy), and crowd-generating POIs (cafes, shops). Results are geo-cached in a `1km` grid for 0ms latency during navigation.
+- ⏰ **Time-of-Day Crowd Heuristics**: Our engine calculates crowd density by cross-referencing OSM POI counts with the current time (e.g., a street full of closed shops at 3 AM is penalized as an isolated "ghost town").
+- 📊 **Nearest-Neighbor Crime Index**: We built a curated historical NCRB proxy dataset of 145 Indian cities (5 per state). The engine uses the Haversine formula to detect the user's closest city and pulls its baseline crime risk.
+- 🧠 **Generative AI Route Summaries**: Powered by OpenRouter and Google Gemini 2.0 Flash Lite, delivering natural-language route guidance explaining exactly *why* a route is safer.
 
 ## 🧰 Tech Stack
 
 | Layer | Technology |
 |---|---|
 | Frontend | React (Vite) + Tailwind CSS + React-Leaflet |
-| Backend | Node.js + Express |
-| Database | MongoDB Atlas / Firebase Firestore |
-| Routing | OSRM / OpenRouteService |
-| Safety Engine | Weighted scoring engine (Node.js) |
-| Deployment | Vercel (frontend) + Render/Railway (backend) |
+| Backend | Node.js + Express + `jimp` (NASA Image Processing) |
+| Database | MongoDB (User data + Live Community Hazards) |
+| Routing | OSRM (Open Source Routing Machine) |
+| Safety Engine | Node.js Multi-Layer Evaluator (NASA + OSM + NCRB + MongoDB) |
+| AI | OpenRouter (Gemini 2.0 Flash Lite) |
 
 ## 📂 Project Structure
 
@@ -82,21 +57,18 @@ saferoute/
 ├── client/                  # React frontend
 │   └── src/
 │       ├── components/      # map, report, sos, search, layout
-│       ├── pages/
-│       ├── hooks/
-│       ├── services/
-│       └── context/
 ├── server/                  # Node/Express backend
 │   └── src/
 │       ├── routes/
 │       ├── controllers/
-│       ├── services/        # safetyScoreEngine.js, routeOptimizer.js
+│       ├── services/        
+│       │   ├── safetyScoreEngine.js  # The Multi-Layer Math Evaluator
+│       │   ├── osmService.js         # Live Overpass Geo-Caching
+│       │   ├── nasaService.js        # NASA Satellite Image Processing
+│       │   ├── crimeDataService.js   # Nearest-Neighbor historical search
+│       │   └── llmService.js         # OpenRouter Gemini Summaries
 │       ├── models/
-│       ├── data/            # seedSafetyData.json
-│       └── config/
-├── docs/
-│   ├── ARCHITECTURE.md
-│   └── SAFETY_SCORE_FORMULA.md
+│       └── data/            # 145-city historicalCrimeData.json
 └── README.md
 ```
 
@@ -104,7 +76,8 @@ saferoute/
 
 ### Prerequisites
 - Node.js ≥ 18
-- MongoDB Atlas connection string (or Firebase project)
+- MongoDB Atlas connection string (or Local Mongo)
+- OpenRouter API Key
 
 ### Installation
 
@@ -116,7 +89,7 @@ cd saferoute
 # Install server dependencies
 cd server
 npm install
-cp .env.example .env   # add your Mongo URI / API keys
+# Add OPENROUTER_API_KEY and MONGODB_URI to .env
 
 # Install client dependencies
 cd ../client
@@ -130,13 +103,9 @@ npm install
 cd server
 npm run dev
 
-# Terminal 2 — seed mock safety data (first run only)
-cd server
-node seed.js
-
-# Terminal 3 — start frontend
+# Terminal 2 — start frontend
 cd client
-npm run dev
+npm run start
 ```
 
 App runs at `http://localhost:5173`, API at `http://localhost:5000`.
@@ -145,24 +114,14 @@ App runs at `http://localhost:5173`, API at `http://localhost:5000`.
 
 | Phase | Goal | Deliverable |
 |---|---|---|
-| **Phase 1** | MVP — Safety-score engine + safest-route mode on sample city data | Working Demo |
-| **Phase 2** | Pilot with a college campus / local ward; validate scores against on-ground volunteer feedback | Validated Accuracy |
-| **Phase 3** | Open crowd-sourced data network; integrate municipal CCTV & smart-city feeds | City-Wide Rollout |
-
-### Future Scope
-- 🏙️ Smart City Integration — plug into municipal lighting/CCTV/dispatch feeds
-- ⌚ Wearable SOS Support — trigger alerts without unlocking the phone
-- 📡 Offline Emergency Mode — SOS + last-synced heatmap without connectivity
-- 📈 Predictive Risk Alerts — forecast emerging high-risk zones before incidents occur
+| **Phase 1 (Done)** | Dynamic Safety-score engine on live planetary data | Working Demo |
+| **Phase 2** | Pilot with a college campus / local ward | Validated Accuracy |
+| **Phase 3** | Integrate municipal CCTV & smart-city feeds | City-Wide Rollout |
 
 ## 🌍 Why It Matters
 
 SafeRoute is built for **women, students, and night-shift workers** who need to move after dark. It reduces the daily mental calculation of *"is taking this route worth the risk?"* — and becomes a living, community-built safety layer that gets smarter the more people use and contribute to it.
 
-## 👥 Team
-
-**Team FusionX** — Kumari Khushi · Swati Pal 
-
 ---
 
-*SafeRoute turns navigation from fastest to safest — powered by AI and community intelligence.*
+*SafeRoute turns navigation from fastest to safest — powered by AI, NASA, OpenStreetMap, and community intelligence.*
