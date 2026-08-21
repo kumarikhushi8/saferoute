@@ -79,12 +79,8 @@ app.get('/api/heatmap', async (req, res) => {
       const result = await getDynamicOSMData(parseFloat(minLat), parseFloat(minLng), parseFloat(maxLat), parseFloat(maxLng));
       zones = result.zones || [];
       
-      // Always merge with seed data to ensure the map isn't empty if live data is sparse or API times out
-      const seedDataPath = path.join(__dirname, 'src', 'data', 'seedSafetyData.json');
-      if (fs.existsSync(seedDataPath)) {
-        const seedData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'));
-        zones = zones.concat(seedData);
-      }
+      // Removed hardcoded seed data merge to prevent Delhi points from showing globally
+      // Dynamic fallback is handled in osmService.js if the area lacks OSM data
       
       // Filter out only the risky zones (e.g., unlit roads or high crime)
       const riskyZones = zones.filter(zone => 

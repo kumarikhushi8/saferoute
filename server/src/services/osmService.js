@@ -92,9 +92,9 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
     
     console.log(`[OSM Live Fetch] complete: ${policeCount} police stations, ${unlitCount} unlit segments, ${poiCount} POIs.`);
     
-    // Hackathon Demo Fallback: If OSM doesn't have lighting data for this area, generate procedural risk zones
-    if (unlitCount === 0) {
-      console.log(`[OSM] No unlit roads found. Injecting procedural risk zones for demonstration.`);
+    // Hackathon Demo Fallback: If OSM has very sparse lighting data for this area, generate procedural risk zones
+    if (unlitCount < 3) {
+      console.log(`[OSM] Only ${unlitCount} unlit roads found. Injecting procedural risk zones for demonstration.`);
       for (let i = 0; i < 4; i++) {
         const randLat = minLat + Math.random() * (maxLat - minLat);
         const randLng = minLng + Math.random() * (maxLng - minLng);
