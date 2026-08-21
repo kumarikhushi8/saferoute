@@ -7,6 +7,7 @@ const fs = require('fs');
 const path = require('path');
 const connectDB = require('./src/config/db');
 const { calculateRouteSafetyScore } = require('./src/services/safetyScoreEngine');
+const { classifyReport, generateRouteSummary, draftSOSMessage } = require('./src/services/llmService');
 const Report = require('./src/models/Report');
 const User = require('./src/models/User');
 
@@ -32,9 +33,17 @@ app.post('/api/reports', async (req, res) => {
       return res.status(400).json({ error: 'lat, lng, and reason are required' });
     }
     
+    // LLM Moderation & Classification
+    const llmAnalysis = await classifyReport(reason);
+    if (llmAnalysis.isSpam) {
+      return res.status(400).json({ error: 'Report flagged as spam.' });
+    }
+    
     const report = new Report({
       location: { type: 'Point', coordinates: [lng, lat] },
-      reason
+      reason,
+      category: llmAnalysis.category,
+      urgency: llmAnalysis.urgency
     });
     await report.save();
     res.status(201).json(report);
@@ -134,8 +143,12 @@ app.post('/api/sos', async (req, res) => {
       const user = await User.findById(userId);
       if (user && user.emergencyContacts.length > 0) {
         console.log(`Alerting ${user.name}'s Emergency Contacts:`);
+        
+        // Use LLM to draft the exact context-aware message
+        const sosDraft = await draftSOSMessage(user, lat, lng);
+        
         user.emergencyContacts.forEach(contact => {
-          console.log(` -> 📱 SMS to ${contact.name} (${contact.phone}): "EMERGENCY! ${user.name} needs help at coordinates [${lat}, ${lng}]. Track them here: http://localhost:5173/track/${userId}"`);
+          console.log(` -> 📱 SMS to ${contact.name} (${contact.phone}): "${sosDraft}"`);
         });
       } else {
         console.log(`No emergency contacts found for user ${userId}. Broadcasting to authorities...`);
@@ -189,6 +202,10 @@ app.post('/api/route', async (req, res) => {
       
       // Sort by score descending to find safest
       const safest = [...scoredRoutes].sort((a, b) => b.score - a.score)[0];
+      
+      // Generate AI Summaries for both routes
+      fastest.summary = await generateRouteSummary(Math.round(fastest.duration / 60), Math.round(fastest.distance / 1000), fastest.score, true);
+      safest.summary = await generateRouteSummary(Math.round(safest.duration / 60), Math.round(safest.distance / 1000), safest.score, false);
 
       return res.json({ fastest, safest });
     } else {

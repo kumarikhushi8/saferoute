@@ -17,6 +17,15 @@ const reportSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  category: {
+    type: String,
+    default: "Other"
+  },
+  urgency: {
+    type: String,
+    enum: ["Low", "Medium", "High"],
+    default: "Medium"
+  },
   createdAt: {
     type: Date,
     default: Date.now

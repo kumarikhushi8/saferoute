@@ -256,10 +256,16 @@ function MainApp() {
                   <h3 className="font-bold text-green-400">🛡️ Safest Route</h3>
                   <span className="text-xl font-black text-green-300">{routesData.safest.score}<span className="text-sm font-normal text-green-500">/100</span></span>
                 </div>
-                <div className="text-xs text-gray-400 flex justify-between">
+                <div className="text-xs text-gray-400 flex justify-between mb-2">
                   <span>~{Math.round(routesData.safest.duration / 60)} mins</span>
                   <span>{Math.round(routesData.safest.distance / 1000)} km</span>
                 </div>
+                {routesData.safest.summary && (
+                  <div className="text-xs text-green-200/80 bg-green-900/30 p-2 rounded flex gap-2 items-start border border-green-800/50">
+                    <span className="text-lg leading-none">✨</span>
+                    <span>{routesData.safest.summary}</span>
+                  </div>
+                )}
               </div>
 
               {/* Fastest Route Badge */}
@@ -271,10 +277,16 @@ function MainApp() {
                   <h3 className="font-bold text-blue-400">⚡ Fastest Route</h3>
                   <span className="text-xl font-black text-blue-300">{routesData.fastest.score}<span className="text-sm font-normal text-blue-500">/100</span></span>
                 </div>
-                <div className="text-xs text-gray-400 flex justify-between">
+                <div className="text-xs text-gray-400 flex justify-between mb-2">
                   <span>~{Math.round(routesData.fastest.duration / 60)} mins</span>
                   <span>{Math.round(routesData.fastest.distance / 1000)} km</span>
                 </div>
+                {routesData.fastest.summary && (
+                  <div className="text-xs text-blue-200/80 bg-blue-900/30 p-2 rounded flex gap-2 items-start border border-blue-800/50">
+                    <span className="text-lg leading-none">✨</span>
+                    <span>{routesData.fastest.summary}</span>
+                  </div>
+                )}
               </div>
 
               <div className="mt-2">
