@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import MapView from './components/MapView';
 import RouteSearchBar from './components/RouteSearchBar';
@@ -8,6 +8,83 @@ function App() {
   const [activeRouteMode, setActiveRouteMode] = useState('safest'); // 'safest' or 'fastest'
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  
+  // Community Reporting State
+  const [liveReports, setLiveReports] = useState([]);
+  const [isReportMode, setIsReportMode] = useState(false);
+
+  // Heatmap State
+  const [showHeatmap, setShowHeatmap] = useState(false);
+  const [heatmapZones, setHeatmapZones] = useState([]);
+
+  // SOS State
+  const [isSosActive, setIsSosActive] = useState(false);
+
+  const fetchReports = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/reports');
+      setLiveReports(response.data);
+    } catch (err) {
+      console.error('Failed to fetch reports:', err);
+    }
+  };
+
+  const toggleHeatmap = async () => {
+    if (!showHeatmap) {
+      try {
+        const response = await axios.get('http://localhost:5000/api/heatmap');
+        setHeatmapZones(response.data);
+      } catch (err) {
+        console.error('Failed to fetch heatmap data:', err);
+      }
+    }
+    setShowHeatmap(!showHeatmap);
+  };
+
+  const handleSOS = async () => {
+    setIsSosActive(true);
+    try {
+      // Simulate grabbing current location (using Times Square for demo)
+      const lat = 40.758;
+      const lng = -73.985;
+      
+      await axios.post('http://localhost:5000/api/sos', { lat, lng });
+      alert('🚨 SOS TRIGGERED 🚨\n\nYour live location has been shared with your Emergency Contacts!');
+    } catch (err) {
+      console.error('Failed to trigger SOS:', err);
+      alert('Failed to connect to SOS service.');
+    } finally {
+      setTimeout(() => setIsSosActive(false), 2000);
+    }
+  };
+
+  useEffect(() => {
+    fetchReports();
+  }, []);
+
+  const handleMapClick = async (latlng) => {
+    if (!isReportMode) return;
+    
+    const reason = window.prompt("What makes this spot unsafe? (e.g. 'Poor lighting', 'Suspicious activity')");
+    if (!reason) {
+      setIsReportMode(false);
+      return;
+    }
+    
+    try {
+      await axios.post('http://localhost:5000/api/reports', {
+        lat: latlng.lat,
+        lng: latlng.lng,
+        reason
+      });
+      alert('Report submitted! Re-fetch your route to see the safety score update.');
+      fetchReports();
+    } catch (err) {
+      alert('Failed to submit report.');
+    } finally {
+      setIsReportMode(false);
+    }
+  };
 
   const handleSearch = async (origin, destination) => {
     setIsLoading(true);
@@ -46,6 +123,13 @@ function App() {
             </div>
             <h1 className="text-2xl font-bold">SafeRoute</h1>
           </div>
+          
+          <button 
+            onClick={handleSOS}
+            className={`px-6 py-2 rounded-full font-bold shadow-lg transition-all ${isSosActive ? 'bg-red-700 animate-pulse scale-105' : 'bg-red-600 hover:bg-red-500 hover:scale-105'}`}
+          >
+            🚨 SOS
+          </button>
         </div>
       </header>
 
@@ -59,6 +143,42 @@ function App() {
           </div>
           
           <RouteSearchBar onSearch={handleSearch} isLoading={isLoading} />
+          
+          <div className="flex flex-col gap-3">
+            {/* Report Mode Toggle */}
+            <div className="bg-[#1a1f35] p-4 rounded-lg border border-gray-800 flex justify-between items-center">
+              <div>
+                <h3 className="font-bold text-red-400">Community Reporting</h3>
+                <p className="text-xs text-gray-400 mt-1">See something unsafe?</p>
+              </div>
+              <button 
+                onClick={() => setIsReportMode(!isReportMode)}
+                className={`px-4 py-2 rounded font-bold text-sm transition-colors ${isReportMode ? 'bg-red-500 text-white' : 'bg-red-900/30 text-red-300 border border-red-800 hover:bg-red-900/50'}`}
+              >
+                {isReportMode ? 'Cancel' : 'Report Spot'}
+              </button>
+            </div>
+
+            {/* Night Risk Heatmap Toggle */}
+            <div className="bg-[#1a1f35] p-4 rounded-lg border border-gray-800 flex justify-between items-center">
+              <div>
+                <h3 className="font-bold text-orange-400">Night Risk Overlay</h3>
+                <p className="text-xs text-gray-400 mt-1">Show high-risk areas.</p>
+              </div>
+              <button 
+                onClick={toggleHeatmap}
+                className={`px-4 py-2 rounded font-bold text-sm transition-colors ${showHeatmap ? 'bg-orange-500 text-white' : 'bg-orange-900/30 text-orange-300 border border-orange-800 hover:bg-orange-900/50'}`}
+              >
+                {showHeatmap ? 'Hide' : 'Show Map'}
+              </button>
+            </div>
+          </div>
+          
+          {isReportMode && (
+            <div className="bg-yellow-900/40 border border-yellow-600 text-yellow-200 p-3 rounded text-sm animate-pulse">
+              Click anywhere on the map to flag an unsafe location.
+            </div>
+          )}
           
           {error && (
             <div className="bg-red-900/50 border border-red-500 text-red-200 p-3 rounded">
@@ -111,7 +231,15 @@ function App() {
         </div>
         
         <div className="flex-grow h-[50vh] md:h-auto relative z-0">
-          <MapView routesData={routesData} activeRouteMode={activeRouteMode} />
+          <MapView 
+            routesData={routesData} 
+            activeRouteMode={activeRouteMode} 
+            liveReports={liveReports}
+            isReportMode={isReportMode}
+            onMapClick={handleMapClick}
+            showHeatmap={showHeatmap}
+            heatmapZones={heatmapZones}
+          />
         </div>
       </main>
     </div>

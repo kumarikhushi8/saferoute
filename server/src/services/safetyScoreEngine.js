@@ -58,9 +58,10 @@ const DEFAULT_METRICS = {
 /**
  * Evaluates the safety score for an entire route.
  * @param {Object} routeGeoJSON - GeoJSON LineString geometry of the route
+ * @param {Array} recentReports - Array of live report documents from the database
  * @returns {number} Aggregate safety score 0-100
  */
-function calculateRouteSafetyScore(routeGeoJSON) {
+function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
   if (!routeGeoJSON || !routeGeoJSON.coordinates || routeGeoJSON.coordinates.length === 0) {
     return 50; // default fallback
   }
@@ -88,10 +89,12 @@ function calculateRouteSafetyScore(routeGeoJSON) {
       }
     }
 
-    let metricsToUse = DEFAULT_METRICS;
-    // If we are within the zone's radius, use its metrics
+    // Note: We don't apply the penalty here anymore, because averaging it out 
+    // across 50+ points dilutes the penalty to less than 1 point overall.
+    // Instead, we will track if the route passes near reports and deduct at the end.
+    let metricsToUse = { ...DEFAULT_METRICS };
     if (nearestZone && minDistance <= nearestZone.radiusKm) {
-      metricsToUse = nearestZone.metrics;
+      metricsToUse = { ...nearestZone.metrics };
     }
 
     totalScore += calculateScoreFromMetrics(metricsToUse);
@@ -100,7 +103,30 @@ function calculateRouteSafetyScore(routeGeoJSON) {
 
   if (pointCount === 0) return 50;
   
-  const averageScore = totalScore / pointCount;
+  let averageScore = totalScore / pointCount;
+
+  // Apply a flat penalty for passing near any reports so it is visible in the UI
+  let reportsPassed = new Set();
+  for (const report of recentReports) {
+    if (report.location && report.location.coordinates) {
+      // Check if any point on the route is near this report
+      for (let i = 0; i < coords.length; i += step) {
+        const pt = coords[i];
+        const dist = getDistanceFromLatLonInKm(pt, report.location.coordinates);
+        if (dist <= 0.5) { // Within 500m
+          reportsPassed.add(report._id.toString());
+          break; // Route passes this report
+        }
+      }
+    }
+  }
+
+  // Deduct 5 points from the final score for every unsafe report on the route
+  averageScore -= (reportsPassed.size * 5);
+  
+  // Ensure score stays between 0 and 100
+  averageScore = Math.max(0, Math.min(100, averageScore));
+
   // Round to nearest integer
   return Math.round(averageScore);
 }

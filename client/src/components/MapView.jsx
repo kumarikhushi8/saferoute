@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { MapContainer, TileLayer, GeoJSON, useMap } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON, useMap, useMapEvents, Marker, Popup, Circle } from 'react-leaflet';
 import L from 'leaflet';
 
 // Fix for default Leaflet icon missing issues in React
@@ -12,6 +12,38 @@ let DefaultIcon = L.icon({
     iconAnchor: [12, 41],
 });
 L.Marker.prototype.options.icon = DefaultIcon;
+L.Marker.prototype.options.icon = DefaultIcon;
+
+// Custom red icon for reports
+const reportIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
+});
+
+// Component to handle map clicks
+const MapClickHandler = ({ onMapClick, isReportMode }) => {
+  const map = useMapEvents({
+    click(e) {
+      if (isReportMode && onMapClick) {
+        onMapClick(e.latlng);
+      }
+    }
+  });
+  
+  useEffect(() => {
+    if (isReportMode) {
+      map.getContainer().style.cursor = 'crosshair';
+    } else {
+      map.getContainer().style.cursor = '';
+    }
+  }, [isReportMode, map]);
+
+  return null;
+};
 
 // Component to recenter map when route changes
 const MapRecenter = ({ routeGeoJSON }) => {
@@ -25,7 +57,7 @@ const MapRecenter = ({ routeGeoJSON }) => {
   return null;
 };
 
-const MapView = ({ routesData, activeRouteMode }) => {
+const MapView = ({ routesData, activeRouteMode, liveReports = [], isReportMode, onMapClick, showHeatmap = false, heatmapZones = [] }) => {
   // Default center: Somewhere like NYC or just [40.7128, -74.0060]
   const defaultCenter = [40.7128, -74.0060];
 
@@ -70,6 +102,37 @@ const MapView = ({ routesData, activeRouteMode }) => {
         {routesData && (
           <MapRecenter routeGeoJSON={routesData[activeRouteMode]?.geometry} />
         )}
+
+        <MapClickHandler onMapClick={onMapClick} isReportMode={isReportMode} />
+
+        {/* Render Night Risk Heatmap */}
+        {showHeatmap && heatmapZones.map((zone, idx) => (
+          <Circle
+            key={`heatmap-${idx}`}
+            center={[zone.coordinates[1], zone.coordinates[0]]}
+            radius={zone.radiusKm * 1000}
+            pathOptions={{
+              color: 'transparent',
+              fillColor: '#ff3300',
+              fillOpacity: 0.35
+            }}
+          />
+        ))}
+
+        {/* Render Live Reports */}
+        {liveReports.map((report) => (
+          <Marker 
+            key={report._id} 
+            position={[report.location.coordinates[1], report.location.coordinates[0]]}
+            icon={reportIcon}
+          >
+            <Popup>
+              <strong>Community Report</strong><br />
+              {report.reason}<br />
+              <span className="text-xs text-gray-500">{new Date(report.createdAt).toLocaleDateString()}</span>
+            </Popup>
+          </Marker>
+        ))}
       </MapContainer>
     </div>
   );
