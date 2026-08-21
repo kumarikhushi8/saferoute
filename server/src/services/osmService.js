@@ -92,6 +92,28 @@ async function getDynamicOSMData(minLat, minLng, maxLat, maxLng) {
     
     console.log(`[OSM Live Fetch] complete: ${policeCount} police stations, ${unlitCount} unlit segments, ${poiCount} POIs.`);
     
+    // Hackathon Demo Fallback: If OSM doesn't have lighting data for this area, generate procedural risk zones
+    if (unlitCount === 0) {
+      console.log(`[OSM] No unlit roads found. Injecting procedural risk zones for demonstration.`);
+      for (let i = 0; i < 4; i++) {
+        const randLat = minLat + Math.random() * (maxLat - minLat);
+        const randLng = minLng + Math.random() * (maxLng - minLng);
+        zones.push({
+          id: `risk-zone-procedural-${Math.random()}`,
+          name: 'Unlit/Deserted Area (Demo)',
+          coordinates: [randLng, randLat],
+          radiusKm: 0.6 + (Math.random() * 0.5),
+          metrics: {
+            lighting_score: 20 + Math.random() * 10,
+            crowd_density_score: 10 + Math.random() * 20,
+            crime_incidence_score: 60 + Math.random() * 20,
+            cctv_police_proximity_score: 20,
+            live_community_report_score: 40
+          }
+        });
+      }
+    }
+    
     const result = { zones, metadata: { poiCount } };
     
     // Save to cache

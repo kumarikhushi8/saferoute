@@ -201,6 +201,8 @@ function MainApp() {
           fastest: response.data.fastest,
           safest: response.data.safest
         });
+        // Automatically enable heatmap visualization along the new route
+        setShowHeatmap(true);
       } else {
         setError('Received invalid route data from server.');
       }
