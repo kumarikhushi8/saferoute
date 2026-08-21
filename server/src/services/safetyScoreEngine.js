@@ -1,9 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-// Load mock data
-const seedDataPath = path.join(__dirname, '../data/seedSafetyData.json');
-const seedData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'));
+// Mock data fallback removed; entirely relying on live OSM data or procedural generation.
 
 /**
  * Calculates the Haversine distance between two coordinates in kilometers.
@@ -86,8 +84,8 @@ async function calculateRouteSafetyScore(routeGeoJSON, recentReports = [], osmZo
   
   const batchMetrics = [];
   
-  // Use dynamic OSM data if available, otherwise fallback to static seed data
-  const zonesToUse = (osmZones && osmZones.length > 0) ? osmZones : seedData;
+  // Use dynamic OSM data
+  const zonesToUse = (osmZones && osmZones.length > 0) ? osmZones : [];
   
   // 1. Collect all metrics along the route
   for (let i = 0; i < coords.length; i += step) {

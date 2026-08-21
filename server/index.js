@@ -122,18 +122,8 @@ app.get('/api/heatmap', async (req, res) => {
       res.status(500).json({ error: 'Failed to generate dynamic heatmap' });
     }
   } else {
-    // Fallback to static seed data if no bounds provided
-    const seedDataPath = path.join(__dirname, 'src', 'data', 'seedSafetyData.json');
-    try {
-      const seedData = JSON.parse(fs.readFileSync(seedDataPath, 'utf-8'));
-      const riskyZones = seedData.filter(zone => 
-        zone.metrics.lighting_score < 50 || zone.metrics.crime_incidence_score > 60
-      );
-      res.json(riskyZones);
-    } catch(error) {
-      console.error('Error loading heatmap:', error);
-      res.status(500).json({ error: 'Failed to load heatmap data' });
-    }
+    // If no bounds provided, return an empty array rather than falling back to static seed data
+    res.json([]);
   }
 });
 
