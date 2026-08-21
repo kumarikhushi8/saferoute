@@ -31,20 +31,10 @@ function deg2rad(deg) {
   return deg * (Math.PI/180);
 }
 
-/**
- * Calculates the final safety score based on the formula.
- * @param {Object} metrics 
- * @returns {number} Final score 0-100
- */
-function calculateScoreFromMetrics(metrics) {
-  return (
-    0.30 * metrics.lighting_score +
-    0.25 * metrics.crowd_density_score +
-    0.20 * (100 - metrics.crime_incidence_score) +
-    0.15 * metrics.cctv_police_proximity_score +
-    0.10 * metrics.live_community_report_score
-  );
-}
+const axios = require('axios');
+
+// Note: calculateScoreFromMetrics is no longer needed because
+// we're using the Python ML Microservice for predictions!
 
 // Default baseline metrics for areas outside our mock zones
 const DEFAULT_METRICS = {
@@ -56,28 +46,24 @@ const DEFAULT_METRICS = {
 };
 
 /**
- * Evaluates the safety score for an entire route.
+ * Evaluates the safety score for an entire route using the ML Microservice.
  * @param {Object} routeGeoJSON - GeoJSON LineString geometry of the route
  * @param {Array} recentReports - Array of live report documents from the database
- * @returns {number} Aggregate safety score 0-100
+ * @returns {Promise<number>} Aggregate safety score 0-100
  */
-function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
+async function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
   if (!routeGeoJSON || !routeGeoJSON.coordinates || routeGeoJSON.coordinates.length === 0) {
     return 50; // default fallback
   }
 
   const coords = routeGeoJSON.coordinates;
-  let totalScore = 0;
-  let pointCount = 0;
-
-  // To optimize, evaluate every 5th point if route is long, but for MVP evaluate all points.
-  // OSRM provides dense coordinates for curves, so sampling every 3rd point is reasonable.
   const step = Math.max(1, Math.floor(coords.length / 50)); 
-
+  
+  const batchMetrics = [];
+  
+  // 1. Collect all metrics along the route
   for (let i = 0; i < coords.length; i += step) {
     const pt = coords[i];
-    
-    // Find nearest mock zone
     let nearestZone = null;
     let minDistance = Infinity;
 
@@ -89,27 +75,33 @@ function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
       }
     }
 
-    // Note: We don't apply the penalty here anymore, because averaging it out 
-    // across 50+ points dilutes the penalty to less than 1 point overall.
-    // Instead, we will track if the route passes near reports and deduct at the end.
     let metricsToUse = { ...DEFAULT_METRICS };
     if (nearestZone && minDistance <= nearestZone.radiusKm) {
       metricsToUse = { ...nearestZone.metrics };
     }
-
-    totalScore += calculateScoreFromMetrics(metricsToUse);
-    pointCount++;
+    
+    batchMetrics.push(metricsToUse);
   }
 
-  if (pointCount === 0) return 50;
-  
-  let averageScore = totalScore / pointCount;
+  if (batchMetrics.length === 0) return 50;
 
-  // Apply a flat penalty for passing near any reports so it is visible in the UI
+  // 2. Fetch predictions from Python ML microservice in one batch!
+  let averageScore = 50;
+  try {
+    const response = await axios.post('http://localhost:5001/predict', batchMetrics);
+    const scores = response.data.scores; // Array of scores
+    
+    const totalScore = scores.reduce((sum, val) => sum + val, 0);
+    averageScore = totalScore / scores.length;
+    
+  } catch (error) {
+    console.error('ML Microservice is offline. Falling back to default score (50). Make sure to run `python ml/app.py`!');
+  }
+
+  // 3. Apply live community report penalty
   let reportsPassed = new Set();
   for (const report of recentReports) {
     if (report.location && report.location.coordinates) {
-      // Check if any point on the route is near this report
       for (let i = 0; i < coords.length; i += step) {
         const pt = coords[i];
         const dist = getDistanceFromLatLonInKm(pt, report.location.coordinates);
@@ -121,13 +113,9 @@ function calculateRouteSafetyScore(routeGeoJSON, recentReports = []) {
     }
   }
 
-  // Deduct 5 points from the final score for every unsafe report on the route
   averageScore -= (reportsPassed.size * 5);
-  
-  // Ensure score stays between 0 and 100
   averageScore = Math.max(0, Math.min(100, averageScore));
 
-  // Round to nearest integer
   return Math.round(averageScore);
 }
 

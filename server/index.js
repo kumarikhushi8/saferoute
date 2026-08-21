@@ -173,16 +173,16 @@ app.post('/api/route', async (req, res) => {
       // Fetch recent reports to pass to the scoring engine
       const recentReports = await Report.find().limit(100);
       
-      // Calculate safety score for each route
-      const scoredRoutes = routes.map((r) => {
-        const score = calculateRouteSafetyScore(r.geometry, recentReports);
+      // Calculate safety score for each route using the ML Microservice
+      const scoredRoutes = await Promise.all(routes.map(async (r) => {
+        const score = await calculateRouteSafetyScore(r.geometry, recentReports);
         return {
           geometry: r.geometry,
           duration: r.duration,
           distance: r.distance,
           score: score
         };
-      });
+      }));
 
       // Sort by duration ascending to find fastest
       const fastest = [...scoredRoutes].sort((a, b) => a.duration - b.duration)[0];
